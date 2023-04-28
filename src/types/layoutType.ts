@@ -3,14 +3,14 @@ import { AppProps } from 'next/app';
 import { ReactElement, ReactNode } from 'react';
 
 export interface LayoutProps {
-    children: ReactNode; 
+  children: ReactNode;
+  className?: string;
 }
 
-
 export type NextPageWidthLayout<P = {}, IP = P> = NextPage<P, IP> & {
-    Layout?: (props: LayoutProps) => ReactElement;
+  Layout?: (props: LayoutProps) => ReactElement;
 };
 
 export type AppPropsWithLayout = AppProps & {
-    Component: NextPageWidthLayout;
+  Component: NextPageWidthLayout;
 };

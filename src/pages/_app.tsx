@@ -1,4 +1,4 @@
-import store from '@/app/store'
+import store from '@/store'
 import EmtyLayout from '@/layouts/EmtyLayout'
 import '@/styles/index.scss'
 import { AppPropsWithLayout } from '@/types/layoutType'

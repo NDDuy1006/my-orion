@@ -11,13 +11,13 @@ const initialState: initSliceType = {
 };
 
 
-/** demo create async thungk */
+/** demo create async thunk */
 export const getAllDataDemo = createAsyncThunk(
     'initSlice',
     async (keyWord: string, thunkAPI) => {
         const data = await requesterAxios.getAll(keyWord);
 
-        thunkAPI.abort()
+        thunkAPI.abort();
 
         return data
     }
@@ -30,10 +30,17 @@ export const initSlice = createSlice({
     initialState,
     reducers:{ 
         /***** handle blocking func here *****/
+
     },
 
     extraReducers: (builder) => {
         /** handle non-blocking func here */
+
+        builder.addCase(getAllDataDemo.pending, (state, {type, payload}) => {
+
+        });
+
+        
     }
 
 })

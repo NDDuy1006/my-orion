@@ -11,7 +11,7 @@ const EmtyLayout = ({ children }: LayoutProps) => {
             </header>
 
             <div>
-                {children}
+                { children }
             </div>
 
             <footer className='w-ful h-9 bg-teal-200'>

@@ -1,16 +1,15 @@
 
-import requesterAxios from '@/clientApi/requester'
 import MainLayout from '@/layouts/MainLayout'
 import { NextPageWidthLayout } from '@/types/layoutType'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 
 
-const HomePage: NextPageWidthLayout = ({data}: any) => {
+const HomePage: NextPageWidthLayout = () => {
 
   return (
       <div className='container h-[600px]'>
-        This is my app
+        
       </div>
   )
 }

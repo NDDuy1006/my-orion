@@ -10,7 +10,7 @@ type Props = {}
 
 const BookingPage: NextPageWidthLayout = (props: Props) => {
   return (
-    <Wrapper>
+    <Wrapper className='text-center'>
       <BookingFeature />
     </Wrapper>
   )

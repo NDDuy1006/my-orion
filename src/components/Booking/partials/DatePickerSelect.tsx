@@ -1,14 +1,19 @@
 import React from 'react';
 import { DatePicker, Space } from 'antd';
-const { RangePicker } = DatePicker;
+import dayjs from 'dayjs';
+const { RangePicker, TimePicker } = DatePicker;
+
 
 type Props = {}
 
 const DatePickerSelect = (props: Props) => {
     return (
-        <Space direction="vertical" size={12}>
+        <Space direction="vertical" size={24}>
             <RangePicker
-                bordered={false}
+                placement='bottomRight'
+                panelRender={ 
+                    (panelNode) => <div>{panelNode}</div>}
+                    
             />
         </Space>
     )

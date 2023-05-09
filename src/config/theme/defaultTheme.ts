@@ -1,25 +1,21 @@
-import { theme } from "antd";
-import { ThemeConfig } from "antd/es/config-provider/context";
+import { theme } from 'antd';
+import { ThemeConfig } from 'antd/es/config-provider/context';
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
-
 const instance: ThemeConfig = {
-    algorithm: [defaultAlgorithm],
-    token: {
-      colorPrimary: '#00b96b',
+  algorithm: [defaultAlgorithm],
+  token: {
+    colorPrimary: '#00b96b',
+  },
+  components: {
+    Layout: {
+      colorBgHeader: '#ffffff',
+      colorBgTrigger: '#cdcdcd',
     },
-    components: {
-      Layout: {
-        colorBgHeader: "#ffffff",
-        colorBgTrigger: "#cdcdcd",
-      },
-      DatePicker: {
-        colorBorderBg: '#00b96b',
-        
-        
-      },
+    DatePicker: {
+      colorBorderBg: '#00b96b',
+    },
+  },
+};
 
-    }
-}
-
-export default instance
+export default instance;

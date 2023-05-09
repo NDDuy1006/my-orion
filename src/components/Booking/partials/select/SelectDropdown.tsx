@@ -1,48 +1,71 @@
-import { DownOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Button, Dropdown, message, Space, Tooltip } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Popover } from 'antd';
 
-const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-  message.info('Click on left button.');
-  console.log('click left button', e);
+const buttonWidth = 70;
+import './SelectDropdown.module.scss';
+
+const SelectDropdown: React.FC = () => {
+  const MAX = 4;
+  const initialState: number = 0;
+  const [adultValue, setAdultValue] = useState(initialState);
+  const [childrenValue, setChildrenValue] = useState(initialState);
+
+  const handleIncrease = (mode: string) => {
+    mode === 'children'
+      ? setChildrenValue((prevState) => prevState + 1)
+      : setAdultValue((prevState) => prevState + 1);
+  };
+  const handleDescrease = (mode: string) => {
+    mode === 'children'
+      ? setChildrenValue((prevState) => prevState - 1)
+      : setAdultValue((prevState) => prevState - 1);
+  };
+
+  const content = (
+    <div>
+      <div className="flex items-center justify-around gap-5">
+        <p>Adults</p>
+        <button
+          disabled={adultValue <= 0}
+          onClick={() => handleDescrease('adult')}
+          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:cursor-not-allowed"
+        >
+          -
+        </button>
+        <p>{adultValue}</p>
+        <button
+          disabled={adultValue === MAX}
+          onClick={() => handleIncrease('adult')}
+          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:cursor-not-allowed"
+        >
+          +
+        </button>
+      </div>
+      <div className="flex items-center justify-around gap-5">
+        <p>Children</p>
+        <button
+          disabled={childrenValue <= 0}
+          onClick={() => handleDescrease('children')}
+          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:cursor-not-allowed"
+        >
+          -
+        </button>
+        <p>{childrenValue}</p>
+        <button
+          disabled={childrenValue + adultValue === MAX}
+          onClick={() => handleIncrease('children')}
+          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:cursor-not-allowed"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+  return (
+    <Popover placement="bottomLeft" content={content} trigger="click">
+      <Button>{'Guests & Rooms'}</Button>
+    </Popover>
+  );
 };
-
-const handleMenuClick: MenuProps['onClick'] = (e) => {
-  message.info('Click on menu item.');
-  console.log('click', e);
-};
-
-const items: MenuProps['items'] = [
-  {
-    label: '1st menu item',
-    key: '1',
-  },
-  {
-    label: '2nd menu item',
-    key: '2',
-  },
-  {
-    label: '3rd menu item',
-    key: '3',
-    danger: true,
-  },
-];
-
-const menuProps = {
-  items,
-  onClick: handleMenuClick,
-};
-
-const SelectDropdown: React.FC = () => (
-  <Dropdown menu={menuProps}>
-    <Button>
-      <Space>
-        Button
-        <DownOutlined />
-      </Space>
-    </Button>
-  </Dropdown>
-);
 
 export default SelectDropdown;

@@ -7,7 +7,9 @@ type Props = {}
 const DatePickerSelect = (props: Props) => {
     return (
         <Space direction="vertical" size={12}>
-            <RangePicker />
+            <RangePicker
+                bordered={false}
+            />
         </Space>
     )
 }

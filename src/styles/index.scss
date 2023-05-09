@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './variable';
+@import './functions.scss';
+@import './globals.scss';
+@import './antdStyle.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: $color-black;
+  background: $color-white;
+  font-size: $text-base;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+}
+
+p,
+li {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

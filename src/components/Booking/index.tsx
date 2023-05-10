@@ -11,3 +11,5 @@ const BookingFeature = () => {
     </Fragment>
   );
 };
+
+export default BookingFeature;

@@ -8,20 +8,6 @@ const SelectDropdown: React.FC = () => {
   const MAX = 4;
   const [adultValue, setAdultValue] = useState(0);
   const [childrenValue, setChildrenValue] = useState(0);
-
-  // useEffect(() => {
-  //   if (adultValue + childrenValue > MAX) {
-  //     const diff = adultValue + childrenValue - MAX;
-  //     if (adultValue > diff) {
-  //       setAdultValue(adultValue + diff);
-  //       setChildrenValue(childrenValue - diff);
-  //     } else {
-  //       setAdultValue(1);
-  //       setChildrenValue(childrenValue - (diff - adultValue));
-  //     }
-  //   }
-  // }, [adultValue, childrenValue]);
-
   const handleIncrease = (mode: string) => {
     if (mode === 'children' && adultValue + childrenValue < MAX) {
       setChildrenValue(childrenValue + 1);

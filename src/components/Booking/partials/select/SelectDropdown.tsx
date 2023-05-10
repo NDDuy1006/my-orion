@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Popover } from 'antd';
-
 const buttonWidth = 70;
 import './SelectDropdown.module.scss';
+import GuestTypes from '../GuestTypes/GuestTypes';
+enum Mode {
+  adult = 'adult',
+  children = 'children',
+}
 
 const SelectDropdown: React.FC = () => {
   const MAX = 4;
   const [adultValue, setAdultValue] = useState(0);
   const [childrenValue, setChildrenValue] = useState(0);
   const handleIncrease = (mode: string) => {
-    if (mode === 'children' && adultValue + childrenValue < MAX) {
+    if (mode === Mode.children && adultValue + childrenValue < MAX) {
       setChildrenValue(childrenValue + 1);
-    } else if (mode === 'adult' && adultValue < MAX) {
+    } else if (mode === Mode.adult && adultValue < MAX) {
       if (adultValue + childrenValue >= MAX) {
         setChildrenValue(childrenValue - 1);
       }
@@ -20,51 +24,40 @@ const SelectDropdown: React.FC = () => {
   };
 
   const handleDescrease = (mode: string) => {
-    if (mode === 'children' && childrenValue > 0) {
+    if (mode === Mode.children) {
       setChildrenValue(childrenValue - 1);
-    } else if (mode === 'adult' && adultValue > 0) {
+    } else if (mode === Mode.adult) {
       setAdultValue(adultValue - 1);
     }
   };
 
+  useEffect(() => {
+    if (adultValue === 0) {
+      setChildrenValue(0);
+    }
+  }, [adultValue]);
   const content = (
     <div>
-      <div className="flex items-center justify-around gap-5">
-        <p>Adults</p>
-        <button
-          disabled={adultValue <= 0}
-          onClick={() => handleDescrease('adult')}
-          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          -
-        </button>
-        <p>{adultValue}</p>
-        <button
-          disabled={adultValue === MAX}
-          onClick={() => handleIncrease('adult')}
-          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          +
-        </button>
-      </div>
-      <div className="flex items-center justify-around gap-5">
-        <p>Children</p>
-        <button
-          disabled={childrenValue <= 0}
-          onClick={() => handleDescrease('children')}
-          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          -
-        </button>
-        <p>{childrenValue}</p>
-        <button
-          disabled={adultValue + childrenValue === MAX || adultValue === 0}
-          onClick={() => handleIncrease('children')}
-          className="w-10 h-10 border border-[#00b96b] rounded-[50%] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          +
-        </button>
-      </div>
+      <GuestTypes
+        guestTitle={'Adults'}
+        description={'Ages 18 or above'}
+        value={adultValue}
+        disabledUp={adultValue === MAX}
+        disabledDown={adultValue <= 0}
+        mode={''}
+        handleIncrease={() => handleIncrease(Mode.adult)}
+        handleDescrease={() => handleDescrease(Mode.adult)}
+      />
+      <GuestTypes
+        guestTitle={'Children'}
+        description={'Ages 0 - 17'}
+        value={childrenValue}
+        disabledUp={adultValue + childrenValue === MAX || adultValue === 0}
+        disabledDown={childrenValue <= 0}
+        mode={''}
+        handleIncrease={() => handleIncrease(Mode.children)}
+        handleDescrease={() => handleDescrease(Mode.children)}
+      />
     </div>
   );
 

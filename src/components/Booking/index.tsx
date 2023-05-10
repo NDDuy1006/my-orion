@@ -5,9 +5,8 @@ import SelectDropdown from './partials/select/SelectDropdown';
 const BookingFeature = () => {
   return (
     <Fragment>
-      <SelectDropdown />
-      <br />
       <DatePickerSelect />
+      <SelectDropdown />
     </Fragment>
   );
 };

@@ -1,13 +1,11 @@
-import React from 'react'
-import DatePickerSelect from './partials/DatePickerSelect'
+import React, { Fragment } from 'react'
+import DatePickerSelect from './partials/DatePickerSelected/DatePickerSelect'
 
-type Props = {}
-
-const BookingFeature = (props: Props) => {
+const BookingFeature = () => {
   return (
-    <div>
+    <Fragment>
       <DatePickerSelect />
-    </div>
+    </Fragment>
   )
 }
 

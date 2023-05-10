@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { AntCloudOutlined } from '@ant-design/icons';
 
@@ -10,13 +10,13 @@ const { RangePicker } = DatePicker;
 
 const DatePickerSelect = () => {
 
+
   return (
     <>
       <RangePicker
         placement="bottomLeft"
-        panelRender={(panelNode) => <div className='w-full'>{panelNode}</div>}
+        // panelRender={(panelNode) => <div className='w-full'>{panelNode}</div>}
         renderExtraFooter={() => <div>kdks</div>}
-
         size={'large'}
         onOpenChange={(value) => {
           console.log(value)
@@ -28,7 +28,7 @@ const DatePickerSelect = () => {
                 <AntCloudOutlined  />
                 <span>12°C</span>
                 </div>
-                <span className='text-xl'>
+                <span className='text-xl leading-[10px]'>
                   {currentDate.date()} 
                 </span>
                 <p className='text-[12px]'>30$</p>

@@ -1,17 +1,13 @@
-import React from 'react';
-import DatePickerSelect from './partials/DatePickerSelect';
+import React, { Fragment } from 'react';
+import DatePickerSelect from './partials/DatePickerSelected/DatePickerSelect';
 import SelectDropdown from './partials/select/SelectDropdown';
 
-type Props = {};
-
-const BookingFeature = (props: Props) => {
+const BookingFeature = () => {
   return (
-    <div>
+    <Fragment>
       <SelectDropdown />
       <br />
       <DatePickerSelect />
-    </div>
+    </Fragment>
   );
 };
-
-export default BookingFeature;

@@ -5,7 +5,7 @@ const { defaultAlgorithm, darkAlgorithm } = theme;
 const instance: ThemeConfig = {
   algorithm: [defaultAlgorithm],
   token: {
-    colorPrimary: '#00b96b',
+    colorPrimary: 'rgba(170, 149, 117, 1)',
   },
   components: {
     Layout: {
@@ -13,7 +13,8 @@ const instance: ThemeConfig = {
       colorBgTrigger: '#cdcdcd',
     },
     DatePicker: {
-      colorBorderBg: '#00b96b',
+      colorPrimary: 'rgba(170, 149, 117, 1)',
+      colorPrimaryBg: 'rgba(170, 149, 117, .5)',
     },
   },
 };

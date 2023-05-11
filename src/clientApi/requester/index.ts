@@ -1,13 +1,23 @@
+import { GenericAbortSignal } from "axios";
 import axiosClient from "../axiosClient";
 
 
 class RequesterAxios {
 
-    getAll(data?: any){
+    userLogin(data: userLoginType) {
         return axiosClient({
-            url: '/api/layDanhSachSanPham',
+            url: '/dangNhap',
+            method: "POST",
+            data
+        })
+    }
+
+    getAll(data?: any, signal?: GenericAbortSignal ){
+        return axiosClient({
+            url: '/layDanhSachSanPham',
             method: 'GET',
-            data: data
+            data: data,
+            signal
         });
     };
 

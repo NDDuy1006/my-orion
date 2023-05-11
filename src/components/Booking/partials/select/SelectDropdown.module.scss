@@ -5,3 +5,8 @@
   border-radius: 50%;
   outline: none;
 }
+
+.ant-picker-range-arrow,
+.ant-popover-arrow {
+  display: none !important;
+}

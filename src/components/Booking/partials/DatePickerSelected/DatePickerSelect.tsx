@@ -7,21 +7,18 @@ const { RangePicker } = DatePicker;
 
 const DatePickerSelect = () => {
   return (
-    <div>
-      <RangePicker
-        className="rounded-[32px]"
-        placement="bottomLeft"
-        // panelRender={(panelNode) => <div className='w-full'>{panelNode}</div>}
-        renderExtraFooter={() => <div>kdks</div>}
-        // size={'large'}
-        onOpenChange={(value) => {
-          console.log(value);
-        }}
-        dateRender={(currentDate: Dayjs, today: Dayjs) => (
-          <DateRender currentDate={currentDate} today={today} />
-        )}
-      />
-    </div>
+    <RangePicker
+      className="rounded-[32px] h-12"
+      placement="bottomLeft"
+      // panelRender={(panelNode) => <div className='w-full'>{panelNode}</div>}
+      renderExtraFooter={() => <div>kdks</div>}
+      onOpenChange={(value) => {
+        console.log(value);
+      }}
+      dateRender={(currentDate: Dayjs, today: Dayjs) => (
+        <DateRender currentDate={currentDate} today={today} />
+      )}
+    />
   );
 };
 

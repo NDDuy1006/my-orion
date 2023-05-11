@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Popover } from 'antd';
 const buttonWidth = 70;
-import './SelectDropdown.module.scss';
+import styles from './SelectDropdown.module.scss';
 import GuestTypes from '../GuestTypes/GuestTypes';
 import Image from 'next/image';
 enum Mode {
@@ -38,7 +38,7 @@ const SelectDropdown: React.FC = () => {
     }
   }, [adultValue]);
   const content = (
-    <div>
+    <div className="guestType">
       <GuestTypes
         guestTitle={'Adults'}
         description={'Ages 18 or above'}
@@ -64,12 +64,12 @@ const SelectDropdown: React.FC = () => {
 
   return (
     <Popover
-      className="h-8 rounded-[32px]"
+      className="rounded-[32px] h-12 w-52 sty"
       placement="bottomLeft"
       content={content}
       trigger="click"
     >
-      <Button>
+      <Button className="!bg-white">
         <p className="flex items-center justify-around gap-2">
           <span>{adultValue + childrenValue}</span> Guests,{' '}
           <Image

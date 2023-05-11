@@ -2,31 +2,31 @@ import requesterAxios from "@/clientApi/requester";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
-interface initSliceType {
+interface sampleSliceType {
     data: any
 }
 
-const initialState: initSliceType = {
+const initialState: sampleSliceType = {
     data: undefined
 };
 
 
 /** demo create async thunk */
-export const getAllDataDemo = createAsyncThunk(
-    'initSlice',
+export const getAllsample = createAsyncThunk(
+    'sampleSlice',
     async (keyWord: string, thunkAPI) => {
-        const data = await requesterAxios.getAll(keyWord);
+        const res = await requesterAxios.getAll(keyWord);
 
         thunkAPI.abort();
 
-        return data
+        return res.data
     }
 )
 
 
 
-export const initSlice = createSlice({
-    name: 'initSlice',
+export const sampleSlice = createSlice({
+    name: 'sampleSlice',
     initialState,
     reducers:{ 
         /***** handle blocking func here *****/
@@ -36,7 +36,7 @@ export const initSlice = createSlice({
     extraReducers: (builder) => {
         /** handle non-blocking func here */
 
-        builder.addCase(getAllDataDemo.pending, (state, {type, payload}) => {
+        builder.addCase(getAllsample.pending, (state, {type, payload}) => {
 
         });
 
@@ -48,6 +48,6 @@ export const initSlice = createSlice({
 
 export const { 
     /** export blocking func */
-} = initSlice.actions;
+} = sampleSlice.actions;
 
-export default initSlice.reducer;
+export default sampleSlice.reducer;

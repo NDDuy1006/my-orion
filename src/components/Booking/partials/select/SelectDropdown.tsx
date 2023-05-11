@@ -3,6 +3,7 @@ import { Button, Popover } from 'antd';
 const buttonWidth = 70;
 import './SelectDropdown.module.scss';
 import GuestTypes from '../GuestTypes/GuestTypes';
+import Image from 'next/image';
 enum Mode {
   adult = 'adult',
   children = 'children',
@@ -62,8 +63,18 @@ const SelectDropdown: React.FC = () => {
   );
 
   return (
-    <Popover placement="bottomLeft" content={content} trigger="click">
-      <Button>{'Guests & Rooms'}</Button>
+    <Popover className="rounded-lg" placement="bottomLeft" content={content} trigger="click">
+      <Button>
+        <p className="flex items-center justify-around gap-2">
+          <span>{adultValue + childrenValue}</span> Guests,{' '}
+          <Image
+            alt=""
+            width={0}
+            height={0}
+            src={require('../../../../../public/images/icons/icon_user.png')}
+          />
+        </p>
+      </Button>
     </Popover>
   );
 };

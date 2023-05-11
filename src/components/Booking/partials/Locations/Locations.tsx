@@ -11,11 +11,10 @@ const onSearch = (value: string) => {
 
 const Locations: React.FC = () => (
   <Select
-    // popupClassName={'rounded-[32px]'}
     bordered
-    className="rounded-[32px]"
+    className="mySelectIBE"
     showSearch
-    placeholder="Select a person"
+    placeholder="Location"
     optionFilterProp="children"
     onChange={onChange}
     onSearch={onSearch}

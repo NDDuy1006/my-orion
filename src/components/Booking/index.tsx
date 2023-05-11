@@ -5,11 +5,11 @@ import SelectDropdown from './partials/select/SelectDropdown';
 
 const BookingFeature = () => {
   return (
-    <Fragment>
+    <section className="flex">
       <Locations />
       <DatePickerSelect />
       <SelectDropdown />
-    </Fragment>
+    </section>
   );
 };
 

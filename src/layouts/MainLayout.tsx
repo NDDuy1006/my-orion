@@ -1,24 +1,16 @@
 import { LayoutProps } from '@/types/layoutType';
 import React from 'react';
 
-
 const MainLayout = ({ children }: LayoutProps) => {
-    return (
-        <div>
-            <header className='w-ful h-9 bg-teal-200 container'>
-                Header
-            </header>
+  return (
+    <>
+      <header className="w-ful h-9 bg-teal-200 container">Header</header>
 
-            <div>
-                {children}
-            </div>
+      {children}
 
-            <div className='w-ful h-9 bg-teal-200 container'>
-                Footer
-            </div>
+      <footer className="w-ful h-9 bg-teal-200 container">Footer</footer>
+    </>
+  );
+};
 
-        </div>
-    )
-}
-
-export default MainLayout
+export default MainLayout;

@@ -1,5 +1,6 @@
+import requesterAxios from '@/clientApi/requester';
 import MainLayout from '@/layouts/MainLayout';
-import { NextPageWidthLayout } from '@/types/layoutType';
+import { NextSheetWidthLayout } from '@/types/layoutType';
 import React, { useEffect } from 'react';
 
 const HomePage: NextSheetWidthLayout = (posts: any) => {

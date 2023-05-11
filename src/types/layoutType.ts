@@ -7,10 +7,10 @@ export interface LayoutProps {
   className?: string;
 }
 
-export type NextPageWidthLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextSheetWidthLayout<P = {}, IP = P> = NextPage<P, IP> & {
   Layout?: (props: LayoutProps) => ReactElement;
 };
 
 export type AppPropsWithLayout = AppProps & {
-  Component: NextPageWidthLayout;
+  Component: NextSheetWidthLayout;
 };

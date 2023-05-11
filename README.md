@@ -72,20 +72,20 @@ npm run generate --model=page --name=<sliceName>
 ## Generate component
 ``` bash 
 
-yarn generate --model=component --name=<sliceName>
+yarn generate --model=component --name=<componentName>
 
 // or
 
-npm run generate --model=component --name=<sliceName> 
+npm run generate --model=component --name=<componentName> 
 ```
 ## Generate api path server
 ``` bash 
 
-yarn generate --model=apiPath --name=<sliceName>
+yarn generate --model=apiPath --name=<pathName>
 
 // or
 
-npm run generate --model=apiPath --name=<sliceName> 
+npm run generate --model=apiPath --name=<pathName> 
 ```
 
 

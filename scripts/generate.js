@@ -1,4 +1,3 @@
-/*eslint-env node*/
 
 const fs = require("fs");
 const { codegen } = require('swagger-axios-codegen');
@@ -88,6 +87,11 @@ function generateComponent(compName) {
   fs.renameSync(`${targetModelPath}/index.txt`,`${targetModelPath}/index.tsx`);
   fs.renameSync(`${targetModelPath}/@types/index.txt`,`${targetModelPath}/@types/index.tsx`);
 
+  const indexComponentsPath = `src/components/index.ts`;
+
+  const indexCompContentFile = fs.readFileSync(`${indexComponentsPath}`, 'utf-8');
+  fs.writeFileSync(indexComponentsPath, `${indexCompContentFile}\nexport * from './${compName}/index';`)
+
 };
 
 
@@ -96,10 +100,8 @@ function generateApiPath(pathName) {
   const baseTemplateFilePath = `templates/api/apiPath.txt`;
   const targetModelPath = `src/pages/api/${pathName}.ts`;
 
-  fs.cpSync(baseTemplateFilePath, targetModelPath,{overwrite: true, recursive: true})
-  
-
-}
+  fs.cpSync(baseTemplateFilePath, targetModelPath,{overwrite: true, recursive: true});  
+};
 
 function generate() {
   switch (model) {

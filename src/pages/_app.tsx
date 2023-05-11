@@ -3,9 +3,9 @@ import EmtyLayout from '@/layouts/EmtyLayout'
 import '../styles/index.scss'
 import { AppPropsWithLayout } from '@/types/layoutType'
 import { Provider } from 'react-redux';
-
+import { defaultTheme } from '@/config';
 import { ConfigProvider } from 'antd';
-import instance from '@/config/theme/defaultTheme';
+
 
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Provider store={store}>
-        <ConfigProvider theme={instance}>
+        <ConfigProvider theme={defaultTheme}>
           <Layout>
             <Component {...pageProps} />
           </Layout>

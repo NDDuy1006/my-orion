@@ -69,6 +69,24 @@ yarn generate --model=slice --name=<sliceName>
 
 npm run generate --model=page --name=<sliceName> 
 ```
+## Generate component
+``` bash 
+
+yarn generate --model=component --name=<sliceName>
+
+// or
+
+npm run generate --model=component --name=<sliceName> 
+```
+## Generate api path server
+``` bash 
+
+yarn generate --model=apiPath --name=<sliceName>
+
+// or
+
+npm run generate --model=apiPath --name=<sliceName> 
+```
 
 
 

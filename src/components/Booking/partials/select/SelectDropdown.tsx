@@ -63,7 +63,12 @@ const SelectDropdown: React.FC = () => {
   );
 
   return (
-    <Popover className="rounded-lg" placement="bottomLeft" content={content} trigger="click">
+    <Popover
+      className="h-8 rounded-[32px]"
+      placement="bottomLeft"
+      content={content}
+      trigger="click"
+    >
       <Button>
         <p className="flex items-center justify-around gap-2">
           <span>{adultValue + childrenValue}</span> Guests,{' '}

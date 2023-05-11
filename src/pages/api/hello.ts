@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-const resData = {
+const resData = `{
   data: [
     {
       data_source: "Apaleo",
@@ -386,11 +386,11 @@ const resData = {
   ],
   message: "success",
   success: true
-}
+}`
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  res.status(200).json(resData)
+  res.status(200).json(JSON.parse(resData))
 }

@@ -8,7 +8,9 @@ import React from 'react';
 
 type Props = {}
 
+
 const BookingPage: NextSheetWidthLayout = (props: Props) => {
+
   return (
     <Wrapper className='text-center'>
       <BookingFeature />

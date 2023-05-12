@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styles from './Component.module.scss'
-import MyCompProps from './@types'
+import ComponentProps from './@types'
 
 
 const ComponentFeature = (props: ComponentProps) => {

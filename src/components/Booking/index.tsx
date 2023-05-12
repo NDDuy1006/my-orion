@@ -5,11 +5,12 @@ import SelectDropdown from './partials/select/SelectDropdown';
 import styles from './Booking.module.scss';
 import SearchButton from './partials/SearchButton/SearchButton';
 import { Wrapper } from '../global/Wrapper';
+import clsx from 'clsx';
 const BookingFeature = () => {
   return (
     <div className={styles.bookingEngineBg}>
       <Wrapper>
-        <div className={styles.bookingEngine}>
+        <div className="flex flex-row gap-2">
           <Locations />
           <DatePickerSelect />
           <SelectDropdown />

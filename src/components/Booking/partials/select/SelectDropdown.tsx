@@ -65,7 +65,7 @@ const SelectDropdown: React.FC = () => {
 
   return (
     <Popover
-      className={clsx(styles.test, 'rounded-[32px] h-12 w-52')}
+      className={clsx(styles.test, 'rounded-[32px] h-12 w-[210px]')}
       placement="bottomLeft"
       content={content}
       trigger="click"

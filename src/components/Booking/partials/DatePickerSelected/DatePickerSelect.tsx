@@ -8,7 +8,7 @@ const { RangePicker } = DatePicker;
 const DatePickerSelect = () => {
   return (
     <RangePicker
-      className="rounded-[32px] h-12"
+      className="rounded-[32px] h-12 w-[360px]"
       placement="bottomLeft"
       // panelRender={(panelNode) => <div className='w-full'>{panelNode}</div>}
       renderExtraFooter={() => <div>kdks</div>}

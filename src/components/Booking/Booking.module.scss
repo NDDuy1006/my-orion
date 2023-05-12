@@ -1,0 +1,19 @@
+.bookingEngineBg {
+  background-image: url('../../../public/images/pics/IBE.jpg');
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  .bookingEngine {
+    display: flex;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    border-radius: 36px;
+  }
+}
+.test {
+  .ant-picker-range-arrow,
+  .ant-popover-arrow {
+    display: none !important;
+  }
+}

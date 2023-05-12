@@ -5,7 +5,8 @@
 @import './variable';
 @import './functions.scss';
 @import './globals.scss';
-@import './antConfigStyle.scss';
+@import './dateAntdConfig.scss';
+@import './locationAntdConfig.scss';
 
 * {
   padding: 0;
@@ -35,4 +36,8 @@ li {
   &:last-child {
     margin-bottom: 0;
   }
+}
+.ant-picker-range-arrow,
+.ant-popover-arrow {
+  display: none !important;
 }

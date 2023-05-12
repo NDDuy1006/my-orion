@@ -16,7 +16,7 @@ function generatePage(pageName) {
   const pageTemplateSrc = 'templates/page';
   const typeTemplateSrc = 'templates/types/page.type.ts';
   const targetPageDest = `src/pages/${pageName}`;
-  const targetTypeDest = `src/types/${pageName}.ts`;
+  const targetTypeDest = `src/types/${pageName}Page.ts`;
 
 
   fs.cpSync(pageTemplateSrc, targetPageDest, { overwrite: true, recursive: true });
@@ -25,8 +25,8 @@ function generatePage(pageName) {
   const pageIndexContent = fs.readFileSync(`${targetPageDest}/index.txt`, 'utf8');
   const typeIndexCotent = fs.readFileSync(`${targetTypeDest}`, 'utf-8');
 
-  fs.writeFileSync(`${targetPageDest}/index.txt`, pageIndexContent.replaceAll('Page', pageName));
-  fs.writeFileSync(`${targetTypeDest}`,typeIndexCotent.replaceAll('Page', pageName));
+  fs.writeFileSync(`${targetPageDest}/index.txt`, pageIndexContent.replaceAll('Page', `${pageName}Page`));
+  fs.writeFileSync(`${targetTypeDest}`,typeIndexCotent.replaceAll('Page', `${pageName}Page`));
 
   fs.renameSync(`${process.cwd()}/src/pages/${pageName}/index.txt`, `${process.cwd()}/src/pages/${pageName}/index.tsx`, (err) => {
     if(err) console.log(err)

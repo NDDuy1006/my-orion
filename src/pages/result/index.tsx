@@ -9,9 +9,7 @@ import { GetServerSidePropsContext } from 'next';
 
 const resultPage: NextSheetWidthLayout = (props: resultPageProps) => {
     return (
-        <>
-            
-        </>
+        <Fragment></Fragment>
     );
 }
 

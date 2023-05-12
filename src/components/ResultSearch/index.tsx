@@ -5,7 +5,9 @@ import ResultSearchProps from './@types'
 
 const ResultSearchFeature = (props: ResultSearchProps) => {
   return (
-    <Fragment></Fragment>
+    <>
+      
+    </>
   )
 }
 

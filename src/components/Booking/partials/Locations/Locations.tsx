@@ -14,7 +14,7 @@ const Locations: React.FC = () => (
     bordered
     className="mySelectIBE"
     showSearch
-    placeholder="Location"
+    placeholder="Where would you like to go?"
     optionFilterProp="children"
     onChange={onChange}
     onSearch={onSearch}

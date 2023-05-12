@@ -4,6 +4,7 @@ const buttonWidth = 70;
 import styles from './SelectDropdown.module.scss';
 import GuestTypes from '../GuestTypes/GuestTypes';
 import Image from 'next/image';
+import clsx from 'clsx';
 enum Mode {
   adult = 'adult',
   children = 'children',
@@ -64,7 +65,7 @@ const SelectDropdown: React.FC = () => {
 
   return (
     <Popover
-      className="rounded-[32px] h-12 w-52 sty"
+      className={clsx(styles.test, 'rounded-[32px] h-12 w-52')}
       placement="bottomLeft"
       content={content}
       trigger="click"

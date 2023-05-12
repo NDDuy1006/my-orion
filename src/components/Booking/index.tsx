@@ -4,16 +4,17 @@ import Locations from './partials/Locations/Locations';
 import SelectDropdown from './partials/select/SelectDropdown';
 import styles from './Booking.module.scss';
 import SearchButton from './partials/SearchButton/SearchButton';
+import { Wrapper } from '../global/Wrapper';
 const BookingFeature = () => {
   return (
-    <section className={styles.bookingEngineBg}>
-      <div className={styles.bookingEngine}>
+    <div className={styles.bookingEngineBg}>
+      <Wrapper className={styles.bookingEngine}>
         <Locations />
         <DatePickerSelect />
         <SelectDropdown />
         <SearchButton />
-      </div>
-    </section>
+      </Wrapper>
+    </div>
   );
 };
 

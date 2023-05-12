@@ -6,18 +6,17 @@ import { GetServerSidePropsContext } from 'next';
 import axiosClient from '@/clientApi/axiosClient';
 
 const TestPage: NextSheetWidthLayout = (props: TestPageProps) => {
-  const fetcherData = async () => {
-    try {
-      const data = await axiosClient.get('http://localhost:3000/api/IBE');
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetcherData();
-  }, []);
+  // const fetcherData = async () => {
+  //   try {
+  //     const data = await axiosClient.get('http://localhost:3000/api/IBE');
+  //     console.log(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetcherData();
+  // }, []);
   return <Fragment></Fragment>;
 };
 

@@ -8,11 +8,13 @@ import { Wrapper } from '../global/Wrapper';
 const BookingFeature = () => {
   return (
     <div className={styles.bookingEngineBg}>
-      <Wrapper className={styles.bookingEngine}>
-        <Locations />
-        <DatePickerSelect />
-        <SelectDropdown />
-        <SearchButton />
+      <Wrapper>
+        <div className={styles.bookingEngine}>
+          <Locations />
+          <DatePickerSelect />
+          <SelectDropdown />
+          <SearchButton />
+        </div>
       </Wrapper>
     </div>
   );

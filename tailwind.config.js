@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     // Or if using `src` directory:
-    './src/**/*.{js,ts,jsx,tsx}'
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},
@@ -12,8 +12,8 @@ module.exports = {
         DEFAULT: '1rem',
         md: '2rem',
         lg: '3.75rem',
-        xl: '2rem',
-        '2xl': '4rem',
+        xl: '5.625rem',
+        '2xl': '13.625rem',
       },
     },
     screens: {
@@ -26,4 +26,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

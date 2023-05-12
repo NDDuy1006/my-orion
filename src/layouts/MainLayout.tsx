@@ -1,14 +1,13 @@
 import { LayoutProps } from '@/types/layoutType';
 import React from 'react';
+import Header from './Header';
+import header from '../contents/header';
 
 const MainLayout = ({ children }: LayoutProps) => {
   return (
     <>
-      <header className="w-ful h-9 bg-teal-200 container">Header</header>
-
+      <Header {...header} />
       {children}
-
-      <footer className="w-ful h-9 bg-teal-200 container">Footer</footer>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Popover } from 'antd';
 const buttonWidth = 70;
-import styles from './SelectDropdown.module.scss';
+import styles from './SelectGuestDropdown.module.scss';
 import GuestTypes from '../GuestTypes/GuestTypes';
 import Image from 'next/image';
 import clsx from 'clsx';
@@ -10,7 +10,7 @@ enum Mode {
   children = 'children',
 }
 
-const SelectDropdown: React.FC = () => {
+const SelectGuestDropdown: React.FC = () => {
   const MAX = 4;
   const [adultValue, setAdultValue] = useState(0);
   const [childrenValue, setChildrenValue] = useState(0);
@@ -73,16 +73,11 @@ const SelectDropdown: React.FC = () => {
       <Button className="!bg-white">
         <p className="flex items-center justify-around gap-2">
           <span>{adultValue + childrenValue}</span> Guests,{' '}
-          <Image
-            alt=""
-            width={0}
-            height={0}
-            src={require('../../../../../public/images/icons/icon_user.png')}
-          />
+          <Image alt="" width={0} height={0} src={require('/public/images/icons/icon_user.png')} />
         </p>
       </Button>
     </Popover>
   );
 };
 
-export default SelectDropdown;
+export default SelectGuestDropdown;

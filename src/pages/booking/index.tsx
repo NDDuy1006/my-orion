@@ -6,9 +6,13 @@ import React from 'react';
 
 type Props = {};
 
-
 const BookingPage: NextSheetWidthLayout = (props: Props) => {
-  return <BookingFeature />;
+  return (
+    <div>
+      <BookingFeature />
+      <div className="h-[600px]"></div>
+    </div>
+  );
 };
 
 BookingPage.Layout = MainLayout;

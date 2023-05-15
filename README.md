@@ -37,13 +37,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+### Auto Generate
 
-### Auto Generate 
-
-you can generate (Page, Page with paramester route, component, slice redux or api server in "pages / api")
+you can generate (Page, Page with parameter route, component, slice redux or api server in "pages / api")
 
 ## Generate a Page also generate a type file for the page
-``` bash 
+
+```bash
 
 yarn generate --model=page --name=<PageName>
 
@@ -51,8 +51,10 @@ yarn generate --model=page --name=<PageName>
 
 npm run generate --model=page --name=<PageName>
 ```
-## Generate a Page with paramester also generate a type file for the page
-``` bash 
+
+## Generate a Page with parameter also generate a type file for the page
+
+```bash
 
 yarn generate --model=page --name=<PageName> --folderName=<folderNameMatchWithPage>
 
@@ -60,33 +62,36 @@ yarn generate --model=page --name=<PageName> --folderName=<folderNameMatchWithPa
 
 npm run generate --model=page --name=<PageName> --folderName=<folderNameMatchWithPage>
 ```
+
 ## Generate slice redux
-``` bash 
+
+```bash
 
 yarn generate --model=slice --name=<sliceName>
 
 // or
 
-npm run generate --model=page --name=<sliceName> 
+npm run generate --model=page --name=<sliceName>
 ```
+
 ## Generate component
-``` bash 
+
+```bash
 
 yarn generate --model=component --name=<componentName>
 
 // or
 
-npm run generate --model=component --name=<componentName> 
+npm run generate --model=component --name=<componentName>
 ```
+
 ## Generate api path server
-``` bash 
+
+```bash
 
 yarn generate --model=apiPath --name=<pathName>
 
 // or
 
-npm run generate --model=apiPath --name=<pathName> 
+npm run generate --model=apiPath --name=<pathName>
 ```
-
-
-

@@ -3,10 +3,10 @@ import styles from './Component.module.scss'
 import ComponentProps from './@types'
 
 
-const ComponentFeature = (props: ComponentProps) => {
+const Component = (props: ComponentProps) => {
   return (
     <Fragment></Fragment>
   )
 }
 
-export default ComponentFeature
+export default Component

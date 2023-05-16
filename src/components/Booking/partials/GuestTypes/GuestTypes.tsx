@@ -6,8 +6,8 @@ interface GuestTypesProps {
   handleDescrease: (mode: string) => void;
   guestTitle: string;
   description?: string;
-  disabledUp: boolean;
-  disabledDown: boolean;
+  disabledUp?: boolean;
+  disabledDown?: boolean;
   mode: string;
 }
 
@@ -42,7 +42,7 @@ const GuestTypes: React.FC<GuestTypesProps> = ({
                 alt=""
                 width={0}
                 height={0}
-                src={require('../../../../../public/images/icons/ion_chevron-up.png')}
+                src={require('../../../../../public/images/icons/icon_chevron-up.svg')}
               />
             </div>
           </button>
@@ -56,7 +56,7 @@ const GuestTypes: React.FC<GuestTypesProps> = ({
                 alt=""
                 width={0}
                 height={0}
-                src={require('../../../../../public/images/icons/ion_chevron-down.png')}
+                src={require('../../../../../public/images/icons/icon_chevron-down.svg')}
               />
             </div>
           </button>

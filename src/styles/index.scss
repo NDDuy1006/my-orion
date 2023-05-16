@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './variable';
+@import './_variable';
 @import './functions.scss';
 @import './globals.scss';
 @import './antConfigStyle.scss';

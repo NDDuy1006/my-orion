@@ -1,19 +1,19 @@
-
-import MainLayout from '@/layouts/MainLayout'
 import { NextSheetWidthLayout } from '@/types/layoutType'
 import React from 'react'
-import resultPageProps from '@/types/resultPage';
 import { GetServerSidePropsContext } from 'next';
 import { Wrapper } from '@/components';
 import CheckBox from '@/components/global/CheckBox';
-import ResultItem from '@/components/ResultItem';
 import hotel1 from '../../../assets/hotel-1.png';
 import hotel2 from '../../../assets/hotel-2.png';
 import hotel3 from '../../../assets/hotel-3.png';
 import Image from 'next/image';
+import { HotelsPageProps } from '@/types/resultPage';
+import HoteltItem from '@/components/ResultItem/partials/HotelItem';
+import BookingLayout from '@/layouts/BookingLayout';
 
 const dataCheckBox = [
     {
+        title: 'Amenities',
         content: [
             { label: "24hr front desk", value: 'title1' },
             { label: "Adults only", value: 'title2' },
@@ -26,6 +26,7 @@ const dataCheckBox = [
         ]
     },
     {
+        title: 'Bed type',
         content: [
             { label: "Queen", value: 'title1' },
             { label: "Double", value: 'title2' },
@@ -39,7 +40,15 @@ const dataCheckBox = [
             { label: "label title 10", value: 'title10' },
         ]
     },
-] 
+    {
+        title: 'Style',
+        content: []
+    },
+    {
+        title: 'Other',
+        content: []
+    },
+]
 
 const resultData = [
     {   
@@ -110,7 +119,7 @@ const resultData = [
     }
 ]
 
-const resultPage: NextSheetWidthLayout = (props: resultPageProps) => {
+const HotelsPage: NextSheetWidthLayout = (props: HotelsPageProps) => {
 
     return (
         <Wrapper >
@@ -133,7 +142,7 @@ const resultPage: NextSheetWidthLayout = (props: resultPageProps) => {
                     {
                         resultData.map((ele: any, index: any) => {
                             return (
-                                <ResultItem key={index} data={ele} />
+                                <HoteltItem key={index} data={ele} />
                             )
                         })
                     }
@@ -143,9 +152,9 @@ const resultPage: NextSheetWidthLayout = (props: resultPageProps) => {
     );
 }
 
-resultPage.Layout = MainLayout;
+HotelsPage.Layout = BookingLayout;
 
-export default resultPage;
+export default HotelsPage;
 
 
 export const getStaticProps = async (context: GetServerSidePropsContext) => {

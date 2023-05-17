@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "rateid": 1,
+      "rateplan": 2,
+      "from": "2023/05/20",
+      "to": "2023/05/21",
+      "amount": 500,
+      "currency": "USD"
+    },
+    {
+      "rateid": 2,
+      "rateplan": 2,
+      "from": "2023/05/20",
+      "to": "2023/05/21",
+      "amount": 500,
+      "currency": "USD"
+    },
+    {
+      "rateid": 3,
+      "rateplan": 2,
+      "from": "2023/05/20",
+      "to": "2023/05/21",
+      "amount": 500,
+      "currency": "USD"
+    }
+  ]
+}

@@ -13,5 +13,8 @@ export interface HandleNameChangeInterface {
 
 export default interface CheckBoxProps {
   cb?: (value: string[]) => void;
-  data? : {label: string, value: string | number}[];
+  data? : {
+    title?: string
+    content?: {label: string, value: string | number,}[]
+  };
 };

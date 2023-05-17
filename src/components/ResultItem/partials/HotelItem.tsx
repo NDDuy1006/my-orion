@@ -1,30 +1,36 @@
-import React, { Key, useState } from 'react';
+import React, { Key, useEffect, useState } from 'react';
 import styles from '../ResultItem.module.scss';
 import Image from 'next/image';
 import { StarFilled } from '@ant-design/icons';
 import clsx from 'clsx';
-import ResultItemProps from '../@types';
 import TagName, { TagNameStyle } from '@/components/global/TagName';
 import ButtonShare, { BtnConstClassName } from '@/components/global/ButtonShare';
+import { HotelItemProps } from '../@types';
 
 
 
-const HoteltItem = ({ data }: ResultItemProps) => {
+const HoteltItem = ({ data }: HotelItemProps) => {
 
-  const [favourite, setFavourite] = useState<Boolean>(false)
+  const [favourite, setFavourite] = useState<Boolean>(false);
+  
+  useEffect(() => {
+    if(data.favouriteHotel) {
+      setFavourite(true)
+    }
+  }, [])
 
   const handleFavourite = () => setFavourite(current => !current);
 
 
   return (
     <div className={clsx('flex gap-6 mb-4 last-of-type:mb-0', styles.resultItem)}>
-      <div className='w-1/4'>
+      <div >
         <div className='w-56 h-56 overflow-hidden rounded-xl'>
           <Image className='w-full h-full object-cover' src={data.image} alt={data.hotelName} width={0} height={0} unoptimized />
         </div>
       </div>
 
-      <div className='flex flex-col justify-around w-3/4 relative'>
+      <div className='flex flex-col justify-around  relative'>
 
         <div onClick={handleFavourite} className='absolute top-0 right-0 cursor-pointer'>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke={favourite ? '#ff4d4f' : '#20272C'} fill={favourite ? '#ff4d4f' : 'rgba(32, 39, 44, 0.04)'} className='w-[20px] h-[18px]'>

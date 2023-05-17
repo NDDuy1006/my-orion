@@ -19,6 +19,7 @@ module.exports = {
       starYellow: '#FEB148',
       Main: '#20272C',
       lineGray: '#D9D9D9',
+      tealMain: '#2CA3A8',
     },
 
     container: {

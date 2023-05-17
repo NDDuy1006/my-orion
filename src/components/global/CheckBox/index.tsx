@@ -26,17 +26,23 @@ const CheckBox = ({data, cb}: CheckBoxProps) => {
     cb && cb(listData);
   };
 
+  useEffect(() => {
+    if(data?.content?.length === 0) {
+      setShowContent(true)
+    }
+  },[])
+
 
   return (
     <div className='border-b border-gray-400 border-solid border-lineGray py-4'>
-      <div onClick={handleShowContent} className={clsx('flex justify-between items-center cursor-pointer',{'mb-4': !showContent})}>
-        <h4 className='!text-[16px] font-medium '>Amenities</h4>
+      <div onClick={handleShowContent} className={clsx('flex justify-between items-center cursor-pointer',{'mb-4': !showContent && data?.content?.length !== 0 })}>
+        <h4 className='!text-[16px] font-medium '>{data?.title}</h4>
         <UpOutlined className={clsx('text-[14px] transition-all duration-150', {'-rotate-180': showContent})} />
       </div>
       <div>
 
         {
-          showAllLabel ? data?.map((ele: any, index: number) => {
+          showAllLabel ? data?.content?.map((ele: any, index: number) => {
             const foundIndex = listData.findIndex((val: string) => val === ele.value);
             return (
               !showContent && <div key={index} className='flex justify-between items-center mt-2 first-of-type:mt-0 text-[16px]'>
@@ -47,7 +53,7 @@ const CheckBox = ({data, cb}: CheckBoxProps) => {
                 <span className='text-[16px] text-[#74818C]'>165</span>
               </div>
             )
-          }) : data?.slice(0, 5).map((ele: any, index: number) => {
+          }) : data?.content?.slice(0, 5).map((ele: any, index: number) => {
             const foundIndex = listData.findIndex((val: string) => val === ele.value);
             return (
               !showContent && <div key={index} className='flex justify-between items-center mt-2 first-of-type:mt-0 text-[16px]'>
@@ -62,12 +68,12 @@ const CheckBox = ({data, cb}: CheckBoxProps) => {
         }
 
         {
-          data && !showContent && data.length > 5 && !showAllLabel ?
+          data?.content && !showContent && data.content.length > 5 && !showAllLabel ?
             <span onClick={handleShowAllBox}
               className='mt-3 cursor-pointer text-[10px] leading-[15px]'>
-              +{data.length - 5} more
+              +{data.content.length - 5} more
             </span>
-            : data && !showContent && data.length > 5 && <span onClick={handleShowAllBox}
+            : data?.content && !showContent && data.content.length > 5 && <span onClick={handleShowAllBox}
               className='mt-3 cursor-pointer text-[10px] leading-[15px]'>less
             </span>
         }

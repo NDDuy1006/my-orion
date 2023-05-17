@@ -7,7 +7,6 @@ import SearchButton from './partials/SearchButton/SearchButton';
 import { Wrapper } from '../global/Wrapper';
 import clsx from 'clsx';
 import SectionDraft from './partials/SectionDraft/SectionDraft';
-import LocationDraft from './partials/Locations/locationDraft';
 
 const BookingFeature = () => {
   const [fixed, setFixed] = useState(false);
@@ -22,7 +21,7 @@ const BookingFeature = () => {
     <div>
       <div className={clsx(styles.bookingEngineBg)}>
         <Wrapper>
-          <h1 className={clsx('text-[#20272C] text-5xl text-center pt-[16.5rem] pb-12')}>
+          <h1 className={clsx('text-Main text-5xl text-center pt-[16.5rem] pb-12')}>
             A holiday in the Sonnenhotels is when the sun comes into your heart
           </h1>
         </Wrapper>
@@ -30,11 +29,10 @@ const BookingFeature = () => {
           className={clsx(
             `flex flex-row gap-2 justify-center `,
             fixed && styles.fixed,
-            fixed && 'bg-main'
+            fixed && 'bg-Main'
           )}
         >
           <Locations />
-          {/* <LocationDraft /> */}
           <DatePickerSelect />
           <SelectDropdown />
           <SearchButton />

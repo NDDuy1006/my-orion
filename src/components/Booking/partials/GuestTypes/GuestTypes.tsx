@@ -24,8 +24,8 @@ const GuestTypes: React.FC<GuestTypesProps> = ({
   return (
     <div className="grid grid-cols-2">
       <div className="">
-        <p className="text-[#20272C]">{guestTitle}</p>
-        <p className="text-[#20272C] text-[12px] font-light">{description}</p>
+        <p className="text-Main">{guestTitle}</p>
+        <p className="text-Main text-[12px] font-light">{description}</p>
       </div>
       <div className="flex items-center justify-end">
         <p className="flex items-center justify-center w-8 h-8 border border-[##B9C0C5] rounded">

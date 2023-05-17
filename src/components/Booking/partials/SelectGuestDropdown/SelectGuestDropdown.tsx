@@ -79,12 +79,12 @@ const SelectGuestDropdown: React.FC = () => {
 
   return (
     <Popover
-      className={clsx(styles.test, 'rounded-[32px] h-12 w-[210px]')}
+      className={clsx('rounded-[32px] h-12 w-[210px]')}
       placement="bottomLeft"
       content={content}
       trigger="click"
     >
-      <Button className="!bg-white">
+      <Button className="!bg-[white]">
         <p className="flex items-center justify-around gap-2">
           <span>{roomValue} Rooms,</span>
           <span>{adultValue + childrenValue} Guests</span>

@@ -1,1 +1,3 @@
-export default interface resultPageProps {};
+export interface HotelsPageProps {};
+
+export interface RoomsPageProps{};

@@ -15,7 +15,7 @@ const BookingFeature = () => {
     window.addEventListener('scroll', () =>
       window.scrollY > 489 ? setFixed(true) : setFixed(false)
     );
-  }, []);
+  },[]);
 
   return (
     <div>

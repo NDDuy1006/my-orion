@@ -1,1 +1,1 @@
-export {default} from './partials/HotelItem'
+export * from './partials/HotelItem'

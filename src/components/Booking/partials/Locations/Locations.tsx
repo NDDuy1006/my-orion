@@ -18,6 +18,7 @@ const Locations: React.FC = () => (
     }
     style={{ width: 200 }}
     onChange={handleChange}
+    className="mySelectIBE !w-[360px]"
     dropdownRender={() => (
       <div className="flex items-center ">
         <div className="relative w-4 h-4">

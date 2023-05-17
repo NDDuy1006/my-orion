@@ -85,14 +85,18 @@ yarn generate --model=component --name=<componentName>
 npm run generate --model=component --name=<componentName>
 ```
 ## Generate component Global
-``` bash 
+
+```bash
 
 yarn generate --model=componentGlobal --name=<componentName>
 
 // or
 
-npm run generate --model=componentGlobal --name=<componentName> 
+npm run generate --model=componentGlobal --name=<componentName>
 ```
+=========
+
+>>>>>>>>> Temporary merge branch 2
 ## Generate api path server
 
 ```bash

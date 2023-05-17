@@ -12,19 +12,23 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      colors: {
-        main: '#20272c',
-      },
+    fontFamily: {
+      Poppins: 'Poppins',
     },
+    colors: {
+      starYellow: '#FEB148',
+      Main: '#20272C',
+      lineGray: '#D9D9D9',
+    },
+
     container: {
       center: true,
       padding: {
         DEFAULT: '1rem',
         md: '2rem',
         lg: '3.75rem',
-        xl: '2rem',
-        '2xl': '4rem',
+        xl: '5.625rem',
+        '2xl': '13.625rem',
       },
     },
     screens: {
@@ -38,7 +42,7 @@ module.exports = {
   },
 
   plugins: [
-    plugin(function ({ addBase, theme }) {
+    plugin(function({ addBase, theme }) {
       addBase([
         {
           '@media (max-width: 639px)': {

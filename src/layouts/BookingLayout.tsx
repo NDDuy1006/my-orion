@@ -1,16 +1,14 @@
-import { Wrapper } from '@/components';
+import SearchMenu from '@/components/global/SearchMenu';
 import { LayoutProps } from '@/types/layoutType';
 import React from 'react';
-import Header from './Header';
-import header from '../contents/header';
 
-const MainLayout = ({ children }: LayoutProps) => {
+const BookingLayout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Header {...header} />
+      <SearchMenu />
       {children}
     </>
   );
 };
 
-export default MainLayout;
+export default BookingLayout;

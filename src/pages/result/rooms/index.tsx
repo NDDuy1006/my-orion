@@ -1,5 +1,3 @@
-
-import MainLayout from '@/layouts/MainLayout'
 import { NextSheetWidthLayout } from '@/types/layoutType'
 import React from 'react'
 import { GetServerSidePropsContext } from 'next';
@@ -11,6 +9,9 @@ import hotel3 from '@/assets/hotel-3.png';
 import Image from 'next/image';
 import {RoomsPageProps } from '@/types/resultPage';
 import RoomItem from '@/components/ResultItem/partials/RoomItem';
+import BookingLayout from '@/layouts/BookingLayout';
+import SearchMenu from '@/components/global/SearchMenu';
+import BookingStep from '@/components/global/BookingStep';
 
 const dataCheckBox = [
     {
@@ -101,7 +102,10 @@ const roomsData = [
 const RoomsPage: NextSheetWidthLayout = (props: RoomsPageProps) => {
 
     return (
+        <>
+            
         <Wrapper >
+        <BookingStep />
             <div className='grid grid-cols-12 gap-16 mt-10'>
                 <div className='col-span-4 pr-5'>
                     <div>
@@ -127,11 +131,11 @@ const RoomsPage: NextSheetWidthLayout = (props: RoomsPageProps) => {
                     }
                 </div>
             </div>
-        </Wrapper>
+        </Wrapper></>
     );
 }
 
-RoomsPage.Layout = MainLayout;
+RoomsPage.Layout = BookingLayout;
 
 export default RoomsPage;
 

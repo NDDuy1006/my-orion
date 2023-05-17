@@ -1,5 +1,3 @@
-
-import MainLayout from '@/layouts/MainLayout'
 import { NextSheetWidthLayout } from '@/types/layoutType'
 import React from 'react'
 import { GetServerSidePropsContext } from 'next';
@@ -11,9 +9,11 @@ import hotel3 from '../../../assets/hotel-3.png';
 import Image from 'next/image';
 import { HotelsPageProps } from '@/types/resultPage';
 import HoteltItem from '@/components/ResultItem/partials/HotelItem';
+import BookingLayout from '@/layouts/BookingLayout';
 
 const dataCheckBox = [
     {
+        title: 'Amenities',
         content: [
             { label: "24hr front desk", value: 'title1' },
             { label: "Adults only", value: 'title2' },
@@ -26,6 +26,7 @@ const dataCheckBox = [
         ]
     },
     {
+        title: 'Bed type',
         content: [
             { label: "Queen", value: 'title1' },
             { label: "Double", value: 'title2' },
@@ -39,7 +40,15 @@ const dataCheckBox = [
             { label: "label title 10", value: 'title10' },
         ]
     },
-] 
+    {
+        title: 'Style',
+        content: []
+    },
+    {
+        title: 'Other',
+        content: []
+    },
+]
 
 const resultData = [
     {   
@@ -143,7 +152,7 @@ const HotelsPage: NextSheetWidthLayout = (props: HotelsPageProps) => {
     );
 }
 
-HotelsPage.Layout = MainLayout;
+HotelsPage.Layout = BookingLayout;
 
 export default HotelsPage;
 

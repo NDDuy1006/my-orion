@@ -1,3 +1,4 @@
+import { Wrapper } from '@/components';
 import { LayoutProps } from '@/types/layoutType';
 import React from 'react';
 import Header from './Header';

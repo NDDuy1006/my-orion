@@ -85,6 +85,17 @@ yarn generate --model=component --name=<componentName>
 npm run generate --model=component --name=<componentName>
 ```
 
+## Generate component Global
+
+```bash
+
+yarn generate --model=componentGlobal --name=<componentName>
+
+// or
+
+npm run generate --model=componentGlobal --name=<componentName>
+```
+
 ## Generate api path server
 
 ```bash

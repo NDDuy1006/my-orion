@@ -6,6 +6,7 @@
 @import './functions.scss';
 @import './globals.scss';
 @import './antConfigStyle.scss';
+@import './font.scss';
 
 * {
   padding: 0;
@@ -19,6 +20,7 @@ body {
   background: $color-white;
   font-size: $text-base;
   scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Poppins';
 }
 
 a {
@@ -36,7 +38,12 @@ li {
     margin-bottom: 0;
   }
 }
+
 .ant-picker-range-arrow,
 .ant-popover-arrow {
   display: none !important;
+}
+
+span{
+  font-family: 'Poppins', sans-serif;
 }

@@ -1,7 +1,27 @@
 
 /******* color variable *****/
-$color-white: #ffffff;
 $color-black: #000000;
+$color-white: #ffffff;
+$color-Main: #20272C;
+$color-MainBacground: rgba(32, 39, 44, 0.04);
+
+/** tag colors **/
+$tag-default: #cacaca;
+$tag-dark: #20272C;
+$tag-dark-bg: #d4d4d4;
+$tag-dark-border: #6d7275;
+$tag-primary: #1677ff;
+$tag-primary-border: #91caff;
+$tag-primary-bg: #e6f4ff;
+$tag-success-border: #b7eb8f;
+$tag-success-bg: #f6ffed;
+$tag-success: #52c41a;
+$tag-warning-border: #ffe58f;
+$tag-warning-bg: #fffbe6;
+$tag-warning: #faad14;
+$tag-danger-border: #ffccc7;
+$tag-danger-bg:#fff2f0;
+$tag-danger: #ff4d4f;
 
 
 /******* text variable *****/

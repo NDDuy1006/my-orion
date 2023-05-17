@@ -16,7 +16,7 @@ function generatePage(pageName) {
   const pageTemplateSrc = 'templates/page';
   const typeTemplateSrc = 'templates/types/page.type.ts';
   const targetPageDest = `src/pages/${pageName}`;
-  const targetTypeDest = `src/types/${pageName}.ts`;
+  const targetTypeDest = `src/types/${pageName}Page.ts`;
 
 
   fs.cpSync(pageTemplateSrc, targetPageDest, { overwrite: true, recursive: true });
@@ -25,8 +25,8 @@ function generatePage(pageName) {
   const pageIndexContent = fs.readFileSync(`${targetPageDest}/index.txt`, 'utf8');
   const typeIndexCotent = fs.readFileSync(`${targetTypeDest}`, 'utf-8');
 
-  fs.writeFileSync(`${targetPageDest}/index.txt`, pageIndexContent.replaceAll('Page', pageName));
-  fs.writeFileSync(`${targetTypeDest}`,typeIndexCotent.replaceAll('Page', pageName));
+  fs.writeFileSync(`${targetPageDest}/index.txt`, pageIndexContent.replaceAll('Page', `${pageName}Page`));
+  fs.writeFileSync(`${targetTypeDest}`,typeIndexCotent.replaceAll('Page', `${pageName}Page`));
 
   fs.renameSync(`${process.cwd()}/src/pages/${pageName}/index.txt`, `${process.cwd()}/src/pages/${pageName}/index.tsx`, (err) => {
     if(err) console.log(err)
@@ -85,12 +85,38 @@ function generateComponent(compName) {
   fs.writeFileSync(`${targetModelPath}/@types/index.txt`, indexTypeContent.replaceAll('Component', compName) )
 
   fs.renameSync(`${targetModelPath}/index.txt`,`${targetModelPath}/index.tsx`);
-  fs.renameSync(`${targetModelPath}/@types/index.txt`,`${targetModelPath}/@types/index.tsx`);
+  fs.renameSync(`${targetModelPath}/@types/index.txt`,`${targetModelPath}/@types/index.ts`);
 
   const indexComponentsPath = `src/components/index.ts`;
 
   const indexCompContentFile = fs.readFileSync(`${indexComponentsPath}`, 'utf-8');
-  fs.writeFileSync(indexComponentsPath, `${indexCompContentFile}\nexport * from './${compName}/index';`)
+  fs.writeFileSync(indexComponentsPath, `${indexCompContentFile}\nexport * from './${compName}';`);
+
+  fs.renameSync(`${targetModelPath}/Component.module.scss`,`${targetModelPath}/${compName}.module.scss`);
+
+};
+
+function generateComponentGlobal(compName) {
+
+  const baseTemplatePath = 'templates/component';
+  const targetModelPath = `src/components/global/${compName}`;
+
+  fs.cpSync(baseTemplatePath, targetModelPath, {overwrite: true, recursive: true});
+
+  const indexComponentContent = fs.readFileSync(`${targetModelPath}/index.txt`, 'utf-8');
+  const indexTypeContent = fs.readFileSync(`${targetModelPath}/@types/index.txt`, 'utf-8');
+  fs.writeFileSync(`${targetModelPath}/index.txt`, indexComponentContent.replaceAll('Component', compName) )
+  fs.writeFileSync(`${targetModelPath}/@types/index.txt`, indexTypeContent.replaceAll('Component', compName) )
+
+  fs.renameSync(`${targetModelPath}/index.txt`,`${targetModelPath}/index.tsx`);
+  fs.renameSync(`${targetModelPath}/@types/index.txt`,`${targetModelPath}/@types/index.ts`);
+
+  fs.renameSync(`${targetModelPath}/Component.module.scss`,`${targetModelPath}/${compName}.module.scss`);
+
+  const indexComponentsPath = `src/components/index.ts`;
+
+  const indexCompContentFile = fs.readFileSync(`${indexComponentsPath}`, 'utf-8');
+  fs.writeFileSync(indexComponentsPath, `${indexCompContentFile}\nexport * from './global/${compName}/index';`)
 
 };
 
@@ -116,6 +142,9 @@ function generate() {
       break;
     case 'component':
       generateComponent(name);
+      break;
+    case 'componentGlobal':
+      generateComponentGlobal(name);
       break;
     case 'apiPath':
       generateApiPath(name);

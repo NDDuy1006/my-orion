@@ -15,12 +15,17 @@ const SelectGuestDropdown: React.FC = () => {
   const [roomValue, setRoomValue] = useState(0);
   const [adultValue, setAdultValue] = useState(0);
   const [childrenValue, setChildrenValue] = useState(0);
-  const MAX = roomValue * 4;
+  const [max, setMaxValue] = useState(4);
+
+  useEffect(() => {
+    setMaxValue(roomValue * 4);
+  }, [roomValue]);
+
   const handleIncrease = (mode: string) => {
-    if (mode === Mode.children && adultValue + childrenValue < MAX) {
+    if (mode === Mode.children && adultValue + childrenValue < max) {
       setChildrenValue(childrenValue + 1);
-    } else if (mode === Mode.adult && adultValue < MAX) {
-      if (adultValue + childrenValue >= MAX) {
+    } else if (mode === Mode.adult && adultValue < max) {
+      if (adultValue + childrenValue >= max) {
         setChildrenValue(childrenValue - 1);
       }
       setAdultValue(adultValue + 1);
@@ -36,18 +41,18 @@ const SelectGuestDropdown: React.FC = () => {
       setAdultValue(adultValue - 1);
     } else if (mode === Mode.room) {
       setRoomValue(roomValue - 1);
+      setAdultValue(0);
     }
   };
 
   useEffect(() => {
     if (adultValue === 0) setChildrenValue(0);
-    if (roomValue === 0) setAdultValue(0);
-  }, [adultValue, roomValue]);
+  }, [adultValue]);
 
   const content = (
     <div className="guestType">
       <GuestTypes
-        guestTitle={'Room'}
+        guestTitle={'Rooms'}
         value={roomValue}
         disabledDown={roomValue <= 0}
         mode={''}
@@ -58,7 +63,7 @@ const SelectGuestDropdown: React.FC = () => {
         guestTitle={'Adults'}
         description={'Ages 18 or above'}
         value={adultValue}
-        disabledUp={adultValue === MAX}
+        disabledUp={adultValue === max}
         disabledDown={adultValue <= 0}
         mode={''}
         handleIncrease={() => handleIncrease(Mode.adult)}
@@ -68,7 +73,7 @@ const SelectGuestDropdown: React.FC = () => {
         guestTitle={'Children'}
         description={'Ages 0 - 17'}
         value={childrenValue}
-        disabledUp={adultValue + childrenValue === MAX || adultValue === 0}
+        disabledUp={adultValue + childrenValue === max || adultValue === 0}
         disabledDown={childrenValue <= 0}
         mode={''}
         handleIncrease={() => handleIncrease(Mode.children)}
@@ -86,9 +91,9 @@ const SelectGuestDropdown: React.FC = () => {
     >
       <Button className="!bg-[white]">
         <p className="flex items-center justify-around gap-2">
+          <Image alt="" width={0} height={0} src={require('/public/images/icons/icon-user.svg')} />
           <span>{roomValue} Rooms,</span>
           <span>{adultValue + childrenValue} Guests</span>
-          <Image alt="" width={0} height={0} src={require('/public/images/icons/icon-user.svg')} />
         </p>
       </Button>
     </Popover>

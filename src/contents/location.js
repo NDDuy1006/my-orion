@@ -1,106 +1,28 @@
-const searchLocation = {
-  code: 200,
+const newSearchlocation = {
   data: [
     {
-      countryName: 'Austria',
-      cityName: 'Vienna',
-      propertyName: 'Hotel Vienna',
-      propertyCode: 'VIE',
+      label: 'Germany',
+      options: [
+        { label: 'Sonnenhotel Weingut Römmert', value: 'SWR' },
+        { label: 'Sun resort Ettershaus', value: 'SRE' },
+        { label: 'Sonnenresort Hüttmann', value: 'SHN' },
+        { label: 'Sonnenhotel Bayerischer Hof', value: 'SBH' },
+        { label: 'Sonnenhotel Feldberg am See', value: 'SFS' },
+        { label: 'Sonnenhotel Amtsheide', value: 'SAE' },
+        { label: 'Sonnenhotel Wolfshof', value: 'lucy' },
+        { label: 'Sonnenhotel Hoher Hahn', value: 'lucy' },
+        { label: 'Sonnenhotel Fürstenbauer', value: 'lucy' },
+      ],
     },
     {
-      countryName: 'Germany',
-      cityName: 'Bad Bevensen',
-      propertyName: 'Sonnenhotel Amtsheide',
-      propertyCode: 'SAH',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Waldmünchen',
-      propertyName: 'Sonnenhotel Bayerischer Hof',
-      propertyCode: 'SBH',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Feldberg',
-      propertyName: 'Sonnenhotel Feldberg am See',
-      propertyCode: 'SFAS',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Langelsheim',
-      propertyName: 'Sonnenhotel Wolfshof',
-      propertyCode: 'SWH',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Berlin',
-      propertyName: 'Hotel Berlin',
-      propertyCode: 'BER',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Berlin',
-      propertyName: 'Wolfe Hotel',
-      propertyCode: 'WOF',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Volkach',
-      propertyName: 'Sonnenhotel Weingut Römmert',
-      propertyCode: 'SWR',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Munich',
-      propertyName: 'Hotel Munich',
-      propertyCode: 'MUC',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Schwarzenberg',
-      propertyName: 'Sonnenhotel Hoher Hahn',
-      propertyCode: 'SHH',
-    },
-    {
-      countryName: 'Austria',
-      cityName: 'Feldkirchen',
-      propertyName: 'Sonnenresort Maltschacher See',
-      propertyCode: 'SMS',
-    },
-    {
-      countryName: 'Austria',
-      cityName: 'Ossiach',
-      propertyName: 'Sonnenresort Ossiacher See',
-      propertyCode: 'SOS',
-    },
-    {
-      countryName: 'France',
-      cityName: 'Paris',
-      propertyName: 'Hotel Paris',
-      propertyCode: 'PAR',
-    },
-    {
-      countryName: 'Vietnam',
-      cityName: 'Ho Chi Minh',
-      propertyName: 'Timesquare',
-      propertyCode: 'SUV0001',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Bad Harzburg',
-      propertyName: 'Sonnenresort Ettershaus',
-      propertyCode: 'SEH',
-    },
-    {
-      countryName: 'Germany',
-      cityName: 'Bodenmais',
-      propertyName: 'Sonnenhotel Fürstenbauer',
-      propertyCode: 'SFH',
+      label: 'Austria',
+      options: [
+        { label: 'Sonnenhotel Zum Stern', value: 'Yiminghe' },
+        { label: 'Sonnenresort Maltschacher See', value: 'Yiminghe' },
+        { label: 'Sonnenresort Ossiacher See', value: 'Yiminghe' },
+      ],
     },
   ],
-
-  message: 'success',
-  success: true,
 };
 
-export default searchLocation;
+export default newSearchlocation;

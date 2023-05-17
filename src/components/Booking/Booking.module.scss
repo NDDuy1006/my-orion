@@ -6,16 +6,3 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.fixed {
-  z-index: 99;
-  background-position: bottom;
-  position: fixed !important;
-  top: 0;
-  backface-visibility: hidden;
-  perspective: 1000;
-  transform: translateZ(0);
-  transition: box-shadow 0.2s ease 0s, background-color 0.2s ease 0s;
-  width: 100%;
-  padding: 1rem 0;
-}

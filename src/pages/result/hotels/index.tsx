@@ -1,15 +1,16 @@
 
 import MainLayout from '@/layouts/MainLayout'
 import { NextSheetWidthLayout } from '@/types/layoutType'
-import React, { useEffect } from 'react'
+import React from 'react'
 import resultPageProps from '@/types/resultPage';
 import { GetServerSidePropsContext } from 'next';
 import { Wrapper } from '@/components';
 import CheckBox from '@/components/global/CheckBox';
 import ResultItem from '@/components/ResultItem';
-import hotel1 from '../../assets/hotel-1.png';
-import hotel2 from '../../assets/hotel-2.png';
-import hotel3 from '../../assets/hotel-3.png';
+import hotel1 from '../../../assets/hotel-1.png';
+import hotel2 from '../../../assets/hotel-2.png';
+import hotel3 from '../../../assets/hotel-3.png';
+import Image from 'next/image';
 
 const dataCheckBox = [
     {
@@ -34,6 +35,8 @@ const dataCheckBox = [
             { label: "label title 6", value: 'title6' },
             { label: "label title 7", value: 'title7' },
             { label: "label title 8", value: 'title8' },
+            { label: "label title 9", value: 'title9' },
+            { label: "label title 10", value: 'title10' },
         ]
     },
 ] 
@@ -110,8 +113,8 @@ const resultData = [
 const resultPage: NextSheetWidthLayout = (props: resultPageProps) => {
 
     return (
-        <Wrapper>
-            <div className='grid grid-cols-12 gap-16'>
+        <Wrapper >
+            <div className='grid grid-cols-12 gap-16 mt-10'>
                 <div className='col-span-4 pr-5'>
                     <div>
                         {
@@ -121,6 +124,8 @@ const resultPage: NextSheetWidthLayout = (props: resultPageProps) => {
                                 )
                             })
                         }
+
+                        <Image className='w-full h-full mt-4' src={require('../../../assets/banner-1.png')} alt='banner-hotel' width={0} height={0}/>
                     </div>
                 </div>
 

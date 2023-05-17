@@ -12,16 +12,11 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-
-    fontFamily: {
-      'Poppins': 'Poppins'
+    extend: {
+      colors: {
+        main: '#20272c',
+      },
     },
-    colors: {
-      starYellow: '#FEB148',
-      Main: '#20272C',
-      lineGray: '#D9D9D9',
-    },
-
     container: {
       center: true,
       padding: {

@@ -1,15 +1,14 @@
 import { Wrapper } from '@/components';
 import { LayoutProps } from '@/types/layoutType';
 import React from 'react';
+import Header from './Header';
+import header from '../contents/header';
 
 const MainLayout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Wrapper><header className="w-full h-9 bg-teal-200">Header</header></Wrapper>
-
+      <Header {...header} />
       {children}
-
-      <Wrapper><footer className="w-full h-9 bg-teal-200 container">Footer</footer></Wrapper>
     </>
   );
 };

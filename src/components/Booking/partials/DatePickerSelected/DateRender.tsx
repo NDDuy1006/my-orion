@@ -8,6 +8,7 @@ interface DaterenderProps {
   currentDate: Dayjs;
   today?: Dayjs;
   dateType?: string;
+  showPrice: boolean;
 }
 
 export enum DateRate {
@@ -16,15 +17,8 @@ export enum DateRate {
   low = 'low',
 }
 
-const DateRender = ({ currentDate, today, dateType }: DaterenderProps) => {
-  // const populateClass = (type: string) => {
-  //   let defaultClass = 'date';
-  //   if (type === 'high') defaultClass += ' high';
-  //   if (type === 'average') defaultClass += ' average';
-  //   if (type === 'low') defaultClass += ' low';
+const DateRender = ({ currentDate, today, dateType, showPrice }: DaterenderProps) => {
 
-  //   return defaultClass;
-  // };
   return (
     <div
       className={clsx('ant-picker-cell-inner date', {
@@ -33,8 +27,10 @@ const DateRender = ({ currentDate, today, dateType }: DaterenderProps) => {
         low: dateType === DateRate.low,
       })}
     >
-      <span className="text-xl leading-[10px]">{currentDate.date()}</span>
-      <p className="text-[12px]">30$</p>
+      <span className="text-xl leading-[10px] inline-block mt-2">{currentDate.date()}</span>
+      {
+        showPrice && <p className="text-[12px]">30$</p>
+      }
     </div>
   );
 };

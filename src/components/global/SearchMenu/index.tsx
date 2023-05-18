@@ -4,7 +4,6 @@ import SearchButton from '@/components/Booking/partials/SearchButton/SearchButto
 import SelectGuestDropdown from '@/components/Booking/partials/SelectGuestDropdown/SelectGuestDropdown';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import styles from './SearchMenu.module.scss';
 
 const SearchMenu = () => {
   const [fixed, setFixed] = useState(false);
@@ -16,11 +15,7 @@ const SearchMenu = () => {
   }, []);
   return (
     <div
-      className={clsx(
-        `flex flex-row gap-2 justify-center `,
-        fixed && styles.fixed,
-        fixed && 'bg-Main'
-      )}
+      className={clsx(`flex flex-row gap-2 justify-center `, fixed && 'fixed', fixed && 'bg-Main')}
     >
       <Locations />
       <DatePickerSelect />

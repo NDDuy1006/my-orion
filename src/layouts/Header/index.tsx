@@ -31,7 +31,7 @@ export default function Header({ menu, logo, btnText, url }: HeaderProps) {
   return (
     <header
       className={clsx(
-        `absolute z-50 w-full lg:hover:bg-white transition-all h-20 flex items-center shadow-shadow1 bg-neutralBackground `,
+        `absolute z-50 w-full transition-all h-20 flex items-center shadow-shadow1`,
         open ? 'shadow-none' : null
       )}
     >
@@ -48,19 +48,19 @@ export default function Header({ menu, logo, btnText, url }: HeaderProps) {
                 width="w-[112px]"
               />
             </div>
-            <div className=" my-auto" onClick={() => setOpen(!open)}>
+            {/* <div className=" my-auto" onClick={() => setOpen(!open)}>
               {open ? (
                 <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
               ) : (
                 <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
               )}
-            </div>
+            </div> */}
           </div>
         </div>
         <ul className="lg:flex hidden items-center gap-8 h-full">
           <NavLinks menu={menu} setOpen={setOpen} />
         </ul>
-        <div className="lg:block hidden w-[160px] ">
+        {/* <div className="lg:block hidden w-[160px] ">
           <Button
             url={url}
             btnText={btnText}
@@ -68,7 +68,7 @@ export default function Header({ menu, logo, btnText, url }: HeaderProps) {
             className="mt-0 ml-auto"
             width="w-[112px]"
           />
-        </div>
+        </div> */}
         {/* Mobile nav */}
         <div
           className={clsx(

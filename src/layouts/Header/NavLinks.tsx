@@ -45,7 +45,7 @@ export default function NavLinks({ setOpen, menu }: Props) {
               <Link
                 href={menu.url}
                 className={clsx(
-                  'flex transition-all navText  hover:text-primaryMain',
+                  'flex transition-all navText hover:text-[#74818C]',
                   getParentPath === menu.url?.substring(1)
                     ? 'text-primaryMain'
                     : 'text-neutralPrimary'
@@ -76,21 +76,21 @@ export default function NavLinks({ setOpen, menu }: Props) {
                 }}
               >
                 <Tooltip
-                  open={width >= largeScreen && hoverIdx === index && !clickLinked}
+                  // open={width >= largeScreen && hoverIdx === index && !clickLinked}
                   overlayInnerStyle={{ color: '#566C76', width: 'fit-content' }}
                   // title={
-                  //   // <Submenu
-                  //   //   setClickedLink={setClickedLink}
-                  //   //   sublink={menu.sublinks}
-                  //   //   setOpen={setOpen}
-                  //   // />
+                  //   <Submenu
+                  //     setClickedLink={setClickedLink}
+                  //     sublink={menu.sublinks}
+                  //     setOpen={setOpen}
+                  //   />
                   // }
                   placement="bottomLeft"
                   color="#fff"
                 >
                   <p
                     className={clsx(
-                      'flex  lg:w-auto lg:justify-normal items-center transition-all navText -hover:text-primaryMain',
+                      'flex lg:w-auto lg:justify-normal items-center transition-all navText hover:text-[#74818C]',
                       getParentPath === menu.name.toLowerCase() || hoverLink === menu.name
                         ? 'text-primaryMain'
                         : 'text-neutralPrimary'
@@ -98,7 +98,7 @@ export default function NavLinks({ setOpen, menu }: Props) {
                   >
                     <span>{menu.name}</span>
 
-                    <span className="text-lg pt-0.5 pl-1 hidden lg:inline">
+                    {/* <span className="text-lg pt-0.5 pl-1 hidden lg:inline">
                       <>
                         {hoverLink === menu.name ? (
                           <ChevronUpIcon
@@ -112,7 +112,7 @@ export default function NavLinks({ setOpen, menu }: Props) {
                           />
                         )}
                       </>
-                    </span>
+                    </span> */}
                   </p>
                 </Tooltip>
                 <span className="text-lg pt-0.5 pl-1 lg:hidden inline group-hover:text-primaryMain">

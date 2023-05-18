@@ -7,11 +7,11 @@ import hotel2 from '@/assets/hotel-2.png';
 import hotel1 from '@/assets/hotel-1.png';
 import hotel3 from '@/assets/hotel-3.png';
 import Image from 'next/image';
-import {RoomsPageProps } from '@/types/resultPage';
+import { RoomsPageProps } from '@/types/resultPage';
 import RoomItem from '@/components/ResultItem/partials/RoomItem';
 import BookingLayout from '@/layouts/BookingLayout';
-import SearchMenu from '@/components/global/SearchMenu';
 import BookingStep from '@/components/global/BookingStep';
+import Recommended from '@/components/ResultItem/partials/Recommended';
 
 const dataCheckBox = [
     {
@@ -50,11 +50,11 @@ const dataCheckBox = [
         title: 'Other',
         content: []
     },
-] 
+]
 
 
 const roomsData = [
-    {   
+    {
         id: 1,
         image: hotel1,
         favouriteRoom: true,
@@ -68,7 +68,7 @@ const roomsData = [
         },
         price: 0,
     },
-    {   
+    {
         id: 2,
         image: hotel2,
         favouriteRoom: false,
@@ -82,7 +82,7 @@ const roomsData = [
         },
         price: 389,
     },
-    {   
+    {
         id: 3,
         image: hotel3,
         favouriteRoom: true,
@@ -96,42 +96,66 @@ const roomsData = [
         },
         price: 0,
     }
-    
+
+]
+
+const stepData = [
+    {
+        step: 1,
+        stepName: 'Room and rate'
+    },
+    {
+        step: 2,
+        stepName: 'Extra Services'
+    },
+    {
+        step: 3,
+        stepName: 'Personal Information'
+    },
+    {
+        step: 4,
+        stepName: 'Payment'
+    },
+    {
+        step: 5,
+        stepName: 'Comfirmation'
+    }
 ]
 
 const RoomsPage: NextSheetWidthLayout = (props: RoomsPageProps) => {
 
     return (
         <>
-            
-        <Wrapper >
-        <BookingStep />
-            <div className='grid grid-cols-12 gap-16 mt-10'>
-                <div className='col-span-4 pr-5'>
-                    <div>
+
+            <Wrapper >
+                <BookingStep data={stepData} activeStep={2} />
+                <div className='grid grid-cols-12 gap-16 mt-10'>
+                    <div className='col-span-4 pr-5'>
+                        <div>
+                            {
+                                dataCheckBox.map((ele: any, index: number) => {
+                                    return (
+                                        <CheckBox key={index} data={ele} />
+                                    )
+                                })
+                            }
+
+                            <Image className='w-full h-full mt-4' src={require('@/assets/banner-1.png')} alt='banner-hotel' width={0} height={0} />
+                        </div>
+                    </div>
+
+                    <div className='col-span-8'>
+                        <Recommended />
                         {
-                            dataCheckBox.map((ele: any, index: number) => {
-                                return(
-                                    <CheckBox key={index} data={ele} />
+                            roomsData.map((ele: any, index: any) => {
+                                return (
+                                    <RoomItem key={index} data={ele} />
                                 )
                             })
                         }
-
-                        <Image className='w-full h-full mt-4' src={require('@/assets/banner-1.png')} alt='banner-hotel' width={0} height={0}/>
                     </div>
                 </div>
-
-                <div className='col-span-8'>
-                    {
-                        roomsData.map((ele: any, index: any) => {
-                            return (
-                                <RoomItem key={index} data={ele} />
-                            )
-                        })
-                    }
-                </div>
-            </div>
-        </Wrapper></>
+            </Wrapper></>
     );
 }
 

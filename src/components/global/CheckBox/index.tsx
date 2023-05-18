@@ -34,7 +34,7 @@ const CheckBox = ({data, cb}: CheckBoxProps) => {
 
 
   return (
-    <div className='border-b border-gray-400 border-solid border-lineGray py-4'>
+    <div className='border-b border-gray-400 border-solid border-lineGray py-4 first-of-type:pt-0'>
       <div onClick={handleShowContent} className={clsx('flex justify-between items-center cursor-pointer',{'mb-4': !showContent && data?.content?.length !== 0 })}>
         <h4 className='!text-[16px] font-medium '>{data?.title}</h4>
         <UpOutlined className={clsx('text-[14px] transition-all duration-150', {'-rotate-180': showContent})} />

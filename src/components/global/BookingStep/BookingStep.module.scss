@@ -42,8 +42,8 @@
             font-size: 14px;
             line-height: 18px;
             color: $color-Main;
-            word-wrap: normal;
-            width: 200px;
+            white-space: nowrap;
+            margin-top: 0.5rem;
         }
     }
 

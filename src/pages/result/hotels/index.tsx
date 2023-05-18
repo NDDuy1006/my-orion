@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { HotelsPageProps } from '@/types/resultPage';
 import HoteltItem from '@/components/ResultItem/partials/HotelItem';
 import BookingLayout from '@/layouts/BookingLayout';
+import BookingStep from '@/components/global/BookingStep';
 
 const dataCheckBox = [
     {
@@ -119,17 +120,41 @@ const resultData = [
     }
 ]
 
+const stepData = [
+    {
+        step: 1,
+        stepName: 'Room and rate'
+    },
+    {
+        step: 2,
+        stepName: 'Extra Services'
+    },
+    {
+        step: 3,
+        stepName: 'Personal Information'
+    },
+    {
+        step: 4,
+        stepName: 'Payment'
+    },
+    {
+        step: 5,
+        stepName: 'Comfirmation'
+    }
+]
+
 const HotelsPage: NextSheetWidthLayout = (props: HotelsPageProps) => {
 
     return (
         <Wrapper >
+            <BookingStep activeStep={1} data={stepData} />
             <div className='grid grid-cols-12 gap-16 mt-10'>
                 <div className='col-span-4 pr-5'>
                     <div>
                         {
                             dataCheckBox.map((ele: any, index: number) => {
                                 return(
-                                    <CheckBox key={index} data={ele.content} />
+                                    <CheckBox key={index} data={ele} />
                                 )
                             })
                         }

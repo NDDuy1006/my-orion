@@ -5,12 +5,12 @@ import SelectGuestDropdown from '@/components/Booking/partials/SelectGuestDropdo
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 
-const SearchMenu = () => {
+const SearchMenu = (props: any) => {
   const [fixed, setFixed] = useState(false);
 
   useEffect(() => {
     window.addEventListener('scroll', () =>
-      window.scrollY > 489 ? setFixed(true) : setFixed(false)
+      window.scrollY > 0 ? setFixed(true) : setFixed(false)
     );
   }, []);
   return (

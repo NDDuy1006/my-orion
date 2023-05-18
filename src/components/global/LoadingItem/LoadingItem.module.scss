@@ -1,0 +1,36 @@
+
+@import '../../../styles/variable';
+
+
+.resultItem{
+
+    padding: 16px;
+    background-color: $color-MainBacground;
+    border-radius: 16px;
+    transition: all .3s;
+
+    .loadingLine{
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            background: #c0bfbf;
+            animation: isLoading 3s infinite;
+            
+        }
+    }
+
+}
+
+@keyframes isLoading {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+        visibility: hidden;
+    }
+}

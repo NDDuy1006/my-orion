@@ -3,14 +3,14 @@ import React from 'react'
 import { GetServerSidePropsContext } from 'next';
 import { Wrapper } from '@/components';
 import CheckBox from '@/components/global/CheckBox';
-import hotel1 from '../../../assets/hotel-1.png';
-import hotel2 from '../../../assets/hotel-2.png';
-import hotel3 from '../../../assets/hotel-3.png';
 import Image from 'next/image';
-import { HotelsPageProps } from '@/types/resultPage';
 import HoteltItem from '@/components/ResultItem/partials/HotelItem';
 import BookingLayout from '@/layouts/BookingLayout';
 import BookingStep from '@/components/global/BookingStep';
+import Recommended from '@/components/ResultItem/partials/Recommended';
+import axios from 'axios';
+import { HotelsPageProps } from '@/types/resultPage';
+import LoadingItem from '@/components/global/LoadingItem';
 
 const dataCheckBox = [
     {
@@ -51,74 +51,6 @@ const dataCheckBox = [
     },
 ]
 
-const resultData = [
-    {   
-        id: 1,
-        image: hotel1,
-        favouriteHotel: true,
-        hotelName: 'Sonnenhotel Zum Stern',
-        description: 'Elegant and spacious living in the studio: 41 sqm, quietly located and mostly with a fantastic view of the large spa park or the pedestrian zone with shops and cafés. The high-quality furnishings with box-spring beds, air conditioning, capsule machine, flat-screen TV, minibar, safe, modern bathroom with rain shower or tub and rental bathrobe/slippers offer pure feel-good ambience. Some studios have a balcony.',
-        location: 'Weitmoserstrasse 33 5630 Bad Hofgastein, Austria',
-        tag: [
-            {
-                tagName: 'mountain air',
-                tagId:'mountain-air',
-            },
-            {
-                tagName: 'enjoyment',
-                tagId:'enjoyment',
-            },
-            {
-                tagName: 'wellness',
-                tagId:'wellness',
-            }
-        ]
-    },
-    {   
-        id: 2,
-        image: hotel2,
-        favouriteHotel: false,
-        hotelName: 'Sonnenresort Maltschacher See',
-        description: 'In the Hotel Maltschacher See, the holiday sun tickles your nose early in the morning and arouses anticipation of a perfect holiday day at the beautiful, warm Maltschacher See. The picture book backdrop of the Nockberge impresses young and old. Here in the spacious holiday village there are holiday ideas for the whole family. In the children\'s club, the dear Sonnenwolfi awaits the children with a fun program while the parents enjoy their time out and explore the area. The all-inclusive offer is practical. An all-round carefree package for unlimited holiday joy.',
-        location: 'Maltschacher See Strasse 5 9560 Feldkirchen, Austria',
-        tag: [
-            {
-                tagName: 'wein',
-                tagId:'wein',
-            },
-            {
-                tagName: 'inspiration',
-                tagId:'inspiration',
-            },
-            {
-                tagName: 'wellness',
-                tagId:'wellness',
-            }
-        ]
-    },
-    {   
-        id: 3,
-        image: hotel3,
-        favouriteHotel: false,
-        hotelName: 'Sonnenresort Ossiacher See',
-        description: 'The team at Sonnenresort Ossiacher See is already looking forward to welcoming you in 2024 with great innovations, such as renovations, extensions and a whole new spa area!',
-        location: 'Fleischmarkt 20, 1010 Wien, Austria',
-        tag: [
-            {
-                tagName: 'family',
-                tagId:'family',
-            },
-            {
-                tagName: 'sport',
-                tagId:'sport',
-            },
-            {
-                tagName: 'sport',
-                tagId:'sport',
-            }
-        ]
-    }
-]
 
 const stepData = [
     {
@@ -143,7 +75,9 @@ const stepData = [
     }
 ]
 
-const HotelsPage: NextSheetWidthLayout = (props: HotelsPageProps) => {
+const HotelsPage: NextSheetWidthLayout = ({data}: any) => {
+   
+
 
     return (
         <Wrapper >
@@ -153,19 +87,21 @@ const HotelsPage: NextSheetWidthLayout = (props: HotelsPageProps) => {
                     <div>
                         {
                             dataCheckBox.map((ele: any, index: number) => {
-                                return(
+                                return (                 
                                     <CheckBox key={index} data={ele} />
                                 )
                             })
                         }
 
-                        <Image className='w-full h-full mt-4' src={require('../../../assets/banner-1.png')} alt='banner-hotel' width={0} height={0}/>
+                        <Image className='w-full h-full mt-4' src={require('../../../assets/banner-1.png')} alt='banner-hotel' width={0} height={0} />
                     </div>
                 </div>
 
                 <div className='col-span-8'>
+                    <Recommended />
+                    
                     {
-                        resultData.map((ele: any, index: any) => {
+                        data.map((ele: any, index: any) => {
                             return (
                                 <HoteltItem key={index} data={ele} />
                             )
@@ -184,8 +120,25 @@ export default HotelsPage;
 
 export const getStaticProps = async (context: GetServerSidePropsContext) => {
 
-    return {
-        props: {},
-        revalidate: 60
-    };
+    try {
+        let {data} = await axios.get('http://localhost:3000/api/hotels',{
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        return {
+            props: {
+                data: data.data
+            },
+            revalidate: 60
+        };
+    } catch (err) {
+
+        return {
+            props: {
+                data: null
+            },
+        };
+    }
 }

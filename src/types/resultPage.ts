@@ -1,3 +1,5 @@
-export interface HotelsPageProps {};
+export interface HotelsPageProps {
+    data: any
+};
 
 export interface RoomsPageProps{};

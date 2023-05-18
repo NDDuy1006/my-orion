@@ -20,7 +20,7 @@ module.exports = {
       Main: '#20272C',
       lineGray: '#D9D9D9',
       tealMain: '#2CA3A8',
-      white: '#ffffff'
+      
     },
 
     container: {

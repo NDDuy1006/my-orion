@@ -5,3 +5,4 @@ export * from './ResultItem';
 export * from './global/ButtonShare';
 export * from './global/TagName/index';
 export * from './global/BookingStep/index';
+export * from './global/LoadingItem/index';

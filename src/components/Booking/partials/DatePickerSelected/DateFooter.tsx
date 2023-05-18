@@ -1,9 +1,18 @@
 import React from 'react';
 
-type DateFooterProps = {};
+interface DateFooterProps {}
 
-const DateFooter = ({}) => {
-  return <div>DateFooter</div>;
+const DateFooter = ({}: DateFooterProps) => {
+  return (
+    <div>
+      <div></div>
+      <div>
+        <div className=""></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  );
 };
 
 export default DateFooter;

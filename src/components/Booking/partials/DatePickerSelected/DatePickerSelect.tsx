@@ -1,7 +1,7 @@
 import React from 'react';
 import { DatePicker } from 'antd';
 import { Dayjs } from 'dayjs';
-import DateRender from './DateRender';
+import DateRender, { DateRate } from './DateRender';
 
 const { RangePicker } = DatePicker;
 

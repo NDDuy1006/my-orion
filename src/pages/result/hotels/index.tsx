@@ -77,6 +77,7 @@ const stepData = [
 
 const HotelsPage: NextSheetWidthLayout = ({data}: any) => {
    
+    console.log(data)
 
 
     return (
@@ -101,7 +102,7 @@ const HotelsPage: NextSheetWidthLayout = ({data}: any) => {
                     <Recommended />
                     
                     {
-                        data.map((ele: any, index: any) => {
+                        data?.map((ele: any, index: any) => {
                             return (
                                 <HoteltItem key={index} data={ele} />
                             )
@@ -129,7 +130,7 @@ export const getStaticProps = async (context: GetServerSidePropsContext) => {
 
         return {
             props: {
-                data: data.data
+                data: data
             },
             revalidate: 60
         };

@@ -11,7 +11,6 @@ import LoadingItem from '@/components/global/LoadingItem';
 
 
 const HoteltItem = ({ data }: HotelItemProps) => {
-
   const [favourite, setFavourite] = useState<Boolean>(false);
 
   const [isLoading, setIsLoading] = useState<Boolean>(false);
@@ -32,7 +31,7 @@ const HoteltItem = ({ data }: HotelItemProps) => {
   }, [data])
 
   const handleFavourite = () => setFavourite(current => !current);
-
+  
 
   return (
     <>
@@ -70,7 +69,7 @@ const HoteltItem = ({ data }: HotelItemProps) => {
 
             <div className='mt-2'>
               {
-                data.tag.map((ele: any, index: Key) => {
+                data?.tag?.map((ele: any, index: Key) => {
                   return (
                     <TagName key={index} style={TagNameStyle.default} content={ele.tagName} className='shadow-[0px 0px 2px rgba(0, 0, 0, 0.2)] mr-2 mb-2' />
 

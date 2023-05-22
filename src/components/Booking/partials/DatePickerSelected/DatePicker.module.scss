@@ -1,9 +1,9 @@
 @import '../../../../styles/variable';
 
-.dateBottom{
+.dateBottom {
   padding: 8px 18px;
   .dateBottomItem {
-    span{
+    span {
       margin-right: 8px;
       padding: 4px 8px;
       font-size: 12px;
@@ -12,21 +12,19 @@
       font-weight: 400;
       border-radius: 4px;
 
-      &:last-of-type{
+      &:last-of-type {
         margin-right: 0;
       }
     }
 
-    .itemLow{
+    .itemLow {
       background: $date-teal;
     }
-    .itemAverage{
+    .itemAverage {
       background: $date-yellow;
     }
-    .itemHigh{
+    .itemHigh {
       background: $date-orage;
     }
   }
-
 }
-

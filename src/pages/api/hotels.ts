@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-const resData = {"data": [
+const resData = [
 	{
 	  "id": "BER",
 	  "createdAt": 1684146696,
@@ -31,6 +31,7 @@ const resData = {"data": [
 	  "updatedAt": 1684146696,
 	  "code": "SUV0001",
 	  "name": "Timesquare",
+	  "img": "http://localhost:3000/images/pics/hotel-2.png",
 	  "city": "Ho Chi Minh",
 	  "countryCode": "VN",
 	  "description": "",
@@ -52,6 +53,7 @@ const resData = {"data": [
 	  "updatedAt": 1684208916,
 	  "code": "SWR",
 	  "name": "Sonnenhotel Weingut Römmert",
+	  "img": "http://localhost:3000/images/pics/hotel-3.png",
 	  "city": "Volkach",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -73,6 +75,7 @@ const resData = {"data": [
 	  "updatedAt": 1684208991,
 	  "code": "SAH",
 	  "name": "Sonnenhotel Amtsheide",
+	  "img": "http://localhost:3000/images/pics/hotel-4.jpg",
 	  "city": "Bad Bevensen",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -94,6 +97,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209168,
 	  "code": "SEH",
 	  "name": "Sonnenresort Ettershaus",
+	  "img": "http://localhost:3000/images/pics/hotel-5.jpg",
 	  "city": "Bad Harzburg",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -115,6 +119,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209313,
 	  "code": "SBH",
 	  "name": "Sonnenhotel Bayerischer Hof",
+	  "img": "http://localhost:3000/images/pics/hotel-6.jpg",
 	  "city": "Waldmünchen",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -136,6 +141,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209348,
 	  "code": "SFAS",
 	  "name": "Sonnenhotel Feldberg am See",
+	  "img": "http://localhost:3000/images/pics/hotel-7.jpg",
 	  "city": "Feldberg",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -157,6 +163,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209467,
 	  "code": "SWH",
 	  "name": "Sonnenhotel Wolfshof",
+	  "img": "http://localhost:3000/images/pics/hotel-8.jpg",
 	  "city": "Langelsheim",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -178,6 +185,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209510,
 	  "code": "SHH",
 	  "name": "Sonnenhotel Hoher Hahn",
+	  "img": "http://localhost:3000/images/pics/hotel-9.jpg",
 	  "city": "Schwarzenberg",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -199,6 +207,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209559,
 	  "code": "SFH",
 	  "name": "Sonnenhotel Fürstenbauer",
+	  "img": "http://localhost:3000/images/pics/hotel-10.jpg",
 	  "city": "Bodenmais",
 	  "countryCode": "DE",
 	  "description": "string",
@@ -220,6 +229,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209608,
 	  "code": "SMS",
 	  "name": "Sonnenresort Maltschacher See",
+	  "img": "http://localhost:3000/images/pics/hotel-11.jpg",
 	  "city": "Feldkirchen",
 	  "countryCode": "AT",
 	  "description": "string",
@@ -241,6 +251,7 @@ const resData = {"data": [
 	  "updatedAt": 1684209654,
 	  "code": "SOS",
 	  "name": "Sonnenresort Ossiacher See",
+	  "img": "http://localhost:3000/images/pics/hotel-12.jpg",
 	  "city": "Ossiach",
 	  "countryCode": "AT",
 	  "description": "string",
@@ -262,6 +273,7 @@ const resData = {"data": [
 	  "updatedAt": 1684146696,
 	  "code": "LND",
 	  "name": "Hotel London",
+	  "img": "http://localhost:3000/images/pics/hotel-13.jpg",
 	  "city": "London",
 	  "countryCode": "GB",
 	  "description": "Located in a quiet side street with a beautiful garden in the backyard, Hotel London is prefect for relaxing after a day of shopping or a night of partying.",
@@ -283,6 +295,7 @@ const resData = {"data": [
 	  "updatedAt": 1684146696,
 	  "code": "PAR",
 	  "name": "Hotel Paris",
+	  "img": "http://localhost:3000/images/pics/hotel-14.jpg",
 	  "city": "Paris",
 	  "countryCode": "FR",
 	  "description": "This new cozy hotel is located in the heart of Schwabing and is walking distance from the historical city center.",
@@ -304,6 +317,7 @@ const resData = {"data": [
 	  "updatedAt": 1684146696,
 	  "code": "VIE",
 	  "name": "Hotel Vienna",
+	  "img": "http://localhost:3000/images/pics/hotel-15.jpg",
 	  "city": "Vienna",
 	  "countryCode": "AT",
 	  "description": "This new cozy hotel is located in the heart of Schwabing and is walking distance from the historical city center.",
@@ -325,6 +339,7 @@ const resData = {"data": [
 	  "updatedAt": 1684146696,
 	  "code": "MUC",
 	  "name": "Hotel Munich",
+	  "img": "http://localhost:3000/images/pics/hotel-16.jpg",
 	  "city": "Munich",
 	  "countryCode": "DE",
 	  "description": "This new cozy hotel is located in the heart of Schwabing and is walking distance from the historical city center.",
@@ -340,7 +355,7 @@ const resData = {"data": [
 	  "postalCode": "80802",
 	  "positionId": 2
 	}
-  ]}
+  ]
 
 export default function handler(
   req: NextApiRequest,

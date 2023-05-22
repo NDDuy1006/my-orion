@@ -122,15 +122,11 @@ export default HotelsPage;
 export const getStaticProps = async (context: GetServerSidePropsContext) => {
 
     try {
-        let {data} = await axios.get('http://localhost:3000/api/hotels',{
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        const {data} = await axios.get('http://localhost:3000/api/hotels')
 
         return {
             props: {
-                data: data
+                data
             },
             revalidate: 60
         };

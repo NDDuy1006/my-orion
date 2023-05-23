@@ -4143,7 +4143,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<any>) 
     return res.status(404).json({ message: 'Not found!' })!;
   }
 
-  return res
+  if(page && perPage) {
+    return res
     .status(200)
     .json({ data: dataPagination, currentPage: Number(page), total: totalCount });
+  }
+
+  return res.status(200).json(findData);
 }

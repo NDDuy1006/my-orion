@@ -30,7 +30,7 @@ const Recommended = (props: Props) => {
                     </div>
 
                     <ul className={clsx(
-                        'absolute top-[103%] left-1/2 -translate-x-1/2  bg-white rounded-lg z-50 shadow-lg border border-solid border-lineGray whitespace-nowrap overflow-hidden',
+                        'absolute top-[103%] left-1/2 -translate-x-1/2  bg-[white] rounded-lg z-50 shadow-lg border border-solid border-lineGray whitespace-nowrap overflow-hidden',
                         {
                             'hidden': !showRecommen,
                         }

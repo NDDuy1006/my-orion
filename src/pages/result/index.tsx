@@ -3,16 +3,15 @@ import React from 'react'
 import {  GetStaticProps, GetStaticPropsContext } from 'next';
 import { Wrapper } from '@/components';
 import CheckBox from '@/components/global/CheckBox';
-import Image from 'next/image';
-import HoteltItem from '@/components/ResultItem/partials/HotelItem';
 import BookingLayout from '@/layouts/BookingLayout';
 import BookingStep from '@/components/global/BookingStep';
-import Recommended from '@/components/ResultItem/partials/Recommended';
 import axios from 'axios';
-import { HotelsPageProps, PageData } from '@/types/resultPage';
-import LoadingItem from '@/components/global/LoadingItem';
 import { Pagination } from 'antd';
-import { useRouter } from 'next/router';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import Recommended from '@/components/ResultItem/partials/Recommended';
+import LoadingItem from '@/components/global/LoadingItem';
+const Hotels = dynamic(() => import('@/components/ResultItem/partials/HotelItem'),{loading: () => <LoadingItem />});
 
 const dataCheckBox = [
     {
@@ -79,7 +78,7 @@ const stepData = [
 
 
 
-const HotelsPage: NextSheetWidthLayout = ({ data, totalPages, perPage, currentPage }: any) => {
+const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
 
     const handleChangePagination = (page: number) => {
         console.log(page);
@@ -92,14 +91,14 @@ const HotelsPage: NextSheetWidthLayout = ({ data, totalPages, perPage, currentPa
                 <div className='col-span-4 pr-5'>
                     <div>
                         {
-                            dataCheckBox.map((ele: any, index: number) => {
+                            dataCheckBox?.map((ele: any, index: number) => {
                                 return (
                                     <CheckBox key={index} data={ele} />
                                 )
                             })
                         }
 
-                        <Image className='w-full h-full mt-4' src={require('../../../assets/banner-1.png')} alt='banner-hotel' width={0} height={0} />
+                        <Image loading='lazy' className='w-full h-full mt-4' src={require('../../assets/banner-1.png')} alt='banner-hotel' width={0} height={0} />
                     </div>
                 </div>
 
@@ -109,13 +108,13 @@ const HotelsPage: NextSheetWidthLayout = ({ data, totalPages, perPage, currentPa
                     {
                         data?.data.map((ele: any, index: any) => {
                             return (
-                                <HoteltItem key={index} data={ele} />
+                                <Hotels key={index} data={ele} />
                             )
                         })
                     }
 
                     <div className='text-center'>
-                        <Pagination onChange={(page) => handleChangePagination(page)} total={data.total} defaultCurrent={data.currentPage} pageSize={6} />
+                        <Pagination onChange={(page) => handleChangePagination(page)} total={data?.total} defaultCurrent={data?.currentPage} pageSize={6} />
                     </div>
                 </div>
             </div>
@@ -132,7 +131,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 
     try {
 
-        console.log(context)
+        console.log(context.params)
 
         const page = Number(context.params?.page) || 1
 
@@ -156,6 +155,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
             props: {
                 data: [],
             },
+            revalidate: 0
         };
     }
 }

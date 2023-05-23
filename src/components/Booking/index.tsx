@@ -14,7 +14,7 @@ const BookingFeature = () => {
     <div>
       <div className={clsx(styles.bookingEngineBg)}>
         <Wrapper>
-          <h1 className={clsx('text-Main text-5xl text-center pt-[16.5rem] pb-12')}>
+          <h1 className={clsx('text-Main text-5xl text-center pt-[16.5rem]')}>
             A holiday in the Sonnenhotels is when the sun comes into your heart
           </h1>
         </Wrapper>

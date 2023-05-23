@@ -1,4 +1,4 @@
-import { SublinkProps } from '@/types';
+// import { SublinkProps } from '@/types';
 import { Dispatch, SetStateAction } from 'react';
 
 import Image from 'next/image';
@@ -8,21 +8,21 @@ import { useRouter } from 'next/router';
 import { clsx } from 'clsx';
 
 interface Prop {
-  sublink: SublinkProps;
+  // sublink: SublinkProps;
   setOpen: Dispatch<SetStateAction<boolean>>;
   setClickedLink: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Submenu = ({ sublink, setOpen, setClickedLink }: Prop) => {
+export const Submenu = ({ setOpen, setClickedLink }: Prop) => {
   const pathname = useRouter().pathname;
-  const { featured, projects } = sublink;
+  // const { featured, projects } = sublink;
   const getParentPath = pathname?.includes('/') ? pathname : '';
 
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="p-4 min-w-[285px] basis-[40%]">
         <div className="flex flex-col gap-4">
-          {featured?.map((feat) => (
+          {/* {featured?.map((feat) => (
             <Link
               key={feat.link}
               href={feat.href}
@@ -37,7 +37,7 @@ export const Submenu = ({ sublink, setOpen, setClickedLink }: Prop) => {
             >
               {feat.link}
             </Link>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

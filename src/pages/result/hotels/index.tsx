@@ -1,6 +1,6 @@
 import { NextSheetWidthLayout } from '@/types/layoutType'
 import React from 'react'
-import { GetServerSidePropsContext } from 'next';
+import {  GetStaticProps, GetStaticPropsContext } from 'next';
 import { Wrapper } from '@/components';
 import CheckBox from '@/components/global/CheckBox';
 import Image from 'next/image';
@@ -9,8 +9,10 @@ import BookingLayout from '@/layouts/BookingLayout';
 import BookingStep from '@/components/global/BookingStep';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import axios from 'axios';
-import { HotelsPageProps } from '@/types/resultPage';
+import { HotelsPageProps, PageData } from '@/types/resultPage';
 import LoadingItem from '@/components/global/LoadingItem';
+import { Pagination } from 'antd';
+import { useRouter } from 'next/router';
 
 const dataCheckBox = [
     {
@@ -75,10 +77,13 @@ const stepData = [
     }
 ]
 
-const HotelsPage: NextSheetWidthLayout = ({data}: any) => {
-   
-    console.log(data)
 
+
+const HotelsPage: NextSheetWidthLayout = ({ data, totalPages, perPage, currentPage }: any) => {
+
+    const handleChangePagination = (page: number) => {
+        console.log(page);
+    }
 
     return (
         <Wrapper >
@@ -88,7 +93,7 @@ const HotelsPage: NextSheetWidthLayout = ({data}: any) => {
                     <div>
                         {
                             dataCheckBox.map((ele: any, index: number) => {
-                                return (                 
+                                return (
                                     <CheckBox key={index} data={ele} />
                                 )
                             })
@@ -100,14 +105,18 @@ const HotelsPage: NextSheetWidthLayout = ({data}: any) => {
 
                 <div className='col-span-8'>
                     <Recommended />
-                    
+
                     {
-                        data?.map((ele: any, index: any) => {
+                        data?.data.map((ele: any, index: any) => {
                             return (
                                 <HoteltItem key={index} data={ele} />
                             )
                         })
                     }
+
+                    <div className='text-center'>
+                        <Pagination onChange={(page) => handleChangePagination(page)} total={data.total} defaultCurrent={data.currentPage} pageSize={6} />
+                    </div>
                 </div>
             </div>
         </Wrapper>
@@ -119,14 +128,25 @@ HotelsPage.Layout = BookingLayout;
 export default HotelsPage;
 
 
-export const getStaticProps = async (context: GetServerSidePropsContext) => {
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
 
     try {
-        const {data} = await axios.get('http://localhost:3000/api/hotels')
 
+        console.log(context)
+
+        const page = Number(context.params?.page) || 1
+
+        const { data } = await axios.get('http://localhost:3000/api/hotels', {
+            params: {
+                page,
+                perPage: 6,
+            }
+        })
+        
         return {
             props: {
-                data
+                data: data,
+               
             },
             revalidate: 60
         };
@@ -134,7 +154,7 @@ export const getStaticProps = async (context: GetServerSidePropsContext) => {
 
         return {
             props: {
-                data: null
+                data: [],
             },
         };
     }

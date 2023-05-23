@@ -94,7 +94,7 @@ const RoomItem = ({ data }: RoomItemProps) => {
                                 data.price !== 0 &&
                                 <p className='text-[32px] leading-[40px] font-medium text-Main'>$ {data.price}</p>
                             }
-                            <ButtonShare onClick={() => { console.log('hello word!!!') }} style={BtnConstClassName.rounded} content={'show room'} />
+                            <ButtonShare onClick={() => { console.log('hello word!!!') }} style={BtnConstClassName.rounded} content={'View details'} />
                         </div>
                     </div>
                 </div>

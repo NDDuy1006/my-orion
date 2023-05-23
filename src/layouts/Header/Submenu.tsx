@@ -22,7 +22,7 @@ export const Submenu = ({ sublink, setOpen, setClickedLink }: Prop) => {
     <div className="flex flex-col lg:flex-row">
       <div className="p-4 min-w-[285px] basis-[40%]">
         <div className="flex flex-col gap-4">
-          {featured?.map((feat) => (
+          {featured?.map((feat:any) => (
             <Link
               key={feat.link}
               href={feat.href}

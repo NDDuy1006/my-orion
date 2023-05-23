@@ -17,7 +17,6 @@ const Locations = () => {
   const fetcher = async () => {
     try {
       const res = await axios.get('http://localhost:3000/api/location');
-      console.log(res.data);
       setLocationData(res.data.data);
     } catch (err) {
       console.error(err);

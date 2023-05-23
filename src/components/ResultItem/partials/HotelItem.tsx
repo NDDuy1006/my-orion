@@ -7,6 +7,7 @@ import TagName, { TagNameStyle } from '@/components/global/TagName';
 import ButtonShare, { BtnConstClassName } from '@/components/global/ButtonShare';
 import { HotelItemProps } from '../@types';
 import LoadingItem from '@/components/global/LoadingItem';
+import { useRouter } from 'next/router';
 
 
 
@@ -14,6 +15,8 @@ const HoteltItem = ({ data }: HotelItemProps) => {
   const [favourite, setFavourite] = useState<Boolean>(false);
 
   const [isLoading, setIsLoading] = useState<Boolean>(false);
+
+  const router = useRouter();
 
   const loadData = async () => {
     await setIsLoading(true);
@@ -72,7 +75,7 @@ const HoteltItem = ({ data }: HotelItemProps) => {
             </div>
 
             <div className='text-right w-full'>
-              <ButtonShare onClick={() => { console.log('hello word!!!') }} style={BtnConstClassName.rounded} content={'show room'} />
+              <ButtonShare onClick={() => { router.push('/result/rooms') }} style={BtnConstClassName.rounded} content={'show room'} />
             </div>
           </div>
         </div>

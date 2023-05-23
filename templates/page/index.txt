@@ -3,7 +3,7 @@ import MainLayout from '@/layouts/MainLayout'
 import { NextSheetWidthLayout } from '@/types/layoutType'
 import React, { Fragment } from 'react'
 import PageProps from '@/types/Page';
-import { GetServerSidePropsContext } from 'next';
+import { GetStaticPropsContext } from 'next';
 
 
 
@@ -18,7 +18,7 @@ Page.Layout = MainLayout;
 export default Page;
 
 
-export const getStaticProps = async (context: GetServerSidePropsContext) =>  {
+export const getStaticProps = async (context: GetStaticPropsContext) =>  {
 
     return {
         props: {},

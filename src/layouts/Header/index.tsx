@@ -8,7 +8,6 @@ export interface HeaderProps {
   menu: {
     name: string;
     submenu: boolean;
-    // sublinks: SublinkProps;
     url: string;
   }[];
   logo: string;

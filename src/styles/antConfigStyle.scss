@@ -1,59 +1,56 @@
 /* Date picker config */
 .ant-picker-dropdown.css-dev-only-do-not-override-u7uyzu.ant-picker-dropdown-range {
-  .ant-picker-date-panel {
-    width: 100%;
+    .ant-picker-date-panel {
+        width: 100%;
 
-    .ant-picker-content {
-      width: 100%;
+        .ant-picker-content {
+            width: 100%;
+        }
     }
-    table tr:nth-child(6) {
-      display: none;
+    .ant-picker-panel:first-child {
+        .ant-picker-body {
+            border-right: 1px solid transparent;
+        }
     }
-  }
-  .ant-picker-panel:first-child {
-    .ant-picker-body {
-      border-right: 1px solid transparent;
+    .ant-picker-cell::before {
+        height: 86%;
     }
-  }
-  .ant-picker-cell::before {
-    height: 86%;
-  }
-  .ant-picker-cell::after{
-    height: 86%;
-  }
+    .ant-picker-cell::after {
+        height: 86%;
+    }
 
-  cell-range-hover-end:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after{
-    height: 86%;
-  }
-  
-  .ant-picker-cell-inner {
-    width: 100%;
-    height: 100%;
-    line-height: 20px;
-  }
-  .ant-picker-content .ant-picker-cell {
-    padding: 3px !important;
-  }
+    cell-range-hover-end:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after {
+        height: 86%;
+    }
+
+    .ant-picker-cell-inner {
+        width: 100%;
+        height: 100%;
+        line-height: 20px;
+    }
+    .ant-picker-content .ant-picker-cell {
+        padding: 3px !important;
+    }
 }
 
 // location search
 .mySelectIBE {
-  .ant-select-selector {
-    border-radius: 32px;
-    height: 48px !important;
-    width: 360px !important;
-    padding-left: 3rem !important;
-    align-items: center;
-  }
-  .ant-select-selection-search-input {
-    height: 100% !important;
-    padding-left: 2.25rem !important;
-  }
-  .ant-select-arrow {
-    left: 1rem;
-  }
+    .ant-select-selector {
+        border-radius: 32px;
+        height: 48px !important;
+        width: 360px !important;
+        padding-left: 3rem !important;
+        align-items: center;
+    }
+    .ant-select-selection-search-input {
+        height: 100% !important;
+        padding-left: 2.25rem !important;
+    }
+    .ant-select-arrow {
+        left: 1rem;
+    }
 }
 
 .ant-select-tree-switcher {
-  margin-left: 13px !important;
+    margin-left: 13px !important;
 }

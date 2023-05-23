@@ -9,9 +9,6 @@ const Locations = () => {
   const fetcher = async () => {
     try {
       const res = await axios.get('http://localhost:3000/api/location');
-<<<<<<< HEAD
-      setLocationData(res.data.data);
-=======
       const locationData = res?.data?.data?.length
         ? res.data?.data?.map((location: any) => {
             const child = location?.children.length
@@ -29,7 +26,6 @@ const Locations = () => {
           })
         : [];
       setLocationData(locationData);
->>>>>>> d2ba692175e580844814ad5082c5e838a7e79d25
     } catch (err) {
       console.error(err);
     }

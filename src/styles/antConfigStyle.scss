@@ -1,5 +1,6 @@
 /* Date picker config */
 .ant-picker-dropdown.css-dev-only-do-not-override-u7uyzu.ant-picker-dropdown-range {
+    padding: 0 !important;
     .ant-picker-date-panel {
         width: 100%;
 
@@ -53,4 +54,9 @@
 
 .ant-select-tree-switcher {
     margin-left: 13px !important;
+}
+
+//guest type css
+.ant-popover-inner {
+    margin-top: -0.5rem;
 }

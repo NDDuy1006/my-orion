@@ -13,11 +13,16 @@ const DatePickerSelect = () => {
     };
 
     const [show, setShow] = useState(false);
+
+    const handleScroll = () => {
+        setShow(false);
+    };
+
     useEffect(() => {
-        const handleScroll = () => {
-            setShow(false);
-        };
         window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     return (

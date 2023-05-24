@@ -1,3 +1,4 @@
+import axiosClient from '@/clientApi/axiosClient';
 import axios from 'axios';
 import React from 'react';
 import { SWRConfig } from 'swr';
@@ -8,7 +9,7 @@ interface SWRConfigX {
 
 const SWRConfigX = ({ children }: SWRConfigX) => {
     return (
-        <SWRConfig value={{ fetcher: (url)=> axios.get(url), shouldRetryOnError: false }}>
+        <SWRConfig value={{ fetcher: (url)=> axiosClient.get(url), shouldRetryOnError: false }}>
             {children}
         </SWRConfig>
     );

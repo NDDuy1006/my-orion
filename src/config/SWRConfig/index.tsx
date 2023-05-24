@@ -8,7 +8,7 @@ interface SWRConfigX {
 
 const SWRConfigX = ({ children }: SWRConfigX) => {
     return (
-        <SWRConfig value={{ fetcher: (url) => axios.get(url), shouldRetryOnError: false }}>
+        <SWRConfig value={{ fetcher: (url)=> axios.get(url), shouldRetryOnError: false }}>
             {children}
         </SWRConfig>
     );

@@ -12,31 +12,26 @@ const DatePickerSelect = () => {
         setShowPrice(checked);
     };
 
-    // const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-    // const handleScroll = () => {
-    //     setShow(false);
-    // };
+    const handleScroll = () => {
+        setShow(false);
+    };
 
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll);
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <RangePicker
-            // open={show}
-            // onBlur={() => {
-            //     setShow(false);
-            // }}
-            // onFocus={() => {
-            //     setShow(true);
-            // }}
-            // onClick={() => {
-            //     if (!show) setShow(true);
-            // }}
+            open={show}
+            onBlur={(show) => {
+                setShow(false);
+            }}
+            onClick={() => setShow(true)}
             className="rounded-[32px] h-12 w-[360px]"
             placement="bottomLeft"
             renderExtraFooter={() => <DateFooter onChange={handleShowPrice} />}

@@ -6,11 +6,11 @@ import React, { useEffect, useState } from 'react';
 const Locations = () => {
     const [valueSearch, setValueSearch] = useState();
     const [locationData, setLocationData] = useState([]);
-    const [data] = useLocation();
+    const {data} = useLocation();
 
     useEffect(() => {
-        const locationData = data?.data.length
-            ? data?.data?.map((location: any) => {
+        const locationData = data?.length
+            ? data?.map((location: any) => {
                   const child = location?.children.length
                       ? location.children?.map((children: any) => {
                             return {
@@ -27,7 +27,7 @@ const Locations = () => {
               })
             : [];
         setLocationData(locationData);
-    }, [data?.data]);
+    }, [data]);
 
     return (
         <TreeSelect
@@ -54,7 +54,7 @@ const Locations = () => {
             placeholder="Where would you like to go?"
             treeData={locationData}
             onChange={(value: string) => {
-                const search = setValueSearch(valueSearch);
+                setValueSearch(valueSearch);
             }}
         />
     );

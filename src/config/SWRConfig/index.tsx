@@ -1,5 +1,4 @@
 import axiosClient from '@/clientApi/axiosClient';
-import axios from 'axios';
 import React from 'react';
 import { SWRConfig } from 'swr';
 

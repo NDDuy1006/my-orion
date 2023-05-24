@@ -1,14 +1,19 @@
-import { fetcherLocation } from '@/clientApi';
+import { PublicConfiguration } from 'swr/_internal';
 import useSWR from 'swr';
 
-const TIME = 60 * 60 * 1000;
 
-export const useLocation = () => {
-    const { data, error, mutate, isLoading } = useSWR('/location');
+export const useLocation = (option?: Partial<PublicConfiguration>) => {
+    const TIME_REFRESH =  30 * 60 * 1000; // calc with 30 min
+
+    const { data, error, mutate, isLoading } = useSWR('/location',{
+        dedupingInterval: TIME_REFRESH,
+        revalidateOnFocus: false,       
+        option,  
+    });
 
     if (error) {
         mutate();
     }
 
-    return [data, error, mutate, isLoading] as const;
+    return {data, error, isLoading} as const;
 };

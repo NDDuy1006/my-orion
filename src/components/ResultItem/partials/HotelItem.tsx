@@ -22,7 +22,7 @@ const HoteltItem = ({ data }: HotelItemProps) => {
     await setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 2500)
+    }, 500)
   }
 
 

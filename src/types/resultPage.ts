@@ -7,4 +7,6 @@ export interface PageData {
     totalPages: number;
   }
 
-export interface RoomsPageProps{};
+export interface RoomsPageProps{
+  data: any[];
+};

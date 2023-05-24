@@ -3,16 +3,13 @@ import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Wrapper } from '@/components';
 import CheckBox from '@/components/global/CheckBox';
-import hotel2 from '@/assets/hotel-2.png';
-import hotel1 from '@/assets/hotel-1.png';
-import hotel3 from '@/assets/hotel-3.png';
 import Image from 'next/image';
-import { RoomsPageProps } from '@/types/resultPage';
-import RoomItem from '@/components/ResultItem/partials/RoomItem';
 import BookingLayout from '@/layouts/BookingLayout';
 import BookingStep from '@/components/global/BookingStep';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
+const Rooms = dynamic(() => import('@/components/ResultItem/partials/RoomItem'));
 
 const dataCheckBox = [
     {
@@ -53,53 +50,6 @@ const dataCheckBox = [
     },
 ];
 
-const roomsData = [
-    {
-        id: 1,
-        image: hotel1,
-        favouriteRoom: true,
-        roomName: 'Turmzimmer Suite',
-        description:
-            'Would you like to live at lofty heights in the old stately villa? With two bedrooms and a great view of the Wurmberg and the southern slope, this 57 sqm suite on the top floor is the right choice for those who love heights. Equipped with a kitchenette, two TVs and a bathroom with rain shower - but with a little less storage space due to the sloping roof. An open steam fireplace ensures atmospheric cosiness. The light atmosphere follows the daylight and you can change or dim it at any time. Mood themes can also be selected. We call it the "Titanic window": the deep room window with a grenade-like view of the southern Harz Mountains! And don\'t forget when the sun goes down: the snuggle switch by the bed!',
-        location: 'Sonnenhotel Zum Stern',
-        propertiesRoom: {
-            numOfPeople: 2,
-            bed: 1,
-            acreage: 36,
-        },
-        price: 0,
-    },
-    {
-        id: 2,
-        image: hotel2,
-        favouriteRoom: false,
-        roomName: 'Turmzimmer Suite',
-        description:
-            'Would you like to live at lofty heights in the old stately villa? With two bedrooms and a great view of the Wurmberg and the southern slope, this 57 sqm suite on the top floor is the right choice for those who love heights. Equipped with a kitchenette, two TVs and a bathroom with rain shower - but with a little less storage space due to the sloping roof. An open steam fireplace ensures atmospheric cosiness. The light atmosphere follows the daylight and you can change or dim it at any time. Mood themes can also be selected. We call it the "Titanic window": the deep room window with a grenade-like view of the southern Harz Mountains! And don\'t forget when the sun goes down: the snuggle switch by the bed!',
-        location: 'Sonnenhotel Zum Stern',
-        propertiesRoom: {
-            numOfPeople: 2,
-            bed: 1,
-            acreage: 36,
-        },
-        price: 389,
-    },
-    {
-        id: 3,
-        image: hotel3,
-        favouriteRoom: true,
-        roomName: 'Turmzimmer Suite',
-        description:
-            'Would you like to live at lofty heights in the old stately villa? With two bedrooms and a great view of the Wurmberg and the southern slope, this 57 sqm suite on the top floor is the right choice for those who love heights. Equipped with a kitchenette, two TVs and a bathroom with rain shower - but with a little less storage space due to the sloping roof. An open steam fireplace ensures atmospheric cosiness. The light atmosphere follows the daylight and you can change or dim it at any time. Mood themes can also be selected. We call it the "Titanic window": the deep room window with a grenade-like view of the southern Harz Mountains! And don\'t forget when the sun goes down: the snuggle switch by the bed!',
-        location: 'Sonnenhotel Zum Stern',
-        propertiesRoom: {
-            numOfPeople: 2,
-            bed: 1,
-            acreage: 36,
-        },
-        price: 0,
-    },
-];
 
 const stepData = [
     {
@@ -124,8 +74,7 @@ const stepData = [
     },
 ];
 
-const RoomsPage: NextSheetWidthLayout = (props: RoomsPageProps) => {
-    console.log(props)
+const RoomsPage: NextSheetWidthLayout = ({data}: any) => {
     return (
         <>
             <Wrapper>
@@ -149,8 +98,8 @@ const RoomsPage: NextSheetWidthLayout = (props: RoomsPageProps) => {
 
                     <div className="col-span-8">
                         <Recommended />
-                        {roomsData.map((ele: any, index: any) => {
-                            return <RoomItem key={index} data={ele} />;
+                        {data?.data?.map((ele: any, index: any) => {
+                            return <Rooms key={index} data={ele} />;
                         })}
                     </div>
                 </div>
@@ -174,10 +123,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 
         return {
             props: {
-                data:res.data
+                data :res.data
             },
             revalidate: 60,
-        }
+        } 
     } catch (err) {
         return {
             props: {

@@ -1,3 +1,4 @@
+import { useLocation } from '@/hooks/useLocation';
 import { TreeSelect } from 'antd';
 import axios from 'axios';
 import Image from 'next/image';
@@ -6,6 +7,12 @@ import React, { useEffect, useState } from 'react';
 const Locations = () => {
   const [valueSearch, setValueSearch] = useState();
   const [locationData, setLocationData] = useState<any>([]);
+  const [data] = useLocation();
+
+  console.log(locationData)
+
+
+
   const fetcher = async () => {
     try {
       const res = await axios.get('http://localhost:3000/api/location');

@@ -8,12 +8,11 @@ const { RangePicker } = DatePicker;
 
 const DatePickerSelect = () => {
     const [showPrice, setShowPrice] = useState<boolean>(true);
-    const [show, setShow] = useState(false);
-
     const handleShowPrice = (checked: boolean) => {
         setShowPrice(checked);
     };
 
+    const [show, setShow] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
             setShow(false);
@@ -24,15 +23,15 @@ const DatePickerSelect = () => {
     return (
         <RangePicker
             open={show}
+            onBlur={(show) => {
+                setShow(false);
+            }}
             onClick={() => setShow(true)}
             className="rounded-[32px] h-12 w-[360px]"
             placement="bottomLeft"
             renderExtraFooter={() => <DateFooter onChange={handleShowPrice} />}
             panelRender={(panalNode: React.ReactNode) => {
                 return <div className="w-[40vw]">{panalNode}</div>;
-            }}
-            onOpenChange={(value) => {
-                console.log(value);
             }}
             dateRender={(currentDate: Dayjs, today: Dayjs) => (
                 <DateRender showPrice={showPrice} currentDate={currentDate} today={today} />

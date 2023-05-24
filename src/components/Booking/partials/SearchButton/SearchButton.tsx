@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 const SearchButton = () => {
   const router = useRouter();
   const handleClick = () => {
-    router.push('/result/hotels');
+    router.push('/result?page=1');
   };
   return (
     <Button

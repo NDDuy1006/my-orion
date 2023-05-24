@@ -11,8 +11,6 @@ const SearchMenu = (props: any) => {
 
   const router = useRouter();
 
-  const currentUser = router.asPath;
-
   useEffect(() => {
     window.addEventListener('scroll', () =>
       window.scrollY > 400 ? setFixed(true) : setFixed(false)

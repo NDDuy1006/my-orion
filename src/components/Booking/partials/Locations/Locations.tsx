@@ -9,8 +9,8 @@ const Locations = () => {
     const [data] = useLocation();
 
     useEffect(() => {
-        const locationData = data?.data?.data.length
-            ? data?.data?.data?.map((location: any) => {
+        const locationData = data?.data.length
+            ? data?.data?.map((location: any) => {
                   const child = location?.children.length
                       ? location.children?.map((children: any) => {
                             return {

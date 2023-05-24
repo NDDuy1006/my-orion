@@ -15,7 +15,6 @@ const Locations = () => {
                       ? location.children?.map((children: any) => {
                             return {
                                 ...children,
-
                                 value: `${children.value}@${children.title}`,
                             };
                         })
@@ -53,8 +52,9 @@ const Locations = () => {
             showSearch
             placeholder="Where would you like to go?"
             treeData={locationData}
+            onSearch={(e) => console.log(e)}
             onChange={(value: string) => {
-                const search = setValueSearch(valueSearch);
+                setValueSearch(valueSearch);
             }}
         />
     );

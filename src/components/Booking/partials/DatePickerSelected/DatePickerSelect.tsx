@@ -13,20 +13,27 @@ const DatePickerSelect = () => {
     };
 
     const [show, setShow] = useState(false);
+
+    const handleScroll = () => {
+        setShow(false);
+    };
+
     useEffect(() => {
-        const handleScroll = () => {
-            setShow(false);
-        };
         window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     return (
         <RangePicker
             open={show}
-            onBlur={(show) => {
+            onBlur={() => {
                 setShow(false);
             }}
-            onClick={() => setShow(true)}
+            onClick={() => {
+                if (!show) setShow(true);
+            }}
             className="rounded-[32px] h-12 w-[360px]"
             placement="bottomLeft"
             renderExtraFooter={() => <DateFooter onChange={handleShowPrice} />}

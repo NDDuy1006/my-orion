@@ -6,14 +6,12 @@ import CheckBox from '@/components/global/CheckBox';
 import BookingLayout from '@/layouts/BookingLayout';
 import BookingStep from '@/components/global/BookingStep';
 import axios from 'axios';
-import { Button, Pagination } from 'antd';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import LoadingItem from '@/components/global/LoadingItem';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { useRouter } from 'next/router';
-import { abort } from 'process';
+import axiosClient from '@/clientApi/axiosClient';
+
 const Hotels = dynamic(() => import('@/components/ResultItem/partials/HotelItem'), {
     loading: () => <LoadingItem />,
 });
@@ -81,50 +79,37 @@ const stepData = [
 ];
 
 const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
-
-    const [items, setItems] = useState<any>(data?.data);
-    const [hasMore, setHasMore] = useState<Boolean>(true);
-    const [page, setPage] = useState<number>(1);
+    const [items, setItems] = useState<any[]>(data?.data);
+    const [page, setPage] = useState<number>(2);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const lazyLoadingItems = async () => {
+        const perPage = 3;
+        const totalPage = Math.ceil(data.total / perPage);
         try {
-            const perPage = 10;
-            console.log(Math.ceil(data.total / perPage))
-            
-            if( page <= Math.ceil(data.total / perPage)) {
-                let nextPage = page + 1;
-                const res = await axios.get('http://localhost:3000/api/hotels', {
+            if(page > 1 && page <= totalPage && !isLoading  ) {
+                console.log(!isLoading)
+                const res = await axiosClient.get('/hotels', {
                     params: {
-                        page: nextPage,
-                        perPage,
+                        page: page,
+                        perPage: perPage,
                     }
                 });
-
-                console.log(res.data.data)
-                console.log(page)
-
-                if(res.data.data.length > 0) {
-                    setItems([...items, ...res.data.data])                    
-    
-                } else {
-                    setHasMore(false);
-                }
-                setPage(nextPage);
+               setItems((preview) => [...preview, ...res.data]);
+               setPage(page + 1);
             } else {
-
                 setPage(page + 1);
-
                 return;
             }
 
         } catch (err) {
-            console.log(err);
+            console.error(err)
         }
     };
-    console.log(page)
+
 
     useEffect(() => {
-        const handleScroll = () => {
+        const handleScroll = async () => {
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
             const ducumentHeight = Math.max(
                 document.body.scrollHeight,
@@ -138,19 +123,15 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
             const scrollTop =
                 window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 
-            if (scrollTop + windowHeight >= ducumentHeight - 200) {
-                if(page < Math.ceil(data.total / page)) {
-                    lazyLoadingItems();
-                }
+            if (scrollTop + windowHeight >= ducumentHeight - 0 && !isLoading ) {
+                await lazyLoadingItems();
             }
         };
-
         window.addEventListener('scroll', handleScroll);
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [hasMore]);
+    }, [page, isLoading]);
 
     return (
         <Wrapper>
@@ -180,13 +161,6 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
                         return <Hotels key={index} data={ele} />;
                     })}
 
-
-                    {!hasMore && (
-                        <div className="mt-2">
-                            {' '}
-                            <LoadingItem />{' '}
-                        </div>
-                    )}
                 </div>
             </div>
         </Wrapper>
@@ -199,13 +173,12 @@ export default HotelsPage;
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
     try {
-
         const page = Number(context.params?.page) || 1;
 
         const { data } = await axios.get('http://localhost:3000/api/hotels', {
             params: {
                 page,
-                perPage: 10,
+                perPage: 3,
             },
         });
 

@@ -4,10 +4,10 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 export interface LocationProps {
-    onClick?: (value: string) => void;
+    onClick?: (value: any) => void;
 }
 
-const Locations = ({onClick}: LocationProps) => {
+const Locations = ({ onClick }: LocationProps) => {
     const [locationData, setLocationData] = useState();
     const { data } = useLocation();
 
@@ -18,7 +18,7 @@ const Locations = ({onClick}: LocationProps) => {
                     ...children,
                     value: `${children.value}@${children.title}`,
                 };
-            })
+            });
             return {
                 ...location,
                 children: child,
@@ -50,7 +50,7 @@ const Locations = ({onClick}: LocationProps) => {
             showSearch
             placeholder="Where would you like to go?"
             treeData={locationData}
-            onChange={(value: string) => onClick && onClick(value)}
+            onChange={(value: string) => onClick && onClick(value.split('@')[0])}
         />
     );
 };

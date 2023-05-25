@@ -5,17 +5,29 @@ import DateRender from './DateRender';
 import DateFooter from './DateFooter';
 
 const { RangePicker } = DatePicker;
-
-const DatePickerSelect = () => {
+export interface DatePickerSelectProps {
+    onClick?: (value: any) => void;
+}
+const DatePickerSelect = ({ onClick }: DatePickerSelectProps) => {
     const [showPrice, setShowPrice] = useState<boolean>(true);
+    const [isFocused, setIsFocused] = useState(false);
+    const [selectedRange, setSelectedRange] = useState<any>([]);
+
     const handleShowPrice = (checked: boolean) => {
         setShowPrice(checked);
     };
 
-    const [show, setShow] = useState(false);
+    const handleRangeChange = (dates: any, dateStrings: any) => {
+        setSelectedRange(dates);
+        setIsFocused(!isFocused);
+    };
+
+    const handleFocusChange = (event: any) => {
+        setIsFocused(event.target === document.activeElement);
+    };
 
     const handleScroll = () => {
-        setShow(false);
+        setIsFocused(false);
     };
 
     useEffect(() => {
@@ -25,13 +37,16 @@ const DatePickerSelect = () => {
         };
     }, []);
 
+    console.log(selectedRange);
+
     return (
         <RangePicker
-            open={show}
-            onBlur={(show) => {
-                setShow(false);
-            }}
-            onClick={() => setShow(true)}
+            open={isFocused}
+            value={selectedRange}
+            onChange={handleRangeChange}
+            onFocus={handleFocusChange}
+            onBlur={handleFocusChange}
+            onClick={() => setIsFocused(true)}
             className="rounded-[32px] h-12 w-[360px]"
             placement="bottomLeft"
             renderExtraFooter={() => <DateFooter onChange={handleShowPrice} />}

@@ -8,8 +8,11 @@ enum Mode {
     children = 'children',
     room = 'room',
 }
+export interface SelectGuestProps {
+    onClick?: (value: any) => number;
+}
 
-const SelectGuestDropdown: React.FC = () => {
+const SelectGuestDropdown = ({ onClick }: SelectGuestProps) => {
     const [show, setShow] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
@@ -94,7 +97,7 @@ const SelectGuestDropdown: React.FC = () => {
             content={content}
             trigger="click"
         >
-            <Button className="!bg-[white]">
+            <Button className="!bg-[white]" onChange={(value: any) => onClick && onClick(value)}>
                 <p className="flex items-center justify-around gap-2">
                     <Image
                         alt=""

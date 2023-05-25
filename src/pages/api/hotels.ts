@@ -45,7 +45,7 @@ const resData = [
 		"addressLine1": "Vietnam",
 		"addressLine2": "Vietnam",
 		"postalCode": "70000",
-		"positionId": 6
+		"positionId": 2
 	},
 	{
 		"id": "SWR",
@@ -67,7 +67,7 @@ const resData = [
 		"addressLine1": "Erlachhof 1a",
 		"addressLine2": "",
 		"postalCode": "97332",
-		"positionId": 7
+		"positionId": 3
 	},
 	{
 		"id": "SAH",
@@ -89,7 +89,7 @@ const resData = [
 		"addressLine1": "Zur Amtsheide 5 + 14",
 		"addressLine2": "",
 		"postalCode": "29549",
-		"positionId": 8
+		"positionId": 4
 	},
 	{
 		"id": "SEH",
@@ -111,7 +111,7 @@ const resData = [
 		"addressLine1": "Nordhäuser Straße 1",
 		"addressLine2": "",
 		"postalCode": "38667",
-		"positionId": 9
+		"positionId": 5
 	},
 	{
 		"id": "SBH",
@@ -133,7 +133,7 @@ const resData = [
 		"addressLine1": "Torweiherweg 5",
 		"addressLine2": "",
 		"postalCode": "93449",
-		"positionId": 10
+		"positionId": 6
 	},
 	{
 		"id": "SFAS",
@@ -155,7 +155,7 @@ const resData = [
 		"addressLine1": "Hinnenöver 18",
 		"addressLine2": "",
 		"postalCode": "17258",
-		"positionId": 11
+		"positionId": 7
 	},
 	{
 		"id": "SWH",
@@ -177,7 +177,7 @@ const resData = [
 		"addressLine1": "Kreuzallee 22-26",
 		"addressLine2": "",
 		"postalCode": "38685",
-		"positionId": 12
+		"positionId": 8
 	},
 	{
 		"id": "SHH",
@@ -199,7 +199,7 @@ const resData = [
 		"addressLine1": "Gemeindestraße 92",
 		"addressLine2": "",
 		"postalCode": "08340",
-		"positionId": 13
+		"positionId": 9
 	},
 	{
 		"id": "SFH",
@@ -221,7 +221,7 @@ const resData = [
 		"addressLine1": "Kötztinger Str. 34",
 		"addressLine2": "",
 		"postalCode": "94249",
-		"positionId": 14
+		"positionId": 10
 	},
 	{
 		"id": "SMS",
@@ -243,7 +243,7 @@ const resData = [
 		"addressLine1": "Maltschacher See Strasse 5",
 		"addressLine2": "",
 		"postalCode": "9560",
-		"positionId": 15
+		"positionId": 11
 	},
 	{
 		"id": "SOS",
@@ -265,7 +265,7 @@ const resData = [
 		"addressLine1": "Alt-Ossiach 37",
 		"addressLine2": "",
 		"postalCode": "9570",
-		"positionId": 16
+		"positionId": 12
 	},
 	{
 		"id": "LND",
@@ -287,7 +287,7 @@ const resData = [
 		"addressLine1": "James Street 5",
 		"addressLine2": "",
 		"postalCode": "WC2E 8NS",
-		"positionId": 3
+		"positionId":13
 	},
 	{
 		"id": "PAR",
@@ -309,7 +309,7 @@ const resData = [
 		"addressLine1": "Leopoldstraße 8-10",
 		"addressLine2": "",
 		"postalCode": "80802",
-		"positionId": 4
+		"positionId": 14
 	},
 	{
 		"id": "VIE",
@@ -331,7 +331,7 @@ const resData = [
 		"addressLine1": "Philharmoniker Str. 4",
 		"addressLine2": "",
 		"postalCode": "1010",
-		"positionId": 5
+		"positionId": 15
 	},
 	{
 		"id": "MUC",
@@ -353,7 +353,7 @@ const resData = [
 		"addressLine1": "Leopoldstraße 8-10",
 		"addressLine2": "ZMy",
 		"postalCode": "80802",
-		"positionId": 2
+		"positionId": 16
 	}
 ]
 
@@ -365,7 +365,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<any>) 
 		const endPoint = startPoint + Number(perPage);
 		const totalCount = Math.ceil(resData.length);
 
-		const data = resData.slice(startPoint, endPoint);
+		const dataSort = resData.sort((a:any, b:any) => {
+			if(a.positionId < b.positionId) {
+				return -1
+			} else {
+				return 1
+			}
+		})
+
+		const data = dataSort.slice(startPoint, endPoint);
 
 
 		res.status(200).json({ data, currentPage: Number(page), total: totalCount });

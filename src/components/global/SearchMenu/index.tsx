@@ -8,50 +8,33 @@ import { Button } from 'antd';
 
 import React, { useEffect, useState } from 'react';
 
-const SearchMenu = () => {
-  const [fixed, setFixed] = useState(false);
+const SearchMenu = (props: any) => {
+    const [fixed, setFixed] = useState(false);
 
-  const router = useRouter();
+    const router = useRouter();
 
-  useEffect(() => {
-    window.addEventListener('scroll', () =>
-      window.scrollY > 400 ? setFixed(true) : setFixed(false)
+    useEffect(() => {
+        window.addEventListener('scroll', () =>
+            window.scrollY > 400 ? setFixed(true) : setFixed(false)
+        );
+    }, []);
+
+    const handleClick = (value: any) => {
+        console.log(value);
+    };
+    return (
+        <div
+            className={clsx(
+                `flex flex-row gap-2 justify-center `,
+                (fixed || router.asPath !== '/') && 'fixed bg-Main'
+            )}
+        >
+            <Locations />
+            <DatePickerSelect />
+            <SelectGuestDropdown onClick={handleClick} />
+            <SearchButton />
+        </div>
     );
-  }, []);
-
-  const getLocationValue = (locationValue: any) => {
-    console.log(locationValue);
-  };
-  const getDatePickedValue = (DatePickedValue: any) => {
-    console.log(DatePickedValue);
-  };
-  const getSelectGuestValue = (value: any) => {
-    console.log(value);
-  };
-
-  return (
-    <div
-      className={clsx(
-        `flex flex-row gap-2 justify-center `,
-        (fixed || router.asPath !== '/') && 'fixed bg-Main'
-      )}
-    >
-      <Locations onClick={getLocationValue} />
-      <DatePickerSelect onClick={getDatePickedValue} />
-      <SelectGuestDropdown onClick={getSelectGuestValue} />
-      <Button
-        htmlType="submit"
-        onClick={() => {
-          getLocationValue;
-          getDatePickedValue;
-        }}
-        className="rounded-[32px] h-12 w-[146px] bg-[#20272c] text-[white]"
-      >
-        Search
-      </Button>
-      {/* <SearchButton onClick={cb} /> */}
-    </div>
-  );
 };
 
 export default SearchMenu;

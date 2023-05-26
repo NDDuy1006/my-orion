@@ -11,7 +11,6 @@ import dynamic from 'next/dynamic';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
-
 const Hotels = dynamic(() => import('@/components/ResultItem/partials/HotelItem'), {
     loading: () => <LoadingItem />,
 });
@@ -84,11 +83,11 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const lazyLoadingItems = async () => {
-        const perPage = 3;
+        const perPage = 10;
         const totalPage = Math.ceil(data.total / perPage);
         try {
             if(page > 1 && page <= totalPage && !isLoading  ) {
-                console.log(!isLoading)
+                setIsLoading(true)
                 const res = await axiosClient.get('/hotels', {
                     params: {
                         page: page,
@@ -101,8 +100,9 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
                 setPage(page + 1);
                 return;
             }
-
+            setIsLoading(false)
         } catch (err) {
+            setIsLoading(false)
             console.error(err)
         }
     };
@@ -135,7 +135,7 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
 
     return (
         <Wrapper>
-            <BookingStep activeStep={1} data={stepData} />
+            <BookingStep activeStep={1} data={stepData} className='mt-10' />
             <div className="grid grid-cols-12 gap-16 mt-10">
                 <div className="col-span-4 pr-5">
                     <div>
@@ -146,7 +146,7 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
                         <Image
                             loading="lazy"
                             className="w-full h-full mt-4"
-                            src={require('../../assets/banner-1.png')}
+                            src={require('@/assets/banner-1.png')}
                             alt="banner-hotel"
                             width={0}
                             height={0}
@@ -178,7 +178,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
         const { data } = await axios.get('http://localhost:3000/api/hotels', {
             params: {
                 page,
-                perPage: 3,
+                perPage: 10,
             },
         });
 

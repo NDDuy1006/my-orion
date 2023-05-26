@@ -75,7 +75,7 @@ const HoteltItem = ({ data }: HotelItemProps) => {
             </div>
 
             <div className='text-right w-full'>
-              <ButtonShare onClick={() => { router.push('/result/rooms') }} style={BtnConstClassName.rounded} content={'show room'} />
+              <ButtonShare onClick={() => { router.push('/rooms') }} style={BtnConstClassName.rounded} content={'show room'} />
             </div>
           </div>
         </div>

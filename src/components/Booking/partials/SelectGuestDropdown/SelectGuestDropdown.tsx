@@ -30,12 +30,8 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         if (guestValue.adult === 0) setGuesValue({ ...guestValue, children: 0 });
     }, [guestValue.adult]);
 
-    const handleFinish = () => {
-        onClick && onClick(guestValue);
-    };
-
     useEffect(() => {
-        handleFinish();
+        onClick && onClick(guestValue);
     },[guestValue])
 
     useEffect(() => {
@@ -59,7 +55,6 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         } else if (mode === Mode.room) {
             setGuesValue({ ...guestValue, room: guestValue.room + 1 });
         }
-        handleFinish();
     };
 
     const handleDescrease = (mode: string) => {
@@ -70,7 +65,6 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         } else if (mode === Mode.room) {
             setGuesValue({ ...guestValue, room: guestValue.room - 1, adult: 0 });
         }
-        handleFinish();
     };
 
    

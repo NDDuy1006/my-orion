@@ -51,7 +51,14 @@
         left: 1rem;
     }
 }
-
+.ant-select-tree-indent {
+    display: none;
+}
+.ant-select-tree-node-content-wrapper {
+    &:hover {
+        background-color: none !important;
+    }
+}
 .ant-select-tree-switcher {
     margin-left: 13px !important;
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Popover } from 'antd';
 import GuestTypes from '../GuestTypes/GuestTypes';
 import Image from 'next/image';
@@ -30,12 +30,19 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         if (guestValue.adult === 0) setGuesValue({ ...guestValue, children: 0 });
     }, [guestValue.adult]);
 
+    const handleFinish = () => {
+        onClick && onClick(guestValue);
+    };
+
+    useEffect(() => {
+        handleFinish();
+    },[guestValue])
+
     useEffect(() => {
         const handleScroll = () => {
             setShow(false);
         };
         window.addEventListener('scroll', handleScroll);
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -66,9 +73,7 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         handleFinish();
     };
 
-    const handleFinish = useCallback(() => {
-        onClick && onClick(guestValue);
-    }, [guestValue, onClick]);
+   
 
     const content = (
         <div className="guestType w-[186px]">
@@ -111,15 +116,10 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         <Popover
             className={clsx('rounded-[32px] h-12 w-[210px]')}
             placement="bottomLeft"
-            open={show}
             content={content}
             trigger="click"
         >
             <Button
-                onClick={() => {
-                    setShow(current => !current)
-                    handleFinish();
-                }}
                 className="!bg-[white]"
             >
                 <p className="flex items-center justify-around gap-2">

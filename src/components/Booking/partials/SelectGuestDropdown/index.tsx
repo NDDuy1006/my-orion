@@ -12,10 +12,10 @@ enum Mode {
 interface SelectGuestDropdownProps {
     onClick?: (value: any) => void;
 }
-
+const DEFAULT_MAX = 4;
 const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
     const [show, setShow] = useState(false);
-    const [max, setMaxValue] = useState(4);
+    const [max, setMaxValue] = useState(DEFAULT_MAX);
     const [guestValue, setGuesValue] = useState<{ room: number; adult: number; children: number }>({
         room: 0,
         adult: 0,
@@ -23,19 +23,16 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
     });
 
     useEffect(() => {
-        setMaxValue(guestValue.room * 4);
+        setMaxValue(guestValue.room * DEFAULT_MAX);
     }, [guestValue.room]);
 
     useEffect(() => {
         if (guestValue.adult === 0) setGuesValue({ ...guestValue, children: 0 });
     }, [guestValue.adult]);
 
-    const handleFinish = () => {
-        onClick && onClick(guestValue);
-    };
-
     useEffect(() => {
-        handleFinish();
+        onClick && onClick(guestValue);
+        console.log(123, 888);
     }, [guestValue]);
 
     useEffect(() => {
@@ -59,7 +56,6 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         } else if (mode === Mode.room) {
             setGuesValue({ ...guestValue, room: guestValue.room + 1 });
         }
-        handleFinish();
     };
 
     const handleDescrease = (mode: string) => {
@@ -70,7 +66,6 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
         } else if (mode === Mode.room) {
             setGuesValue({ ...guestValue, room: guestValue.room - 1, adult: 0 });
         }
-        handleFinish();
     };
 
     const content = (
@@ -123,7 +118,7 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
                         alt=""
                         width={0}
                         height={0}
-                        src={require('/public/images/icons/icon-user.svg')}
+                        src={require('@/assets/icons/icon-user.svg')}
                     />
                     <span>{guestValue.room} Rooms,</span>
                     <span>{guestValue.adult + guestValue.children} Guests</span>

@@ -9,39 +9,49 @@ import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 const SearchMenu = () => {
-    const [fixed, setFixed] = useState(false);
+  const [fixed, setFixed] = useState(false);
 
-    const router = useRouter();
+  const router = useRouter();
 
-    useEffect(() => {
-        window.addEventListener('scroll', () =>
-            window.scrollY > 400 ? setFixed(true) : setFixed(false)
-        );
-    }, []);
-
-    const cb = (value: any) => {
-        console.log(value);
-    };
-    return (
-        <div
-            className={clsx(
-                `flex flex-row gap-2 justify-center `,
-                (fixed || router.asPath !== '/') && 'fixed bg-Main'
-            )}
-        >
-            <Locations onClick={cb} />
-            <DatePickerSelect onClick={cb} />
-            <SelectGuestDropdown />
-            <Button
-                htmlType="submit"
-                onClick={cb}
-                className="rounded-[32px] h-12 w-[146px] bg-[#20272c] text-[white]"
-            >
-                Search
-            </Button>
-            {/* <SearchButton onClick={cb} /> */}
-        </div>
+  useEffect(() => {
+    window.addEventListener('scroll', () =>
+      window.scrollY > 400 ? setFixed(true) : setFixed(false)
     );
+  }, []);
+
+  const getLocationValue = (locationValue: any) => {
+    console.log(locationValue);
+  };
+  const getDatePickedValue = (DatePickedValue: any) => {
+    console.log(DatePickedValue);
+  };
+  const getSelectGuestValue = (value: any) => {
+    console.log(value);
+  };
+
+  return (
+    <div
+      className={clsx(
+        `flex flex-row gap-2 justify-center `,
+        (fixed || router.asPath !== '/') && 'fixed bg-Main'
+      )}
+    >
+      <Locations onClick={getLocationValue} />
+      <DatePickerSelect onClick={getDatePickedValue} />
+      <SelectGuestDropdown onClick={getSelectGuestValue} />
+      <Button
+        htmlType="submit"
+        onClick={() => {
+          getLocationValue;
+          getDatePickedValue;
+        }}
+        className="rounded-[32px] h-12 w-[146px] bg-[#20272c] text-[white]"
+      >
+        Search
+      </Button>
+      {/* <SearchButton onClick={cb} /> */}
+    </div>
+  );
 };
 
 export default SearchMenu;

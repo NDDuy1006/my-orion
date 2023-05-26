@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Popover } from 'antd';
-import GuestTypes from '../GuestTypes/GuestTypes';
+import GuestTypes from './GuestTypes/GuestTypes';
 import Image from 'next/image';
 import clsx from 'clsx';
 enum Mode {

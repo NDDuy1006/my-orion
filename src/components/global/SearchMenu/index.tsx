@@ -1,7 +1,7 @@
 import DatePickerSelect from '@/components/Booking/partials/DatePickerSelected/DatePickerSelect';
 import Locations from '@/components/Booking/partials/Locations/Locations';
 import SearchButton from '@/components/Booking/partials/SearchButton/SearchButton';
-import SelectGuestDropdown from '@/components/Booking/partials/SelectGuestDropdown/SelectGuestDropdown';
+import SelectGuestDropdown from '@/components/Booking/partials/SelectGuestDropdown';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Button } from 'antd';

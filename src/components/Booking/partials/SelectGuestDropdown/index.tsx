@@ -122,7 +122,7 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
                         alt=""
                         width={0}
                         height={0}
-                        src={require('/public/images/icons/icon-user.svg')}
+                        src={require('@/assets/icons/icon-user.svg')}
                     />
                     <span>{guestValue.room} Rooms,</span>
                     <span>{guestValue.adult + guestValue.children} Guests</span>

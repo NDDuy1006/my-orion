@@ -32,20 +32,10 @@ const Locations = ({ onClick }: LocationProps) => {
             className="mySelectIBE !w-[360px]"
             treeDefaultExpandAll
             switcherIcon={
-                <Image
-                    alt=""
-                    width={0}
-                    height={0}
-                    src={require('/public/images/icons/location.svg')}
-                />
+                <Image alt="" width={0} height={0} src={require('@/assets/icons/location.svg')} />
             }
             suffixIcon={
-                <Image
-                    alt=""
-                    width={0}
-                    height={0}
-                    src={require('/public/images/icons/location.svg')}
-                />
+                <Image alt="" width={0} height={0} src={require('@/assets/icons/location.svg')} />
             }
             showSearch
             placeholder="Where would you like to go?"

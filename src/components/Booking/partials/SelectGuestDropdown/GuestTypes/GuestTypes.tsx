@@ -28,7 +28,7 @@ const GuestTypes: React.FC<GuestTypesProps> = ({
                 <p className="text-Main text-[12px] font-light">{description}</p>
             </div>
             <div className="flex items-center justify-end">
-                <p className="flex items-center justify-center w-8 h-8 border border-[##B9C0C5] rounded">
+                <p className="flex items-center justify-center w-8 h-8 border border-[#B9C0C5] rounded">
                     {value}
                 </p>
                 <div className="ml-2 flex flex-col">
@@ -42,7 +42,7 @@ const GuestTypes: React.FC<GuestTypesProps> = ({
                                 alt=""
                                 width={0}
                                 height={0}
-                                src={require('../../../../../public/images/icons/icon_chevron-up.svg')}
+                                src={require('@/assets/icons/icon_chevron-up.svg')}
                             />
                         </div>
                     </button>
@@ -56,7 +56,7 @@ const GuestTypes: React.FC<GuestTypesProps> = ({
                                 alt=""
                                 width={0}
                                 height={0}
-                                src={require('../../../../../public/images/icons/icon_chevron-down.svg')}
+                                src={require('@/assets/icons/icon_chevron-down.svg')}
                             />
                         </div>
                     </button>

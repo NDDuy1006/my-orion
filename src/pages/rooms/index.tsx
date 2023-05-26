@@ -78,7 +78,7 @@ const RoomsPage: NextSheetWidthLayout = ({data}: any) => {
     return (
         <>
             <Wrapper>
-                <BookingStep data={stepData} activeStep={2} />
+                <BookingStep data={stepData} activeStep={2} className='mt-10' />
                 <div className="grid grid-cols-12 gap-16 mt-10">
                     <div className="col-span-4 pr-5">
                         <div>

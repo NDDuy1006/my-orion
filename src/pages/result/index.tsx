@@ -122,7 +122,6 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
 
             const scrollTop =
                 window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-
             if (scrollTop + windowHeight >= ducumentHeight - 0 && !isLoading ) {
                 await lazyLoadingItems();
             }

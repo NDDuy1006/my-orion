@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Popover } from 'antd';
 import GuestTypes from '../GuestTypes/GuestTypes';
 import Image from 'next/image';
@@ -8,71 +8,89 @@ enum Mode {
     children = 'children',
     room = 'room',
 }
-export interface SelectGuestProps {
-    onClick: (value: { rooms: number }) => void;
+
+interface SelectGuestDropdownProps {
+    onClick?: (value: any) => void;
 }
 
-const SelectGuestDropdown: React.FC = () => {
+const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
     const [show, setShow] = useState(false);
+    const [max, setMaxValue] = useState(4);
+    const [guestValue, setGuesValue] = useState<{ room: number; adult: number; children: number }>({
+        room: 0,
+        adult: 0,
+        children: 0,
+    });
+
+    useEffect(() => {
+        setMaxValue(guestValue.room * 4);
+    }, [guestValue.room]);
+
+    useEffect(() => {
+        if (guestValue.adult === 0) setGuesValue({ ...guestValue, children: 0 });
+    }, [guestValue.adult]);
+
+    const handleFinish = () => {
+        onClick && onClick(guestValue);
+    };
+
+    useEffect(() => {
+        handleFinish();
+    }, [guestValue]);
+
     useEffect(() => {
         const handleScroll = () => {
             setShow(false);
         };
         window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
-    const [roomValue, setRoomValue] = useState(0);
-    const [adultValue, setAdultValue] = useState(0);
-    const [childrenValue, setChildrenValue] = useState(0);
-    const [max, setMaxValue] = useState(4);
-
-    useEffect(() => {
-        setMaxValue(roomValue * 4);
-    }, [roomValue]);
 
     const handleIncrease = (mode: string) => {
-        if (mode === Mode.children && adultValue + childrenValue < max) {
-            setChildrenValue(childrenValue + 1);
-        } else if (mode === Mode.adult && adultValue < max) {
-            if (adultValue + childrenValue >= max) {
-                setChildrenValue(childrenValue - 1);
+        if (mode === Mode.children && guestValue.adult + guestValue.children < max) {
+            setGuesValue({ ...guestValue, children: guestValue.children + 1 });
+        } else if (mode === Mode.adult && guestValue.adult < max) {
+            if (guestValue.adult + guestValue.children >= max) {
+                setGuesValue({ ...guestValue, adult: guestValue.adult - 1 });
             }
-            setAdultValue(adultValue + 1);
+            setGuesValue({ ...guestValue, adult: guestValue.adult + 1 });
         } else if (mode === Mode.room) {
-            setRoomValue(roomValue + 1);
+            setGuesValue({ ...guestValue, room: guestValue.room + 1 });
         }
+        handleFinish();
     };
 
     const handleDescrease = (mode: string) => {
         if (mode === Mode.children) {
-            setChildrenValue(childrenValue - 1);
+            setGuesValue({ ...guestValue, children: guestValue.children - 1 });
         } else if (mode === Mode.adult) {
-            setAdultValue(adultValue - 1);
+            setGuesValue({ ...guestValue, adult: guestValue.adult - 1 });
         } else if (mode === Mode.room) {
-            setRoomValue(roomValue - 1);
-            setAdultValue(0);
+            setGuesValue({ ...guestValue, room: guestValue.room - 1, adult: 0 });
         }
+        handleFinish();
     };
-
-    useEffect(() => {
-        if (adultValue === 0) setChildrenValue(0);
-    }, [adultValue]);
 
     const content = (
         <div className="guestType w-[186px]">
             <GuestTypes
                 guestTitle={'Rooms'}
-                value={roomValue}
-                disabledDown={roomValue <= 0}
+                value={guestValue.room}
+                disabledDown={guestValue.room <= 0}
                 mode={''}
-                handleIncrease={() => handleIncrease(Mode.room)}
+                handleIncrease={() => {
+                    handleIncrease(Mode.room);
+                }}
                 handleDescrease={() => handleDescrease(Mode.room)}
             />
             <GuestTypes
                 guestTitle={'Adults'}
                 description={'Ages 18 or above'}
-                value={adultValue}
-                disabledUp={adultValue === max}
-                disabledDown={adultValue <= 0}
+                value={guestValue.adult}
+                disabledUp={guestValue.adult === max}
+                disabledDown={guestValue.adult <= 0}
                 mode={''}
                 handleIncrease={() => handleIncrease(Mode.adult)}
                 handleDescrease={() => handleDescrease(Mode.adult)}
@@ -80,16 +98,17 @@ const SelectGuestDropdown: React.FC = () => {
             <GuestTypes
                 guestTitle={'Children'}
                 description={'Ages 0 - 17'}
-                value={childrenValue}
-                disabledUp={adultValue + childrenValue === max || adultValue === 0}
-                disabledDown={childrenValue <= 0}
+                value={guestValue.children}
+                disabledUp={
+                    guestValue.adult + guestValue.children === max || guestValue.adult === 0
+                }
+                disabledDown={guestValue.children <= 0}
                 mode={''}
                 handleIncrease={() => handleIncrease(Mode.children)}
                 handleDescrease={() => handleDescrease(Mode.children)}
             />
         </div>
     );
-
     return (
         <Popover
             className={clsx('rounded-[32px] h-12 w-[210px]')}
@@ -105,8 +124,8 @@ const SelectGuestDropdown: React.FC = () => {
                         height={0}
                         src={require('/public/images/icons/icon-user.svg')}
                     />
-                    <span>{roomValue} Rooms,</span>
-                    <span>{adultValue + childrenValue} Guests</span>
+                    <span>{guestValue.room} Rooms,</span>
+                    <span>{guestValue.adult + guestValue.children} Guests</span>
                 </p>
             </Button>
         </Popover>

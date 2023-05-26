@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
+import ScrollToTop from '@/components/global/ScrollTop';
 const Hotels = dynamic(() => import('@/components/ResultItem/partials/HotelItem'), {
     loading: () => <LoadingItem />,
 });
@@ -86,27 +87,26 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
         const perPage = 10;
         const totalPage = Math.ceil(data.total / perPage);
         try {
-            if(page > 1 && page <= totalPage && !isLoading  ) {
-                setIsLoading(true)
+            if (page > 1 && page <= totalPage && !isLoading) {
+                setIsLoading(true);
                 const res = await axiosClient.get('/hotels', {
                     params: {
                         page: page,
                         perPage: perPage,
-                    }
+                    },
                 });
-               setItems((preview) => [...preview, ...res.data]);
-               setPage(page + 1);
+                setItems((preview) => [...preview, ...res.data]);
+                setPage(page + 1);
             } else {
                 setPage(page + 1);
                 return;
             }
-            setIsLoading(false)
+            setIsLoading(false);
         } catch (err) {
-            setIsLoading(false)
-            console.error(err)
+            setIsLoading(false);
+            console.error(err);
         }
     };
-
 
     useEffect(() => {
         const handleScroll = async () => {
@@ -123,7 +123,7 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
             const scrollTop =
                 window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 
-            if (scrollTop + windowHeight >= ducumentHeight - 0 && !isLoading ) {
+            if (scrollTop + windowHeight >= ducumentHeight - 0 && !isLoading) {
                 await lazyLoadingItems();
             }
         };
@@ -135,7 +135,8 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
 
     return (
         <Wrapper>
-            <BookingStep activeStep={1} data={stepData} className='mt-10' />
+            <BookingStep activeStep={1} data={stepData} className="mt-10" />
+            <ScrollToTop />
             <div className="grid grid-cols-12 gap-16 mt-10">
                 <div className="col-span-4 pr-5">
                     <div>
@@ -160,7 +161,6 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
                     {items?.map((ele: any, index: any) => {
                         return <Hotels key={index} data={ele} />;
                     })}
-
                 </div>
             </div>
         </Wrapper>

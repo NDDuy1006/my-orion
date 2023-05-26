@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Popover } from 'antd';
-import GuestTypes from './GuestTypes/GuestTypes';
 import Image from 'next/image';
 import clsx from 'clsx';
+import GuestTypes from './GuestTypes/GuestTypes';
 enum Mode {
     adult = 'adult',
     children = 'children',
@@ -109,6 +109,7 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
             />
         </div>
     );
+
     return (
         <Popover
             className={clsx('rounded-[32px] h-12 w-[210px]')}
@@ -122,7 +123,7 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
                         alt=""
                         width={0}
                         height={0}
-                        src={require('@/assets/icons/icon-user.svg')}
+                        src={require('/public/images/icons/icon-user.svg')}
                     />
                     <span>{guestValue.room} Rooms,</span>
                     <span>{guestValue.adult + guestValue.children} Guests</span>

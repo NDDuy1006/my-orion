@@ -3,28 +3,29 @@ import styles from './Button.module.scss';
 import ButtonProps from './@types';
 import clsx from 'clsx';
 
-
 export enum ButtonConst {
-  PRIMARY = 'primary',
-  ROUNDED = 'rounded'
+    PRIMARY = 'primary',
+    ROUNDED = 'rounded',
+    OUTLINEWHITE = 'outlinewhite',
 }
 
 export const BtnConstClassName: { [name in ButtonConst]: string } = {
-  [ButtonConst.PRIMARY]: 'btnPrimary',
-  [ButtonConst.ROUNDED]: 'btnRounded',
-}
-
+    [ButtonConst.PRIMARY]: 'btnPrimary',
+    [ButtonConst.ROUNDED]: 'btnRounded',
+    [ButtonConst.OUTLINEWHITE]: 'btnOutlineWhite',
+};
 
 const ButtonShare = ({ content, style, className, onClick }: ButtonProps) => {
-  return (
-    <>
-      <button
-        onClick={onClick}
-        className={clsx(style || BtnConstClassName.primary, 'btnShare', className)} >
-        {content}
-      </button>
-    </>
-  )
-}
+    return (
+        <>
+            <button
+                onClick={onClick}
+                className={clsx(style || BtnConstClassName.primary, 'btnShare', className)}
+            >
+                {content}
+            </button>
+        </>
+    );
+};
 
-export default ButtonShare
+export default ButtonShare;

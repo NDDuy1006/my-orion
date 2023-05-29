@@ -29,7 +29,7 @@ const Locations = ({ onClick }: LocationProps) => {
 
     return (
         <TreeSelect
-            open={true}
+            // open={true}
             className="mySelectIBE !w-[360px]"
             treeDefaultExpandAll
             switcherIcon={

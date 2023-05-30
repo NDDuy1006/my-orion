@@ -1,0 +1,115 @@
+.room-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: white;
+  border-radius: .5rem;
+  gap: 10px;
+
+  .room-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .room-media {
+    // flex-grow: 1;
+  }
+
+  .room-overview {
+    flex-grow: 1;
+  }
+
+  .room-content {
+    max-height: 0;
+    transition: max-height .3s ease;
+    overflow: hidden;
+
+    &.open {
+      max-height: 100vh;
+    }
+  }
+
+  .detail-btn {
+    outline: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+
+    transition: outline .3s ease, background-color .3s ease;
+
+    &.open {
+      background: #EFEFEF!important;
+      outline: none!important;
+    }
+  }
+}
+
+.image-box-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .image-overview {
+
+  }
+
+  .image-list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    overflow-x: hidden;
+
+    position: relative;
+
+    &__container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 20px;
+      position: absolute;
+      left: 0;
+      transition: left .3s ease;
+    }
+
+    &__chevron-left, &__chevron-right {
+      position: absolute;
+      height: 100%;
+      width: 20px;
+      background-color: rgba($color: #000000, $alpha: .3);
+      z-index: 9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &__chevron-left {
+      left: 0;
+      border-top-left-radius: .25rem;
+      border-bottom-left-radius: .25rem;
+    }
+
+    &__chevron-right {
+      right: 0;
+      border-top-right-radius: .25rem;
+      border-bottom-right-radius: .25rem;
+    }
+  }
+}
+
+.service-badge {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.price-badge {
+  background: #F3F3F3;
+  border-radius: 5px;
+}

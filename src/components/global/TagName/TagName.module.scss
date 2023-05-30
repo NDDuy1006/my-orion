@@ -13,13 +13,13 @@
 
 .tagNameDefault{
     background-color: $color-white;
-    border: 1px solid $color-MainBacground;
+    border: 1px solid $color-LightGrey;
 }
 
 .tagNamePrimary{
-    background: $tag-primary-bg;
-    border-color: $tag-primary-border;
-    color: $tag-primary;
+    background: $color-Blue;
+    border-color: $color-Blue;
+    color: $color-white;
 }
 
 .tagNameDark{

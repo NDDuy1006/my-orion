@@ -1,5 +1,5 @@
 export default interface TagNameProps {
-    content: string;
+    content: string  | React.ReactNode;
     className?: string;
     style?: string;
     cb?: () => void;

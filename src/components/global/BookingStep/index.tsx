@@ -2,7 +2,7 @@ import React from 'react';
 import BookingStepProps, { BookingStepData } from './@types';
 import clsx from 'clsx';
 import { Typography } from 'antd';
-const {Title, Text}  = Typography;
+const {Title}  = Typography;
 
 const BookingStep = ({ data, activeStep, className }: BookingStepProps) => {
     return (

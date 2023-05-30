@@ -23,6 +23,7 @@ module.exports = {
       White: '#ffffff',
       Black: '#000000',
       TransParent: '#00000000',
+      MidGrey: '#838383',
     },
 
     container: {

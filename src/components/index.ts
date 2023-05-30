@@ -10,3 +10,4 @@ export * from './global/PriceRange/index';
 export * from './global/FilterBox/index';
 export * from './global/BoxContent/index';
 export * from './global/ButtonShare';
+export * from './global/CardItem/index';

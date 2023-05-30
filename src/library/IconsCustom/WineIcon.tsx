@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import React from 'react';
 
-interface MoutainIconProps {
+interface WineIconProps {
     className?: string;
     height?: number;
     width?: number;
 }
 
-const MoutainIcon = ({ className, height, width }: MoutainIconProps) => {
+const WineIcon = ({ className, height, width }: WineIconProps) => {
     return (
         <span className={clsx(className, 'inline-flex items-center justify-center')}>
             <svg
@@ -84,4 +84,4 @@ const MoutainIcon = ({ className, height, width }: MoutainIconProps) => {
     );
 };
 
-export default MoutainIcon;
+export default WineIcon;

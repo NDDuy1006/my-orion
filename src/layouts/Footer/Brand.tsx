@@ -7,13 +7,11 @@ import styles from './Footer.module.scss';
 export default function Brand() {
   return (
     <Wrapper className={clsx(`pt-8 flex items-center justify-center`, styles.borderFooter)}>
-      <Link href={'/'} className="relative inline-block h-8 lg:h-11 w-[130px] lg:w-[160px]">
+      <Link href={'/'} className="relative">
         <Image
           src={require('@/assets/logos/FooterLogo.png')}
           alt={'logo'}
-          width={0}
-          height={0}
-          className="w-full"
+          className="w-44 h-10"
           unoptimized
         />
       </Link>

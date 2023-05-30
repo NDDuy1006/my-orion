@@ -10,6 +10,7 @@ import Recommended from '@/components/ResultItem/partials/Recommended';
 import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
 import FilterBox from '@/components/global/FilterBox';
+import { ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
 
 const Alert = dynamic(() => import('@/components/global/Alert'));
 const PriceRange = dynamic(() => import('@/components/global/PriceRange'));
@@ -41,9 +42,12 @@ const stepData = [
     },
 ];
 
-const filterBoxData = [{
-
-}]
+const landScape = [
+    {label: 'Snow & Mountain', value: 'snow-mountain', icon: <MoutainIcon />},
+    {label: 'Forest', value: 'Forest', icon: <ForestIcon />},
+    {label: 'Lakeside', value: 'Lakeside', icon: <LakeIcon />},
+    {label: 'Wine Valley', value: 'wine-valley', icon: <WineIcon />},
+]
 
 const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
     const [items, setItems] = useState<any[]>(data?.data);
@@ -112,7 +116,7 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
                     <div className="col-span-4 pr-5">
                         <div>
                             <PriceRange value={{min:1, max: 400}} />
-                            <FilterBox data={[]}  />
+                            <FilterBox data={landScape}  />
                             <Image
                                 loading="lazy"
                                 className="w-full h-full mt-4"

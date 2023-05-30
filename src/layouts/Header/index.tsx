@@ -9,7 +9,6 @@ import ButtonShare, { BtnConstClassName } from '@/components/global/ButtonShare'
 export interface HeaderProps {
     menu: {
         name: string;
-        submenu: boolean;
         url: string;
     }[];
     logo: string;
@@ -21,7 +20,7 @@ export default function Header({ menu, logo, btnText, url }: HeaderProps) {
     const [open, setOpen] = useState(true);
 
     useEffect(() => {
-        if (open) {
+        if (!open) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';

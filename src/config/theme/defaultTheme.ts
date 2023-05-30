@@ -8,15 +8,14 @@ const instance: ThemeConfig = {
     colorPrimary: 'rgba(170, 149, 117, 1)',
   },
   components: {
-    
     Layout: {
-      colorBgHeader: '#ffffff',
+      colorBgHeader: 'red',
       colorBgTrigger: '#cdcdcd',
     },
     DatePicker: {
       colorPrimary: 'rgba(170, 149, 117, 1)',
       colorPrimaryBg: 'rgba(170, 149, 117, .5)',
-    }
+    },
   },
 };
 

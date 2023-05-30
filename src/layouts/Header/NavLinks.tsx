@@ -8,8 +8,6 @@ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 
 export interface MenuProps {
     name: string;
-    submenu: boolean;
-    // sublinks: SublinkProps;
     url: string;
 }
 interface Props {
@@ -38,7 +36,6 @@ export default function NavLinks({ setOpen, menu }: Props) {
     return (
         <>
             {menu?.map((menu, index) => {
-                if (!menu.submenu) {
                     return (
                         <li key={index} className="h-full flex items-center ">
                             <Link
@@ -53,50 +50,6 @@ export default function NavLinks({ setOpen, menu }: Props) {
                             </Link>
                         </li>
                     );
-                }
-                return (
-                    <li
-                        key={index}
-                        className="h-full"
-                        onMouseEnter={() => handleHoverMenuItem(index)}
-                        onMouseLeave={handleLoseHoverMenuItem}
-                    >
-                        <div
-                            className="text-left lg:cursor-pointer group h-full"
-                            onMouseEnter={() => setHoverLink(menu.name)}
-                            onMouseLeave={() => setHoverLink('')}
-                        >
-                            <div
-                                className="relative h-full flex justify-between w-full items-center"
-                                onClick={() => {
-                                    heading !== menu.name ? setHeading(menu.name) : setHeading('');
-                                }}
-                            >
-                                <span className="text-lg pt-0.5 pl-1 lg:hidden inline">
-                                    {heading === menu.name ? (
-                                        <ChevronUpIcon
-                                            className="block h-4 w-4"
-                                            aria-hidden="true"
-                                        />
-                                    ) : (
-                                        <ChevronDownIcon
-                                            className="block h-4 w-4"
-                                            aria-hidden="true"
-                                        />
-                                    )}
-                                </span>
-                            </div>
-                        </div>
-
-                        {/* Mobile menus */}
-                        <div
-                            className={clsx(
-                                `flex flex-col gap-4 mb-4`,
-                                heading === menu.name ? 'lg:hidden' : 'hidden'
-                            )}
-                        ></div>
-                    </li>
-                );
             })}
         </>
     );

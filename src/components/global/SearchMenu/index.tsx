@@ -20,7 +20,7 @@ const SearchMenu = (props: any) => {
     }, []);
 
     const handleClick = (value: any) => {
-        console.log(value);
+        // console.log(value);
     };
     return (
         <div

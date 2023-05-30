@@ -37,8 +37,6 @@ const DatePickerSelect = ({ onClick }: DatePickerSelectProps) => {
         };
     }, []);
 
-    console.log(selectedRange);
-
     return (
         <RangePicker
             open={isFocused}

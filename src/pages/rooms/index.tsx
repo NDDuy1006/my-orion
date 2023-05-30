@@ -9,7 +9,16 @@ import Recommended from '@/components/ResultItem/partials/Recommended';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import ScrollToTop from '@/components/global/ScrollTop';
+import RoomCard from '@/components/Room/partials/RoomCard';
+import ImageBox from '@/components/Room/partials/ImageBox';
+import { Avatar, Typography, Rate } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import ServiceBadge from '@/components/Room/partials/ServiceBadge';
+import PriceBadge from '@/components/Room/partials/PriceBadge';
+import { AcademicCapIcon } from '@heroicons/react/24/solid';
 const Rooms = dynamic(() => import('@/components/ResultItem/partials/RoomItem'));
+
+const { Title, Paragraph, Text, Link } = Typography;
 
 const dataCheckBox = [
   {
@@ -80,8 +89,8 @@ const RoomsPage: NextSheetWidthLayout = ({ data }: any) => {
       <Wrapper>
         <ScrollToTop />
         <div className="grid grid-cols-12 gap-16 mt-10">
-          <div className="col-span-4 pr-5">
-            <div>
+          <div className="col-span-8 pr-5">
+            {/* <div>
               <Image
                 className="w-full h-full mt-4"
                 src={require('@/assets/banner-1.png')}
@@ -89,14 +98,56 @@ const RoomsPage: NextSheetWidthLayout = ({ data }: any) => {
                 width={0}
                 height={0}
               />
-            </div>
+            </div> */}
+            <RoomCard
+              media={<ImageBox />}
+              overview={
+                <div className="flex flex-col gap-8">
+                  <div className="flex flex-row justify-between">
+                    <p>hello</p>
+                  </div>
+                  <div className="flex flex-row gap-4 p-2">
+                    <Avatar size={60} icon={<UserOutlined />} />
+                    <div className="flex flex-col">
+                      <Text>John Wick</Text>
+                      <Text type="secondary">Ant Design (secondary)</Text>
+                      <Rate value={3} />
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <ServiceBadge className="flex flex-row justify-start gap-2">
+                      <AcademicCapIcon style={{ height: 24 }} />
+                      <Text>something text</Text>
+                    </ServiceBadge>
+                    <ServiceBadge className="flex flex-row justify-start gap-2">
+                      <AcademicCapIcon style={{ height: 24 }} />
+                      <Text>something text</Text>
+                    </ServiceBadge>
+                    <ServiceBadge className="flex flex-row justify-start gap-2">
+                      <AcademicCapIcon style={{ height: 24 }} />
+                      <Text>something text</Text>
+                    </ServiceBadge>
+                    <PriceBadge className="flex flex-row justify-between gap-2 items-center p-6">
+                      <div className="flex flex-row justify-start gap-2">
+                        <AcademicCapIcon style={{ height: 18 }} />
+                        <Text>something text</Text>
+                      </div>
+                      <Title className="mb-0" level={4}>
+                        380
+                      </Title>
+                    </PriceBadge>
+                  </div>
+                </div>
+              }
+              detail={'hello'}
+            />
           </div>
 
-          <div className="col-span-8">
-            <Recommended />
-            {data?.data?.map((ele: any, index: any) => {
+          <div className="col-span-4">
+            {/* <Recommended /> */}
+            {/* {data?.data?.map((ele: any, index: any) => {
               return <Rooms key={index} data={ele} />;
-            })}
+            })} */}
           </div>
         </div>
       </Wrapper>

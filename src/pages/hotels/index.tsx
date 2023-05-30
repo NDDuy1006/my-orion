@@ -9,10 +9,10 @@ import dynamic from 'next/dynamic';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
-import ScrollToTop from '@/components/global/ScrollTop';
 import FilterBox from '@/components/global/FilterBox';
-import { ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
-import ButtonShare, { BtnConstClassName } from '@/components/global/ButtonShare';
+import { CheckIcon, ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
+import TagName from '@/components/global/TagName';
+import { Col, Row } from 'antd';
 
 const Alert = dynamic(() => import('@/components/global/Alert'));
 const PriceRange = dynamic(() => import('@/components/global/PriceRange'));
@@ -44,12 +44,18 @@ const stepData = [
   },
 ];
 
-const filterBoxData = [{}];
 const landScape = [
   { label: 'Snow & Mountain', value: 'snow-mountain', icon: <MoutainIcon /> },
   { label: 'Forest', value: 'Forest', icon: <ForestIcon /> },
   { label: 'Lakeside', value: 'Lakeside', icon: <LakeIcon /> },
   { label: 'Wine Valley', value: 'wine-valley', icon: <WineIcon /> },
+];
+
+const specialOffers = [
+  { label: 'Free Breakfast', value: 'free-breakfast' },
+  { label: 'Flexible Rates', value: 'flexible-rates' },
+  { label: 'Pay at the hotel', value: 'pay-at-the-hotel' },
+  { label: 'Book Early — Save 20%', value: 'book-early—save' },
 ];
 
 const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
@@ -106,39 +112,42 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
     };
   }, [page, isLoading]);
 
-    return (
-        <section className="bg-LightGrey">
-            <BookingStep activeStep={1} data={stepData} className="mt-20" />
-            <Wrapper>
-                <Alert
-                    content={
-                        'There are no results for your search. Showing results of nearby offers instead.'
-                    }
-                />
-                <div className="grid grid-cols-12 gap-16 mt-10">
-                    <div className="col-span-4 pr-5">
-                        <div>
-                            <PriceRange value={{min:1, max: 400}} />
-                            <FilterBox title='Landscape' data={landScape}  />
-                            <ButtonShare size={'small'} className='p-40' style={BtnConstClassName.outline} content='test button' />
-                            {/* <FilterBox title='Landscape' data={landScape}  /> */}
-                            <Image
-                                loading="lazy"
-                                className="w-full h-full mt-4"
-                                src={require('@/assets/banner-1.png')}
-                                alt="banner-hotel"
-                                width={0}
-                                height={0}
-                            />
-                        </div>
-                    </div>
+  return (
+    <section className="bg-LightGrey">
+      <BookingStep activeStep={1} data={stepData} className="mt-20" />
+      <Wrapper>
+        <Alert
+          content={
+            'There are no results for your search. Showing results of nearby offers instead.'
+          }
+        />
+        <div className="grid grid-cols-12 gap-16 mt-10">
+          <div className="col-span-4 pr-5">
+            <div>
+              <PriceRange value={{ min: 1, max: 400 }} />
+              <FilterBox title="Landscape" data={landScape} />
+              <FilterBox title="Special Offers" data={specialOffers} />
+              <Image
+                loading="lazy"
+                className="w-full h-full mt-4"
+                src={require('@/assets/banner-1.png')}
+                alt="banner-hotel"
+                width={0}
+                height={0}
+              />
+            </div>
+          </div>
 
           <div className="col-span-8">
-            <Recommended />
-
-            {items?.map((ele: any, index: any) => {
-              return <Hotels key={index} data={ele} />;
-            })}
+            <div className='grid grid-cols-8 gap-12'>
+              {items?.map((ele: any, index: any) => {
+                return (
+                  <div className='col-span-4' key={index}>
+                    <Hotels key={index} data={ele} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </Wrapper>

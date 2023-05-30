@@ -6,3 +6,5 @@ export { default as ChervRightIcon } from './IconsCustom/ChervRightIcon';
 export { default as TwitterIcon } from './IconsCustom/TwitterIcon';
 export { default as InstaIcon } from './IconsCustom/InstaIcon';
 export { default as FacebookIcon } from './IconsCustom/FacebookIcon';
+export { default as CheckIcon } from './IconsCustom/CheckIcon';
+export {default as SunSineIcon} from './IconsCustom/SunSineIcon';

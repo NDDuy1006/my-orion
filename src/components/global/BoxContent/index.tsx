@@ -8,7 +8,7 @@ const BoxContent = ({onClick, className, label, icon, labelStyle, width, height 
             onClick={onClick}
             style={{width: width, height: height}}
             className={clsx(
-              'flex  items-center justify-between h-[40px] border border-solid border-LightGrey mt-1 first-of-type:mt-0 px-3 rounded-md',
+              'flex  items-center justify-between h-[40px] border border-solid border-LightGrey mt-1 first-of-type:mt-0 px-3 rounded-md cursor-pointer',
               className
             )}
         >

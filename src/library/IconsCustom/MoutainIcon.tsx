@@ -3,19 +3,20 @@ import React from 'react';
 
 interface MoutainIconProps {
     className?: string;
-    color?: string | React.CSSProperties
+    height?: number;
+    width?: number;
 }
 
-const MoutainIcon = ({className, color}: any) => {
-
+const MoutainIcon = ({className, height, width}: MoutainIconProps) => {
     return (
-        <span className={clsx(className)}>
+        <span className={clsx(className, 'inline-flex items-center justify-center')}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="20"
+                width={ width ||"22"}
+                height={height || "20"}
                 viewBox="0 0 22 20"
                 fill='currentColor'
+                
             >
                 <path
                     d="M19.523 0.0292969H18.5998C17.5449 0.0292969 16.6529 0.690918 16.3781 1.59149H15.216C14.29 1.59149 13.5366 2.29218 13.5366 3.15353C13.5366 4.01489 14.29 4.71573 15.216 4.71573H19.523C20.7962 4.71573 21.832 3.75214 21.832 2.56775V2.17728C21.832 0.992889 20.7962 0.0292969 19.523 0.0292969Z"

@@ -11,6 +11,7 @@ import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
 import ScrollToTop from '@/components/global/ScrollTop';
 import FilterBox from '@/components/global/FilterBox';
+import { ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
 
 const Alert = dynamic(() => import('@/components/global/Alert'));
 const PriceRange = dynamic(() => import('@/components/global/PriceRange'));
@@ -43,6 +44,12 @@ const stepData = [
 ];
 
 const filterBoxData = [{}];
+const landScape = [
+  { label: 'Snow & Mountain', value: 'snow-mountain', icon: <MoutainIcon /> },
+  { label: 'Forest', value: 'Forest', icon: <ForestIcon /> },
+  { label: 'Lakeside', value: 'Lakeside', icon: <LakeIcon /> },
+  { label: 'Wine Valley', value: 'wine-valley', icon: <WineIcon /> },
+];
 
 const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
   const [items, setItems] = useState<any[]>(data?.data);
@@ -112,6 +119,42 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
             <div>
               <PriceRange value={{ min: 1, max: 400 }} />
               <FilterBox data={[]} />
+              <Image
+                loading="lazy"
+                className="w-full h-full mt-4"
+                src={require('@/assets/banner-1.png')}
+                alt="banner-hotel"
+                width={0}
+                height={0}
+              />
+            </div>
+          </div>
+
+          <div className="col-span-8">
+            <Recommended />
+
+            {items?.map((ele: any, index: any) => {
+              return <Hotels key={index} data={ele} />;
+            })}
+          </div>
+        </div>
+      </Wrapper>
+    </section>
+  );
+  return (
+    <section className="bg-LightGrey">
+      <BookingStep activeStep={1} data={stepData} className="mt-20" />
+      <Wrapper>
+        <Alert
+          content={
+            'There are no results for your search. Showing results of nearby offers instead.'
+          }
+        />
+        <div className="grid grid-cols-12 gap-16 mt-10">
+          <div className="col-span-4 pr-5">
+            <div>
+              <PriceRange value={{ min: 1, max: 400 }} />
+              <FilterBox data={landScape} />
               <Image
                 loading="lazy"
                 className="w-full h-full mt-4"

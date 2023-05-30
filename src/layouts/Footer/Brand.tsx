@@ -1,9 +1,12 @@
+import { Wrapper } from '@/components';
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from './Footer.module.scss';
 
 export default function Brand() {
   return (
-    <div className="py-6 flex items-center justify-center border-t border-[#0000001A]">
+    <Wrapper className={clsx(`pt-8 flex items-center justify-center`, styles.borderFooter)}>
       <Link href={'/'} className="relative inline-block h-8 lg:h-11 w-[130px] lg:w-[160px]">
         <Image
           src={require('@/assets/logos/FooterLogo.png')}
@@ -14,6 +17,6 @@ export default function Brand() {
           unoptimized
         />
       </Link>
-    </div>
+    </Wrapper>
   );
 }

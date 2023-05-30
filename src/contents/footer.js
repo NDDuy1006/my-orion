@@ -4,13 +4,15 @@ const footerJson = {
       title: 'Hotels & Resorts',
       links: [
         { link: 'Weingut Rommert', href: '' },
-        { link: 'Ettershaus', href: '' },
+        { link: 'Ettershaus', href: '#' },
         { link: 'Huttmann', href: '' },
         { link: 'Zum Stern', href: '' },
         { link: 'Bayerischer Hof', href: '' },
         { link: 'Feldberg Am See', href: '' },
+      ],
+      links2: [
         { link: 'Weingut Rommert', href: '' },
-        { link: 'Ettershaus', href: '' },
+        { link: 'Ettershaus', href: '/' },
         { link: 'Huttmann', href: '' },
         { link: 'Zum Stern', href: '' },
         { link: 'Bayerischer Hof', href: '' },
@@ -23,7 +25,7 @@ const footerJson = {
       links: [
         { link: 'About', href: '' },
         { link: 'Vision', href: '' },
-        { link: 'Jobs / Careers', href: '' },
+        { link: 'Jobs/Careers', href: '' },
         { link: 'Values', href: '' },
         { link: 'Celebrations', href: '' },
         { link: 'Conferences', href: '' },
@@ -42,11 +44,7 @@ const footerJson = {
   ],
   social: {
     title: 'Stay Connected',
-    icons: [
-      { image: '@/assets/icons/facebook.svg', href: '' },
-      { image: '@/assets/icons/twitter.svg', href: '' },
-      { image: '@/assets/icons/ig.svg', href: '' },
-    ],
+    icons: { facebook: '', twitter: '', insta: '' },
   },
   icon: '@/assets/icons/footerIcon.svg',
 };

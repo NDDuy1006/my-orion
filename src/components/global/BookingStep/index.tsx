@@ -14,7 +14,7 @@ const BookingStep = ({ data, activeStep, className }: BookingStepProps) => {
                             <div key={index} className="flex justify-center gap-4 items-center">
                                 <Title level={5}
                                     className={clsx(
-                                        'w-[25px] h-[25px] !text-[16px] !font-[500] text-Black bg-LightGrey flex items-center justify-center rounded-full',
+                                        ' w-[25px] h-[25px] !text-[16px] !font-[500] text-Black bg-LightGrey flex items-center justify-center rounded-full',
                                         {
                                             '!bg-Blue !text-White': activeStep === ele.step,
                                         }

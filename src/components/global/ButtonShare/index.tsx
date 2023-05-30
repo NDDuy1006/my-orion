@@ -19,7 +19,6 @@ enum ButtonSize {
   SMALL = 'small',
 }
 
-
 const ButtonShare = ({ content, style, className, onClick, size }: ButtonProps) => {
   return (
     <>

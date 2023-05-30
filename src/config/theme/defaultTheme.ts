@@ -15,7 +15,6 @@ const instance: ThemeConfig = {
     fontFamily: poppins.style.fontFamily,
   },
   components: {
-    
     Layout: {
       colorBgHeader: '#fff',
       colorBgTrigger: '#D9D9D9',
@@ -25,9 +24,8 @@ const instance: ThemeConfig = {
       colorPrimaryBg: 'rgba(170, 149, 117, .5)',
     },
     Input: {
-      colorBgLayout: '#282727ed'
-    }
-
+      colorBgLayout: '#282727ed',
+    },
   },
 };
 

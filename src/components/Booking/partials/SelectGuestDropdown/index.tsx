@@ -32,7 +32,6 @@ const SelectGuestDropdown = ({ onClick }: SelectGuestDropdownProps) => {
 
     useEffect(() => {
         onClick && onClick(guestValue);
-        console.log(123, 888);
     }, [guestValue]);
 
     useEffect(() => {

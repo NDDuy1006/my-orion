@@ -3,7 +3,6 @@ import styles from './Button.module.scss';
 import ButtonProps from './@types';
 import clsx from 'clsx';
 
-
 export enum ButtonConst {
   DARK = 'dark',
   OUTLINE = 'outline',
@@ -39,4 +38,4 @@ const ButtonShare = ({ content, style, className, onClick, size }: ButtonProps) 
   )
 }
 
-export default ButtonShare
+export default ButtonShare;

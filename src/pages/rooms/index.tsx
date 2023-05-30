@@ -2,13 +2,13 @@ import { NextSheetWidthLayout } from '@/types/layoutType';
 import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Wrapper } from '@/components';
-import CheckBox from '@/components/global/CheckBox';
 import Image from 'next/image';
 import BookingLayout from '@/layouts/BookingLayout';
 import BookingStep from '@/components/global/BookingStep';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
+import ScrollToTop from '@/components/global/ScrollTop';
 const Rooms = dynamic(() => import('@/components/ResultItem/partials/RoomItem'));
 
 const dataCheckBox = [
@@ -50,7 +50,6 @@ const dataCheckBox = [
     },
 ];
 
-
 const stepData = [
     {
         step: 1,
@@ -74,18 +73,16 @@ const stepData = [
     },
 ];
 
-const RoomsPage: NextSheetWidthLayout = ({data}: any) => {
+const RoomsPage: NextSheetWidthLayout = ({ data }: any) => {
     return (
         <>
             <Wrapper>
-                <BookingStep data={stepData} activeStep={2} className='mt-10' />
+                <BookingStep data={stepData} activeStep={2} className="mt-10" />
+                <ScrollToTop />
                 <div className="grid grid-cols-12 gap-16 mt-10">
                     <div className="col-span-4 pr-5">
                         <div>
-                            {dataCheckBox.map((ele: any, index: number) => {
-                                return <CheckBox key={index} data={ele} />;
-                            })}
-
+                           
                             <Image
                                 className="w-full h-full mt-4"
                                 src={require('@/assets/banner-1.png')}
@@ -123,10 +120,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 
         return {
             props: {
-                data :res.data
+                data: res.data,
             },
             revalidate: 60,
-        } 
+        };
     } catch (err) {
         return {
             props: {

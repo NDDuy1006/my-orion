@@ -6,3 +6,6 @@ export { default as ChervRightIcon } from './IconsCustom/ChervRightIcon';
 export { default as TwitterIcon } from './IconsCustom/TwitterIcon';
 export { default as InstaIcon } from './IconsCustom/InstaIcon';
 export { default as FacebookIcon } from './IconsCustom/FacebookIcon';
+export { default as AlpsIcon } from './IconsCustom/AlpsIcon';
+export { default as RatingStarIcon } from './IconsCustom/RatingStarIcon';
+export { default as IQCheckIcon } from './IconsCustom/IqCheckIcon';

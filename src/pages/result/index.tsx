@@ -116,7 +116,8 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
                     <div className="col-span-4 pr-5">
                         <div>
                             <PriceRange value={{min:1, max: 400}} />
-                            <FilterBox data={landScape}  />
+                            <FilterBox title='Landscape' data={landScape}  />
+                            <FilterBox title='Landscape' data={landScape}  />
                             <Image
                                 loading="lazy"
                                 className="w-full h-full mt-4"

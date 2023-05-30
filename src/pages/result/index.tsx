@@ -1,71 +1,35 @@
 import { NextSheetWidthLayout } from '@/types/layoutType';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
-import { Wrapper } from '@/components';
-import CheckBox from '@/components/global/CheckBox';
+import {  Wrapper } from '@/components';
 import BookingLayout from '@/layouts/BookingLayout';
-import BookingStep from '@/components/global/BookingStep';
 import axios from 'axios';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import Recommended from '@/components/ResultItem/partials/Recommended';
 import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
+import FilterBox from '@/components/global/FilterBox';
+
+const Alert = dynamic(() => import('@/components/global/Alert'));
+const PriceRange = dynamic(() => import('@/components/global/PriceRange'));
+const BookingStep = dynamic(() => import('@/components/global/BookingStep'));
 const Hotels = dynamic(() => import('@/components/ResultItem/partials/HotelItem'), {
     loading: () => <LoadingItem />,
 });
 
-const dataCheckBox = [
-    {
-        title: 'Amenities',
-        content: [
-            { label: '24hr front desk', value: 'title1' },
-            { label: 'Adults only', value: 'title2' },
-            { label: 'Aire-conditioned', value: 'title3' },
-            { label: 'Beachfront', value: 'title4' },
-            { label: 'Business center', value: 'title5' },
-            { label: 'label title 6', value: 'title6' },
-            { label: 'label title 7', value: 'title7' },
-            { label: 'label title 8', value: 'title8' },
-        ],
-    },
-    {
-        title: 'Bed type',
-        content: [
-            { label: 'Queen', value: 'title1' },
-            { label: 'Double', value: 'title2' },
-            { label: 'King', value: 'title3' },
-            { label: 'Single/Twin', value: 'title4' },
-            { label: 'Bunk bed', value: 'title5' },
-            { label: 'label title 6', value: 'title6' },
-            { label: 'label title 7', value: 'title7' },
-            { label: 'label title 8', value: 'title8' },
-            { label: 'label title 9', value: 'title9' },
-            { label: 'label title 10', value: 'title10' },
-        ],
-    },
-    {
-        title: 'Style',
-        content: [],
-    },
-    {
-        title: 'Other',
-        content: [],
-    },
-];
-
 const stepData = [
     {
         step: 1,
-        stepName: 'Room and rate',
+        stepName: 'Search',
     },
     {
         step: 2,
-        stepName: 'Extra Services',
+        stepName: 'Choose your room',
     },
     {
         step: 3,
-        stepName: 'Personal Information',
+        stepName: 'Addons',
     },
     {
         step: 4,
@@ -73,9 +37,13 @@ const stepData = [
     },
     {
         step: 5,
-        stepName: 'Comfirmation',
+        stepName: 'Confirmation',
     },
 ];
+
+const filterBoxData = [{
+
+}]
 
 const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
     const [items, setItems] = useState<any[]>(data?.data);
@@ -86,27 +54,26 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
         const perPage = 10;
         const totalPage = Math.ceil(data.total / perPage);
         try {
-            if(page > 1 && page <= totalPage && !isLoading  ) {
-                setIsLoading(true)
+            if (page > 1 && page <= totalPage && !isLoading) {
+                setIsLoading(true);
                 const res = await axiosClient.get('/hotels', {
                     params: {
                         page: page,
                         perPage: perPage,
-                    }
+                    },
                 });
-               setItems((preview) => [...preview, ...res.data]);
-               setPage(page + 1);
+                setItems((preview) => [...preview, ...res.data]);
+                setPage(page + 1);
             } else {
                 setPage(page + 1);
                 return;
             }
-            setIsLoading(false)
+            setIsLoading(false);
         } catch (err) {
-            setIsLoading(false)
-            console.error(err)
+            setIsLoading(false);
+            console.error(err);
         }
     };
-
 
     useEffect(() => {
         const handleScroll = async () => {
@@ -122,7 +89,7 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
 
             const scrollTop =
                 window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            if (scrollTop + windowHeight >= ducumentHeight - 0 && !isLoading ) {
+            if (scrollTop + windowHeight >= ducumentHeight - 0 && !isLoading) {
                 await lazyLoadingItems();
             }
         };
@@ -133,36 +100,40 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
     }, [page, isLoading]);
 
     return (
-        <Wrapper>
-            <BookingStep activeStep={1} data={stepData} className='mt-10' />
-            <div className="grid grid-cols-12 gap-16 mt-10">
-                <div className="col-span-4 pr-5">
-                    <div>
-                        {dataCheckBox?.map((ele: any, index: number) => {
-                            return <CheckBox key={index} data={ele} />;
-                        })}
+        <section className="bg-LightGrey">
+            <BookingStep activeStep={1} data={stepData} className="mt-20" />
+            <Wrapper>
+                <Alert
+                    content={
+                        'There are no results for your search. Showing results of nearby offers instead.'
+                    }
+                />
+                <div className="grid grid-cols-12 gap-16 mt-10">
+                    <div className="col-span-4 pr-5">
+                        <div>
+                            <PriceRange value={{min:1, max: 400}} />
+                            <FilterBox data={[]}  />
+                            <Image
+                                loading="lazy"
+                                className="w-full h-full mt-4"
+                                src={require('@/assets/banner-1.png')}
+                                alt="banner-hotel"
+                                width={0}
+                                height={0}
+                            />
+                        </div>
+                    </div>
 
-                        <Image
-                            loading="lazy"
-                            className="w-full h-full mt-4"
-                            src={require('@/assets/banner-1.png')}
-                            alt="banner-hotel"
-                            width={0}
-                            height={0}
-                        />
+                    <div className="col-span-8">
+                        <Recommended />
+
+                        {items?.map((ele: any, index: any) => {
+                            return <Hotels key={index} data={ele} />;
+                        })}
                     </div>
                 </div>
-
-                <div className="col-span-8">
-                    <Recommended />
-
-                    {items?.map((ele: any, index: any) => {
-                        return <Hotels key={index} data={ele} />;
-                    })}
-
-                </div>
-            </div>
-        </Wrapper>
+            </Wrapper>
+        </section>
     );
 };
 

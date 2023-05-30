@@ -1,22 +1,49 @@
-import React, { Fragment } from 'react'
-import styles from './FilterBox.module.scss'
-import FilterBoxProps from './@types'
-import { MoutainIcon } from '@/library'
-import clsx from 'clsx'
-import {defaultTheme} from '@/config'
+import React, { useCallback, Key, useState } from 'react';
+import FilterBoxProps, { FilterBoxData } from './@types';
+import clsx from 'clsx';
+import { defaultTheme } from '@/config';
 
+const FilterBox = ({ data, className, onClick }: FilterBoxProps) => {
+    const [selectFill, setSelectFill] = useState<string[]>([]);
 
+    const handleSelected = (value: string) => {
+        const filterValue = selectFill.filter((ele: string) => ele === value);
+        if (!filterValue) {
+            setSelectFill((preview) => [...preview, value]);
+            onClick && onClick(selectFill);
+        } else {
+          const filterValue = selectFill.filter((ele: string) => ele === value);
+            setSelectFill((preview) => [...preview, value]);
+            onClick && onClick(selectFill);
+        }
+    };
 
+    return (
+        <section
+            style={{ background: defaultTheme.components?.Layout?.colorBgHeader }}
+            className={clsx('my-2 p-6 rounded-[10px]', className)}
+        >
+            {data.map((ele: FilterBoxData, index: Key) => {
+                return (
+                    <div
+                        key={index}
+                        onClick={() => handleSelected(ele?.value)}
+                        className={clsx(
+                            'mt-2 first-of-type:mt-0 flex justify-between items-center px-3 h-10 border border-solid border-LightGrey rounded-md hover:border-Blue transition-all duration-300',
+                            {
+                                '!border-Blue outline-1 outline  outline-Sea': selectFill.find(
+                                    (e: any) => e === ele.value
+                                ),
+                            }
+                        )}
+                    >
+                        <p>{ele.label}</p>
+                        {ele?.icon}
+                    </div>
+                );
+            })}
+        </section>
+    );
+};
 
-const FilterBox = ({data, className}: FilterBoxProps) => {
-  return (
-    <section style={{background: defaultTheme.components?.Layout?.colorBgHeader}} className={clsx('my-2 p-6',className)}>
-      <div className='flex justify-between items-center p-3 border border-solid border-LightGrey'>
-        <p>Snow & Mountain</p>
-        <MoutainIcon />
-      </div>
-    </section>
-  )
-}
-
-export default FilterBox
+export default FilterBox;

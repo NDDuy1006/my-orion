@@ -11,6 +11,7 @@ import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
 import ScrollToTop from '@/components/global/ScrollTop';
 import FilterBox from '@/components/global/FilterBox';
+import { ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
 
 const Alert = dynamic(() => import('@/components/global/Alert'));
 const PriceRange = dynamic(() => import('@/components/global/PriceRange'));

@@ -1,10 +1,11 @@
 export interface FilterBoxData {
     label: string | React.ReactNode;
-    value?: string | number;
+    value: string ;
     icon?: string | React.ReactNode | React.ReactElement;
 }
 
 export default interface FilterBoxProps {
     className?: string;
-    data: FilterBoxData[]
+    data: FilterBoxData[];
+    onClick?: (value: string[]) => void;
 };

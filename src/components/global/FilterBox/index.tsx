@@ -7,15 +7,7 @@ const FilterBox = ({ data, className, onClick }: FilterBoxProps) => {
     const [selectFill, setSelectFill] = useState<string[]>([]);
 
     const handleSelected = (value: string) => {
-        const filterValue = selectFill.filter((ele: string) => ele === value);
-        if (!filterValue) {
-            setSelectFill((preview) => [...preview, value]);
-            onClick && onClick(selectFill);
-        } else {
-          const filterValue = selectFill.filter((ele: string) => ele === value);
-            setSelectFill((preview) => [...preview, value]);
-            onClick && onClick(selectFill);
-        }
+        
     };
 
     return (

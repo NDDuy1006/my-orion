@@ -1,0 +1,1 @@
+export {default as MoutainIcon} from './IconsCustom/MoutainIcon';

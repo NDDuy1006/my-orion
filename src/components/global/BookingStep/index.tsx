@@ -1,37 +1,35 @@
-import React, { Fragment, useState } from 'react'
-import styles from './BookingStep.module.scss'
-import BookingStepProps from './@types'
-import clsx from 'clsx'
+import React from 'react';
+import BookingStepProps, { BookingStepData } from './@types';
+import clsx from 'clsx';
+import { Typography } from 'antd';
+const {Title, Text}  = Typography;
 
-
-
-const BookingStep = ({data, activeStep, className}: BookingStepProps) => {
-
-
-  return (
-    <section className={clsx('flex justify-center relative py-10', className)}>
-
-      {
-        data.map((ele: any, idx: number) => {
-          return (
-            <div className={clsx(
-              styles.stepItem,
-              idx < activeStep - 1 && styles.stepItemActive
-            )} key={idx}>
-              <div className={styles.stepBox}>
-                <h6 className={clsx(
-                  styles.stepText,
-                  idx <= activeStep - 1 && styles.stepTextActive,
-                )}>{ele.step}</h6>
-                <p>{ele.stepName}</p>
-              </div>
+const BookingStep = ({ data, activeStep, className }: BookingStepProps) => {
+    return (
+        <section className="bg-White">
+            <div className="container">
+                <div className={clsx('flex justify-start gap-12 items-center h-[60px]', className)}>
+                    {data.map((ele: BookingStepData, index: number) => {
+                        return (
+                            <div key={index} className="flex justify-center gap-4 items-center">
+                                <Title level={5}
+                                    className={clsx(
+                                        'w-[25px] h-[25px] !text-[16px] !font-[500] text-Black bg-LightGrey flex items-center justify-center rounded-full',
+                                        {
+                                            '!bg-Blue !text-White': activeStep === ele.step,
+                                        }
+                                    )}
+                                >
+                                    {ele.step}
+                                </Title>
+                                <p className="text-[16px]">{ele.stepName}</p>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
-          )
-        })
-      }
+        </section>
+    );
+};
 
-    </section>
-  )
-}
-
-export default BookingStep
+export default BookingStep;

@@ -7,8 +7,13 @@ import { SWRConfigX, defaultTheme } from '@/config';
 import { ConfigProvider } from 'antd';
 import SEO from '@/config/nextSEO';
 
-import { Poppins } from 'next/font/google';
+import { Poppins, Lora } from 'next/font/google';
 import { DefaultSeo } from 'next-seo';
+const lora = Lora({
+    weight: ['400', '500', '700'],
+    style: ['normal', 'italic'],
+    subsets: ['latin'],
+})
 const poppins = Poppins({
     weight: ['100', '300', '400', '500', '700', '900'],
     style: ['normal', 'italic'],
@@ -22,7 +27,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <>
             <style jsx global>{`
                 html {
-                    font-family: ${poppins.style.fontFamily};
+                    font-family: ${poppins.style.fontFamily, lora.style.fontFamily};
                 }
             `}</style>
             <Provider store={store}>

@@ -16,10 +16,12 @@ module.exports = {
       Poppins: 'Poppins',
     },
     colors: {
-      starYellow: '#FEB148',
-      Main: '#20272C',
-      lineGray: '#D9D9D9',
-      tealMain: '#2CA3A8',
+      Blue: '#3A6EA5',
+      LightGrey: '#D9D9D9',
+      LightMedGrey: 'rgba(0, 0, 0, 0.25)',
+      Sea: '#8EB7BC',
+      White: '#ffffff',
+      Black: '#000000',
       
     },
 
@@ -112,4 +114,7 @@ module.exports = {
       ]);
     }),
   ],
+  corePlugins:{
+    preflight: false,
+  }
 };

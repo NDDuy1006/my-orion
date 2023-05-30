@@ -1,5 +1,5 @@
 export interface FilterBoxData {
-    label: string | React.ReactNode;
+    label: string ;
     value: string ;
     icon?: string | React.ReactNode | React.ReactElement;
 }

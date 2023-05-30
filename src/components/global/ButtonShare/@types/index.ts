@@ -3,5 +3,6 @@ export default interface ButtonProps {
     style?: string;
     rounded?: string;
     className?: string;
+    size?: string;
     onClick?: () => void;
 };

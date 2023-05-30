@@ -11,6 +11,7 @@ import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
 import FilterBox from '@/components/global/FilterBox';
 import { ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
+import ButtonShare, { BtnConstClassName } from '@/components/global/ButtonShare';
 
 const Alert = dynamic(() => import('@/components/global/Alert'));
 const PriceRange = dynamic(() => import('@/components/global/PriceRange'));
@@ -117,7 +118,8 @@ const HotelsPage: NextSheetWidthLayout = ({ data }: any) => {
                         <div>
                             <PriceRange value={{min:1, max: 400}} />
                             <FilterBox title='Landscape' data={landScape}  />
-                            <FilterBox title='Landscape' data={landScape}  />
+                            <ButtonShare size={'small'} className='p-40' style={BtnConstClassName.outline} content='test button' />
+                            {/* <FilterBox title='Landscape' data={landScape}  /> */}
                             <Image
                                 loading="lazy"
                                 className="w-full h-full mt-4"

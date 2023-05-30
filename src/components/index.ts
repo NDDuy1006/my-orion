@@ -8,3 +8,5 @@ export * from './global/LoadingItem/index';
 export * from './global/Alert/index';
 export * from './global/PriceRange/index';
 export * from './global/FilterBox/index';
+export * from './global/BoxContent/index';
+export * from './global/ButtonShare';

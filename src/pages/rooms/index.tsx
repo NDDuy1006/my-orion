@@ -2,12 +2,9 @@ import { NextSheetWidthLayout } from '@/types/layoutType';
 import React from 'react';
 import { GetStaticPropsContext } from 'next';
 import { Wrapper } from '@/components';
-import Image from 'next/image';
 import BookingLayout from '@/layouts/BookingLayout';
 import BookingStep from '@/components/global/BookingStep';
-import Recommended from '@/components/ResultItem/partials/Recommended';
 import axios from 'axios';
-import dynamic from 'next/dynamic';
 import ScrollToTop from '@/components/global/ScrollTop';
 import RoomCard from '@/components/Room/partials/RoomCard';
 import ImageBox from '@/components/Room/partials/ImageBox';
@@ -16,48 +13,8 @@ import { UserOutlined } from '@ant-design/icons';
 import ServiceBadge from '@/components/Room/partials/ServiceBadge';
 import PriceBadge from '@/components/Room/partials/PriceBadge';
 import { AcademicCapIcon } from '@heroicons/react/24/solid';
-const Rooms = dynamic(() => import('@/components/ResultItem/partials/RoomItem'));
 
 const { Title, Paragraph, Text, Link } = Typography;
-
-const dataCheckBox = [
-  {
-    title: 'Amenities',
-    content: [
-      { label: '24hr front desk', value: 'title1' },
-      { label: 'Adults only', value: 'title2' },
-      { label: 'Aire-conditioned', value: 'title3' },
-      { label: 'Beachfront', value: 'title4' },
-      { label: 'Business center', value: 'title5' },
-      { label: 'label title 6', value: 'title6' },
-      { label: 'label title 7', value: 'title7' },
-      { label: 'label title 8', value: 'title8' },
-    ],
-  },
-  {
-    title: 'Bed type',
-    content: [
-      { label: 'Queen', value: 'title1' },
-      { label: 'Double', value: 'title2' },
-      { label: 'King', value: 'title3' },
-      { label: 'Single/Twin', value: 'title4' },
-      { label: 'Bunk bed', value: 'title5' },
-      { label: 'label title 6', value: 'title6' },
-      { label: 'label title 7', value: 'title7' },
-      { label: 'label title 8', value: 'title8' },
-      { label: 'label title 9', value: 'title9' },
-      { label: 'label title 10', value: 'title10' },
-    ],
-  },
-  {
-    title: 'Style',
-    content: [],
-  },
-  {
-    title: 'Other',
-    content: [],
-  },
-];
 
 const stepData = [
   {
@@ -90,15 +47,6 @@ const RoomsPage: NextSheetWidthLayout = ({ data }: any) => {
         <ScrollToTop />
         <div className="grid grid-cols-12 gap-16 mt-10">
           <div className="col-span-8 pr-5">
-            {/* <div>
-              <Image
-                className="w-full h-full mt-4"
-                src={require('@/assets/banner-1.png')}
-                alt="banner-hotel"
-                width={0}
-                height={0}
-              />
-            </div> */}
             <RoomCard
               media={<ImageBox />}
               overview={
@@ -141,13 +89,6 @@ const RoomsPage: NextSheetWidthLayout = ({ data }: any) => {
               }
               detail={'hello'}
             />
-          </div>
-
-          <div className="col-span-4">
-            {/* <Recommended /> */}
-            {/* {data?.data?.map((ele: any, index: any) => {
-              return <Rooms key={index} data={ele} />;
-            })} */}
           </div>
         </div>
       </Wrapper>

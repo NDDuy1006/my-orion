@@ -8,3 +8,4 @@ export { default as InstaIcon } from './IconsCustom/InstaIcon';
 export { default as FacebookIcon } from './IconsCustom/FacebookIcon';
 export { default as CheckIcon } from './IconsCustom/CheckIcon';
 export {default as SunSineIcon} from './IconsCustom/SunSineIcon';
+export {default as BuffetIcon} from './IconsCustom/BuffetIcon';

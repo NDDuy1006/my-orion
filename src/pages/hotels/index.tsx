@@ -6,14 +6,10 @@ import BookingLayout from '@/layouts/BookingLayout';
 import axios from 'axios';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import Recommended from '@/components/ResultItem/partials/Recommended';
 import LoadingItem from '@/components/global/LoadingItem';
 import axiosClient from '@/clientApi/axiosClient';
 import FilterBox from '@/components/global/FilterBox';
-import { CheckIcon, ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
-import TagName from '@/components/global/TagName';
-import { Col, Row } from 'antd';
-
+import {  ForestIcon, LakeIcon, MoutainIcon, WineIcon } from '@/library';
 const Alert = dynamic(() => import('@/components/global/Alert'));
 const PriceRange = dynamic(() => import('@/components/global/PriceRange'));
 const BookingStep = dynamic(() => import('@/components/global/BookingStep'));

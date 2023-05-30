@@ -34,8 +34,8 @@ const TitleBar = (props: IProps) => {
           </div>
         </div>
 
-        <div className="flex">
-          <div className="mt-[30px] mr-4">
+        <div className="flex mt-1">
+          <div className="mt-9 mr-4">
             <IqCheckIcon />
           </div>
           <div className="flex flex-col py-2.5 mt-2">

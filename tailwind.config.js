@@ -33,7 +33,7 @@ module.exports = {
         md: '2rem',
         lg: '3.75rem',
         xl: '2.5rem',
-        '2xl': '7.375rem',
+        '2xl': '10.5rem',
       },
     },
     screens: {

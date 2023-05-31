@@ -2,13 +2,21 @@ import React, { Fragment } from 'react';
 import BoxContentProps from './@types';
 import clsx from 'clsx';
 
-const BoxContent = ({onClick, className, label, icon, labelStyle, width, height }: BoxContentProps) => {
+enum StyleBox {
+    BOX = 'box',
+    Line = 'line'
+}
+
+const BoxContent = ({onClick, className, label, icon, labelStyle, width, height, style }: BoxContentProps) => {
     return (
         <div
             onClick={() =>  onClick}
             style={{width, height}}
             className={clsx(
-              'flex items-center justify-between h-[40px] border border-solid border-LightGrey mt-1 first-of-type:mt-0 px-3 rounded-md',
+              'flex items-center justify-between h-[40px] border  border-solid border-LightGrey mt-1 first-of-type:mt-0 px-3 rounded-md cursor-pointer ', {
+                'border': style === StyleBox.BOX,
+                'border-t ': style === StyleBox.Line,
+              },
               className
             )}
         >

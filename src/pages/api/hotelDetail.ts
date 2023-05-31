@@ -6,6 +6,10 @@ const myData = {
     name: "Ettershaus, Bad Harzburg",
     ratings: 4.3,
     reviews: 762,
+    about: {
+      title: "Where a charming villa meets heart-pounding tree houses in the beautiful Harz mountains.",
+      text: "Wow, what an eye-catcher: the historic villa of the 4-star Sonnenresort Ettershaus in Bad Harzburg inspires at first sight. Surrounded by the Harz Mountains with their great holiday offers for active holidays, located in a lovingly landscaped, park-like area, the Sonnenresort Ettershaus is a new attraction in the Bad Harzburg spa. You will sleep well in the modern apartment building, in the fascinating tree houses or in the historic villa. In the à la carte restaurant Tauts and in the restaurant Ursprung we spoil you with modern, creative Harz cuisine. The spacious wellness areain the hotel ensures well-being on vacation. Whether romantic for two or with the whole family: let yourself go and feel the very special aura of the sun resort Ettershaus. Here are no wishes left!",
+    },
   },
   rooms: {
     title: "Rooms",

@@ -5,13 +5,15 @@ import { RatingStarIcon } from "@/library";
 import IqCheckIcon from "@/library/IconsCustom/IqCheckIcon";
 
 export interface IProps {
-  name: string;
-  ratings: number;
-  reviews: number;
+  hotel: {
+    name: string;
+    ratings: number;
+    reviews: number;
+  }
 }
 
-const TitleBar = (props: IProps) => {
-  const fixedRatings = Number(props.ratings.toFixed(0));
+const TitleBar = ({ hotel }: IProps) => {
+  const fixedRatings = Number(hotel.ratings.toFixed(0));
   
   return (
     <div className="py-4">
@@ -23,7 +25,7 @@ const TitleBar = (props: IProps) => {
           <div className="flex flex-col">
             <div className="py-2.5">
               <h2 className={clsx(styles.title, "font-[lora]")}>
-                {props.name}
+                {hotel.name}
               </h2>
             </div>
             <div className="flex">
@@ -40,10 +42,10 @@ const TitleBar = (props: IProps) => {
           </div>
           <div className="flex flex-col py-2.5 mt-2">
             <div>
-              <h3 className={clsx(styles.rating)}><span>{props.ratings}</span> / 5</h3>
+              <h3 className={clsx(styles.rating)}><span>{hotel.ratings}</span> / 5</h3>
             </div>
             <div className={clsx(styles.reviews)}>
-              {props.reviews} reviews
+              {hotel.reviews} reviews
             </div>
           </div>
         </div>

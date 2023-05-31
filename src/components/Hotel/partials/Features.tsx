@@ -65,9 +65,7 @@ const Features = () => {
       <div className="flex flex-wrap">
         {items.map((item, idx) => (
           <div key={idx} className={clsx(styles.featureItem, "flex w-[270px] my-2 mr-12")}>
-            <div>
-              {item.icon}
-            </div>
+            {item.icon}
             <p className="ml-6 mt-1">
               {item.title}
             </p>
@@ -79,24 +77,4 @@ const Features = () => {
   )
 }
 
-export default Features
-
-/*
-<div className={clsx(styles.featureItem, "flex grow-0 w-[230px]")}>
-          <div>
-            <ParkingIcon /> 
-          </div>
-          <p className="ml-6 inline-block align-middle">
-            Free Parking
-          </p>
-        </div>
-        <div className={clsx(styles.featureItem, "flex grow-0 w-[230px]")}>
-          <div>
-            <WellnessSpaIcon /> 
-          </div>
-          <p className="ml-6 inline-block align-middle">
-            Combined indoor / outdoor pool
-          </p>
-        </div>
-
-*/
+export default Features;

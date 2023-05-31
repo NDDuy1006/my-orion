@@ -26,3 +26,6 @@ export { default as IndoorOutdoorIcon } from './IconsCustom/IndoorOutdoorIcon';
 export { default as CheckIcon } from './IconsCustom/CheckIcon';
 export {default as SunSineIcon} from './IconsCustom/SunSineIcon';
 export {default as BuffetIcon} from './IconsCustom/BuffetIcon';
+export {default as AddressIcon} from './IconsCustom/AddressIcon';
+export {default as PhoneIcon} from './IconsCustom/PhoneIcon';
+export {default as SocialIcon} from './IconsCustom/SocialIcon';

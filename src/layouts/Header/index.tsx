@@ -54,7 +54,11 @@ export default function Header({ menu, logo, btnText, url }: HeaderProps) {
         </ul>
         <div className="lg:block hidden">
           <div className="flex flex-row items-center gap-4">
-            <ButtonShare content={btnText} style={BtnConstClassName.outlinewhite} />
+            <ButtonShare
+              className="!bg-TransParent !text-White !border-White hover:!border-Blue"
+              content={btnText}
+              style={BtnConstClassName.outline}
+            />
             <Bars3Icon className="block h-6 w-6 text-[white]" />
           </div>
         </div>

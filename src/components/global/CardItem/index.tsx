@@ -1,12 +1,9 @@
-import React, { Fragment } from 'react';
-import styles from './CardItem.module.scss';
+import React from 'react';
 import CardItemProps from './@types';
 import Image from 'next/image';
 import clsx from 'clsx';
-import { Typography } from 'antd';
-const { Title, Text } = Typography;
 
-const CardItem = ({ image, height, title, content }: CardItemProps) => {
+const CardItem = ({ image, height, title, content, icon }: CardItemProps) => {
   return (
     <div style={{ height }} className={clsx('rounded-xl overflow-hidden flex flex-col')}>
       <div className="h-2/4 overflow-hidden">
@@ -19,7 +16,10 @@ const CardItem = ({ image, height, title, content }: CardItemProps) => {
           unoptimized
         />
       </div>
-      <div className="h-3/4 p-8 bg-White">
+      <div className="h-3/4 p-8 bg-White relative">
+        <div className="absolute -top-7 left-7 w-[50px] h-[50px] flex justify-center items-center text-White rounded bg-Black">
+          {icon}
+        </div>
         <div>{title}</div>
         <div>{content}</div>
       </div>

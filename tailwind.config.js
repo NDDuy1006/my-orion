@@ -22,7 +22,8 @@ module.exports = {
       Sea: '#8EB7BC',
       White: '#ffffff',
       Black: '#000000',
-      MidGrey: '#838383'
+      TransParent: '#00000000',
+      MidGrey: '#838383',
     },
 
     container: {
@@ -32,7 +33,7 @@ module.exports = {
         md: '2rem',
         lg: '3.75rem',
         xl: '2.5rem',
-        '2xl': '7.375rem',
+        '2xl': '10.5rem',
       },
     },
     screens: {
@@ -118,4 +119,3 @@ module.exports = {
     preflight: false,
   },
 };
-  

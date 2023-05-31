@@ -1,3 +1,4 @@
+@import '@splidejs/react-splide/css';
 @import './variable';
 /** button style **/
 
@@ -10,7 +11,6 @@
   cursor: pointer;
   box-shadow: none;
 }
-
 
 .btnDark {
   background-color: $color-black;
@@ -36,16 +36,30 @@
 }
 
 .date {
-    background-color: transparent;
-    &.high {
-        background-color: #fd6040 !important;
-    }
+  background-color: transparent;
+  &.high {
+    background-color: #fd6040 !important;
+  }
 
-    &.average {
-        background-color: #feb148;
-    }
+  &.average {
+    background-color: #feb148;
+  }
 
-    &.low {
-        background-color: #2ca3a8;
-    }
+  &.low {
+    background-color: #2ca3a8;
+  }
+}
+
+.holiday {
+  .splide__arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+    transition: all 0.3s;
+  }
+  .splide__arrow--prev {
+    left: -3.5rem;
+  }
+  .splide__arrow--next {
+    right: -3.5rem;
+  }
 }

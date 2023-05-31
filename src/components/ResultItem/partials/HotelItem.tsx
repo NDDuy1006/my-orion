@@ -4,13 +4,14 @@ import { HotelItemProps } from '../@types';
 import CardItem from '@/components/global/CardItem';
 import TagName from '@/components/global/TagName';
 import BoxContent from '@/components/global/BoxContent';
-import { BuffetIcon, SunSineIcon } from '@/library';
+import { BuffetIcon, CheckIcon, MoutainIcon, SunSineIcon } from '@/library';
 import LotusIcon from '@/library/IconsCustom/LotosIcon';
 import { StarIcon } from '@heroicons/react/24/outline';
 import { StarFilled } from '@ant-design/icons';
 import ButtonShare from '@/components/global/ButtonShare';
 import { BtnConstClassName } from '@/components/global/ButtonShare';
-
+import AvatarCard from '@/components/global/AvatarCard';
+import clsx from 'clsx';
 const { Title, Text } = Typography;
 
 const HoteltItem = ({ data }: HotelItemProps) => {
@@ -34,8 +35,10 @@ const HoteltItem = ({ data }: HotelItemProps) => {
 
   return (
     <>
+    <Title className='font-[Lora]'>test</Title>
       <CardItem
         height="600px"
+        icon={<MoutainIcon />}
         title={
           <div className="flex justify-between mb-6">
             <Title level={1} className="!text-[20px] !font-[400] !font-[lora]">
@@ -59,32 +62,37 @@ const HoteltItem = ({ data }: HotelItemProps) => {
             {dataBox.map((ele, index) => {
               return (
                 <BoxContent
+                  style='line'
                   label={ele.label}
                   icon={ele.icon}
                   key={index}
                   height="auto"
-                  className="!px-0 !py-3 border-l-0 border-r-0 rounded-none border-b-0 last-of-type:border-b-1 flex-row-reverse !justify-end gap-6 !mt-0"
+                  className={clsx("!px-0 !py-3 flex-row-reverse !justify-end gap-6 !mt-0",{
+                    '!border-b': dataBox.length -1  === index 
+                  })}
                 />
               );
             })}
-            <div className="flex justify-between items-center pt-6">
-              <div className='flex items-center gap-3'>
-                <Avatar size={60} />
-                <div>
-                  <p className='w-[100px] flex-wrap'>Weingut Rommert</p>
+            <AvatarCard
+            style='horizontal'
+              content={
+                <>
+                  <p className="w-[120px] flex-wrap">Weingut Rommert</p>
                   <StarFilled className="text-Blue" />
                   <StarFilled className="text-Blue" />
                   <StarFilled className="text-Blue" />
                   <StarFilled className="text-Blue" />
-                </div>
-              </div>
-              <ButtonShare
-                content="see details"
-                size="small"
-                style={BtnConstClassName.outline}
-                className="!font-[500]"
-              />
-            </div>
+                </>
+              }
+              button={
+                <ButtonShare
+                  content="see details"
+                  size="small"
+                  style={BtnConstClassName.outline}
+                  className="!font-[500]"
+                />
+              }
+            />
           </>
         }
         image={data.img}

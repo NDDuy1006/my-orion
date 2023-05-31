@@ -11,3 +11,4 @@ export * from './global/FilterBox/index';
 export * from './global/BoxContent/index';
 export * from './global/ButtonShare';
 export * from './global/CardItem/index';
+export * from './global/AvatarCard/index';

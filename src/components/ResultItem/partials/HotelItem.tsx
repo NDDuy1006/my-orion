@@ -11,7 +11,7 @@ import { StarFilled } from '@ant-design/icons';
 import ButtonShare from '@/components/global/ButtonShare';
 import { BtnConstClassName } from '@/components/global/ButtonShare';
 import AvatarCard from '@/components/global/AvatarCard';
-
+import clsx from 'clsx';
 const { Title, Text } = Typography;
 
 const HoteltItem = ({ data }: HotelItemProps) => {
@@ -35,6 +35,7 @@ const HoteltItem = ({ data }: HotelItemProps) => {
 
   return (
     <>
+    <Title className='font-[Lora]'>test</Title>
       <CardItem
         height="600px"
         icon={<MoutainIcon />}
@@ -61,12 +62,14 @@ const HoteltItem = ({ data }: HotelItemProps) => {
             {dataBox.map((ele, index) => {
               return (
                 <BoxContent
-                style='line'
+                  style='line'
                   label={ele.label}
                   icon={ele.icon}
                   key={index}
                   height="auto"
-                  className="!px-0 !py-3 border-l-0 border-r-0 rounded-none border-b-0 last-of-type:border-b-1 flex-row-reverse !justify-end gap-6 !mt-0"
+                  className={clsx("!px-0 !py-3 flex-row-reverse !justify-end gap-6 !mt-0",{
+                    '!border-b': dataBox.length -1  === index 
+                  })}
                 />
               );
             })}

@@ -8,5 +8,5 @@ export default interface FilterBoxProps {
     className?: string;
     title?: string;
     data: FilterBoxData[];
-    onClick?: (value: string[]) => void;
+    onClick?: (value: any[]) => void;
 };

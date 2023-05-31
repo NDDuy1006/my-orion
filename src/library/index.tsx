@@ -23,3 +23,6 @@ export { default as AccessibleRoomIcon } from './IconsCustom/AccessibleRoomIcon'
 export { default as ElevatorIcon } from './IconsCustom/ElevatorIcon';
 export { default as HikingIcon } from './IconsCustom/HikingIcon';
 export { default as IndoorOutdoorIcon } from './IconsCustom/IndoorOutdoorIcon';
+export { default as CheckIcon } from './IconsCustom/CheckIcon';
+export {default as SunSineIcon} from './IconsCustom/SunSineIcon';
+export {default as BuffetIcon} from './IconsCustom/BuffetIcon';

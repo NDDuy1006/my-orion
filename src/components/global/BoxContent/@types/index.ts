@@ -6,4 +6,5 @@ export default interface BoxContentProps {
     icon?: React.ReactNode | React.ReactElement;
     width?: string;
     height?: string;
+    style?: string;
 };

@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import React from 'react';
 
-interface MoutainIconProps {
+interface ForestIconProps {
     className?: string;
     height?: number;
     width?: number;
 }
 
-const MoutainIcon = ({ className, height, width }: MoutainIconProps) => {
+const ForestIcon = ({ className, height, width }: ForestIconProps) => {
     return (
         <span className={clsx(className, 'inline-flex items-center justify-center')}>
             <svg
@@ -34,4 +34,4 @@ const MoutainIcon = ({ className, height, width }: MoutainIconProps) => {
     );
 };
 
-export default MoutainIcon;
+export default ForestIcon;

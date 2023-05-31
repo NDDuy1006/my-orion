@@ -22,6 +22,7 @@ module.exports = {
       Sea: '#8EB7BC',
       White: '#ffffff',
       Black: '#000000',
+      MidGrey: '#838383'
     },
 
     container: {
@@ -117,3 +118,4 @@ module.exports = {
     preflight: false,
   },
 };
+  

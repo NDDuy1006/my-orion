@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "../Hotel.module.scss"
+import styles from "../Hotel.module.scss";
 import Image from "next/image";
 import { AddressIcon, RatingStarIcon} from "@/library";
 import ButtonShare, { BtnConstClassName } from "@/components/global/ButtonShare";

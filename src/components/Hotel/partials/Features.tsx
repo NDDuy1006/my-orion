@@ -64,7 +64,7 @@ const Features = () => {
     <div className="container py-8">
       <div className="flex flex-wrap">
         {items.map((item, idx) => (
-          <div key={idx} className={clsx(styles.featureItem, "flex w-[270px] my-2 mr-12")}>
+          <div key={idx} className={clsx(styles.featureItem, "flex w-[270px] my-2 mr-1")}>
             {item.icon}
             <p className="ml-6 mt-1">
               {item.title}

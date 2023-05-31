@@ -5,6 +5,8 @@ import { NextSheetWidthLayout } from "@/types/layoutType";
 import axios from "axios";
 import { GetStaticPropsContext } from "next";
 import { IProps } from "@/components/Hotel/partials/TitleBar";
+import MenuBar from "@/components/Hotel/partials/MenuBar";
+import Features from "@/components/Hotel/partials/Features";
 
 
 
@@ -19,6 +21,8 @@ const HotelPage: NextSheetWidthLayout = ({ data }: any) => {
         ratings={props.ratings}
         reviews={props.reviews}
       />
+      <MenuBar />
+      <Features />
     </>
   )
 };

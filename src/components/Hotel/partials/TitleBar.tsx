@@ -14,7 +14,7 @@ const TitleBar = (props: IProps) => {
   const fixedRatings = Number(props.ratings.toFixed(0));
   
   return (
-    <div className="border-solid border-[#000000]/10 border-b-[1px] border-x-0 border-t-0 py-4">
+    <div className="py-4">
       <div className="container h-[75px] flex justify-between">
         <div className="flex">
           <div className="mr-[20px]">

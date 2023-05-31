@@ -1,9 +1,9 @@
+import React from 'react';
 import { Wrapper } from '@/components/global/Wrapper';
 import { Splide, SplideSlide, SplideProps } from '@splidejs/react-splide';
 import Image from 'next/image';
-import React from 'react';
 
-type HolidayPackagesProps = {};
+interface HolidayPackagesProps {}
 const holidayContent = [
   {
     image: 'http://localhost:3000/images/holidayPackages/ThemesList1Picture.jpg',
@@ -33,7 +33,7 @@ interface SlpideCardProps {
 }
 const SlpideCard = ({ image, text }: SlpideCardProps) => {
   return (
-    <div className="relative w-[180px] h-[270px]">
+    <div className="relative h-[270px]">
       <Image
         alt={'gallery'}
         className="w-full h-full"
@@ -52,6 +52,7 @@ const SlideOption: SplideProps = {
   options: {
     rewind: false,
     type: 'loop',
+    gap: '1.5rem',
     perPage: 6,
     perMove: 1,
     pagination: false,
@@ -61,7 +62,7 @@ const SlideOption: SplideProps = {
 };
 const HolidayPackages = ({}: HolidayPackagesProps) => {
   return (
-    <Wrapper className="holiday">
+    <div className="pt-8 holiday">
       <Splide aria-label="holiday slide" {...SlideOption}>
         {holidayContent.map((splide) => (
           <SplideSlide key={splide.text} className="cursor-grab">
@@ -69,7 +70,7 @@ const HolidayPackages = ({}: HolidayPackagesProps) => {
           </SplideSlide>
         ))}
       </Splide>
-    </Wrapper>
+    </div>
   );
 };
 

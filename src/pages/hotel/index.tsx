@@ -10,6 +10,8 @@ import Features from "@/components/Hotel/partials/Features";
 import About from "@/components/Hotel/partials/About";
 import { AddressIcon, PhoneIcon, SocialIcon } from "@/library";
 import Rooms from "@/components/Hotel/partials/Rooms";
+import GallerySection from "@/components/Hotel/partials/GallerySection";
+import { ReviewSection } from "@/components/Hotel/partials/ReviewSection";
 
 const aboutData = {
   title: "Where a charming villa meets heart-pounding tree houses in the beautiful Harz mountains.",
@@ -48,6 +50,8 @@ const HotelPage: NextSheetWidthLayout = ({ data }: any) => {
         about={aboutData} 
       />
       <Rooms />
+      <GallerySection />
+      <ReviewSection />
     </>
   )
 };

@@ -29,9 +29,12 @@ const TitleBar = ({ hotel }: IProps) => {
               </h2>
             </div>
             <div className="flex">
-              {Array(fixedRatings).fill(
+              {/* {Array(fixedRatings).fill(
                 <RatingStarIcon />
-              )}
+              )} */}
+              {[...Array(fixedRatings)].map((index) => (
+                <RatingStarIcon key={index} />
+              ))}
             </div>
           </div>
         </div>
